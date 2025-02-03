@@ -7,7 +7,7 @@
   - Click "Install"
 
 ## Installation
-1. Clone the repository
+1. Clone the repository:
    `git clone https://github.com/MissionToPsyche-Iridium/iridium_23g_year_sim-uci.git`
    
 2. Open Unity Hub 
