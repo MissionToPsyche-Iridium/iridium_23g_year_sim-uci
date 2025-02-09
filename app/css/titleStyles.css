@@ -21,6 +21,17 @@ button {
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: grey;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+  background-color: whitesmoke;
 }
 
 canvas {
@@ -30,4 +41,17 @@ canvas {
   width: 100vw;
   height: 100vh;
   z-index: -1;
+}
+
+.fade-out {
+  animation: fadeOut 1.5s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
