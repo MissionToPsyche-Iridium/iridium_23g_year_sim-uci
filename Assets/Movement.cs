@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 
@@ -8,46 +10,38 @@ public class Movement : MonoBehaviour
     public float torque = 500f;
     public float gravity = 9.81f;
 
-    private Vector3 DeskUp = Vector3.zero;
-
+    public bool autoOrient = false;
+    public float autoOrientSpeed = 1f;
     Rigidbody rb;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         ProcessInput();
         ProcessGravity();
     }
 
-    void ProcessInput() 
+    void ProcessInput()
     {
-        float Hor = Input.GetAxis("Horizontal");
-        float Ver = Input.GetAxis("Vertical");
-
-        Vector3 newPos = transform.position;
-        newPos += transform.forward * Hor * 10 * Time.deltaTime;
-        newPos += transform.right * Ver * 10 * Time.deltaTime;
-
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit))
-        {
-            newPos.y = (hit.point + Vector3.up * 10).y;
-            DeskUp = hit.normal;
-        }
-
-        transform.position = newPos;
-        transform.up = Vector3.Slerp(transform.up, DeskUp, 15 * Time.deltaTime);
+        Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        transform.position += moveDirection * 10f * Time.deltaTime;
     }
 
-    void ProcessGravity() 
-    {
+    void ProcessGravity()
+    {   
         Vector3 diff = transform.position - gravityTarget.position;
-        rb.AddForce(- diff.normalized * gravity * rb.mass);
-        Debug.DrawRay(transform.position,  diff.normalized,  Color.red);
+        rb.AddForce(-diff.normalized * gravity * (rb.mass));
+
+        if (autoOrient) {AutoOrient(-diff);}
+    }
+
+    void AutoOrient(Vector3 down)
+    {
+        Quaternion orientationDirection = Quaternion.FromToRotation(-transform.up, down) * transform.rotation;
+        transform.rotation = Quaternion.Slerp(transform.rotation, orientationDirection, autoOrientSpeed * Time.deltaTime);
     }
 }
