@@ -1,7 +1,4 @@
-using System.Diagnostics;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem.Controls;
 
 public class Movement : MonoBehaviour
 {
