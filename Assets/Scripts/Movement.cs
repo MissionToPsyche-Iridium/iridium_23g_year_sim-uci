@@ -24,13 +24,7 @@ public class Movement : MonoBehaviour
 
     void ProcessInput()
     {
-        float vt = Input.GetAxis("Vertical");
-        Vector3 force = new Vector3(0f, 0f, vt * power);
-        rb.AddRelativeForce(force);
 
-        float hz = Input.GetAxis("Horizontal");
-        Vector3 rforce = new Vector3(0f, hz * torque, 0f);
-        rb.AddRelativeForce(rforce);
     }
 
     void ProcessGravity()
