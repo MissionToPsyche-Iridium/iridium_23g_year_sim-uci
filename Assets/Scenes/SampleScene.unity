@@ -512,6 +512,7 @@ GameObject:
   - component: {fileID: 550163740}
   - component: {fileID: 550163739}
   - component: {fileID: 550163741}
+  - component: {fileID: 550163742}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -607,6 +608,19 @@ MonoBehaviour:
   gravity: 15
   autoOrient: 1
   autoOrientSpeed: 100
+--- !u!114 &550163742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550163735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c025a1864952404b98c9effc3511a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 15
 --- !u!1 &1280042460
 GameObject:
   m_ObjectHideFlags: 0
