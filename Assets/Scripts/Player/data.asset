@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5602fa6ab3c294b9774991030ce352, type: 3}
   m_Name: data
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  surfaceRotationSpeed: 2
+  moveSpeed: 10
+  surfaceRotationSpeed: 1
   groundColSize: 0.55
   surfaceGravity: 1
-  stickToSurface: 0.505
+  stickToSurface: 0.75
   jumpForce: 5
   jumpDuration: 0.4
