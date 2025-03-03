@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.InputSystem;
 
 public abstract class Movement : MonoBehaviour
@@ -49,7 +50,10 @@ public abstract class Movement : MonoBehaviour
         gravityDirection = (planet.position - transform.position).normalized;
 
         if (!groundData.grounded)
-            gravityStrength += planet.GetComponent<Planet>().GravitationalPull * Time.deltaTime;
+            if (gravityStrength <= 10)
+                gravityStrength += planet.GetComponent<Planet>().GravitationalPull * Time.deltaTime;
+            else
+                gravityStrength = 10;
         else
             gravityStrength = moveData.surfaceGravity;
     }
