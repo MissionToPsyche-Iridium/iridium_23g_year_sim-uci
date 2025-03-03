@@ -146,7 +146,7 @@ Transform:
   m_GameObject: {fileID: 1001118254}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1591, y: 2465.4, z: 723.7}
+  m_LocalPosition: {x: -1591, y: 2520.6, z: 723.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -170,7 +170,7 @@ MonoBehaviour:
   moveData: {fileID: 11400000, guid: 5360c4e9632a9b24c9388a0bc25d85c9, type: 2}
   planet: {fileID: 1017307317}
   transformBody: {fileID: 1159697642}
-  gravityStrength: 20
+  gravityStrength: 5
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 8
