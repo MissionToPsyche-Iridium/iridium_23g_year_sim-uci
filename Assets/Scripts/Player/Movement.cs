@@ -54,7 +54,7 @@ public abstract class Movement : MonoBehaviour
 	void ApplyGravity()
 	{
 		gravityDirection = (planet.position - transform.position).normalized;
-		if (!groundData.grounded) {
+		if (!groundData.grounded) { //Limits max gravitational pull increase
 			if (gravityStrength <= 10) {
 				gravityStrength += planet.GetComponent<Planet>().GravitationalPull * Time.deltaTime;
 			} else {
