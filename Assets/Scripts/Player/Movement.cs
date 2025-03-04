@@ -3,8 +3,7 @@ using System.Collections;
 using UnityEngine.Analytics;
 using UnityEngine.InputSystem;
 
-public abstract class Movement : MonoBehaviour
-{
+public abstract class Movement : MonoBehaviour {
 	#region --
 	PlayerInputActions _inputActions;
 
@@ -19,7 +18,7 @@ public abstract class Movement : MonoBehaviour
 	protected Vector3 gravityDirection;
 	public float gravityStrength = 1f;
 	protected Vector3 jumpVector;
-	
+
 	[SerializeField]
 	LayerMask GroundLayerMask;
 	[SerializeField]
@@ -27,10 +26,8 @@ public abstract class Movement : MonoBehaviour
 	[SerializeField]
 	Transform cameraTransform; // Reference to camera
 
-
 	RayData groundData;
 	#endregion
-
 
 	void Start() {
 		groundData = new RayData();
@@ -40,7 +37,6 @@ public abstract class Movement : MonoBehaviour
 		_inputActions.PlayerActionmap.Jump.performed += Jump;
 	}
 
-
 	void Update() {
 		ApplyGravity();
 		CheckGround();
@@ -48,16 +44,18 @@ public abstract class Movement : MonoBehaviour
 		Move();
 	}
 
-
 	void ApplyGravity() {
 		gravityDirection = (planet.position - transform.position).normalized;
 		if (!groundData.grounded) {
 			if (gravityStrength <= 10) {
 				gravityStrength += planet.GetComponent<Planet>().GravitationalPull * Time.deltaTime;
-			} else { gravityStrength = 10; }
-		} else { gravityStrength = moveData.surfaceGravity; }
+			} else {
+				gravityStrength = 10;
+			}
+		} else {
+			gravityStrength = moveData.surfaceGravity;
+		}
 	}
-
 
 	void RotateToSurface() {
 		Quaternion gravityRotation = Quaternion.FromToRotation(transform.up, -gravityDirection) * transform.rotation;
@@ -67,9 +65,10 @@ public abstract class Movement : MonoBehaviour
 		transform.rotation = Quaternion.Slerp(transform.rotation, finalRotation, moveData.surfaceRotationSpeed * Time.deltaTime);
 	}
 
-
 	void Jump(InputAction.CallbackContext context) {
-		if (groundData.grounded) { StartCoroutine(ApplyJump()); }
+		if (groundData.grounded) {
+			StartCoroutine(ApplyJump());
+		}
 	}
 
 	IEnumerator ApplyJump() {
