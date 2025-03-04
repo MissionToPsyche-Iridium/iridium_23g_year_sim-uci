@@ -8,7 +8,7 @@ public class MoveData : ScriptableObject
 
     public float groundColSize = 0.55f;
     
-    [Range(0f, 100f)]
+    [Range(0f, 10f)]
     public float surfaceGravity = 1f;
     [Range(0f, 10f)]
     public float stickToSurface = 0.5f;
