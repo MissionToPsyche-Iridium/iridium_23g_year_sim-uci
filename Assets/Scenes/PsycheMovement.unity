@@ -175,6 +175,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   groundCollider: {fileID: 1253254889}
+  cameraTransform: {fileID: 1855847517}
 --- !u!54 &1001118261
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -213,7 +214,7 @@ GameObject:
   - component: {fileID: 1017307317}
   - component: {fileID: 1017307318}
   m_Layer: 3
-  m_Name: Pyche
+  m_Name: Psyche
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,8 +278,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1855847517}
   - {fileID: 1812506397}
+  - {fileID: 1855847517}
   m_Father: {fileID: 1001118259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1159697641
