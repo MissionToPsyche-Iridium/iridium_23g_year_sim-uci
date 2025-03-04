@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Analytics;
 using UnityEngine.InputSystem;
 
 public abstract class Movement : MonoBehaviour
@@ -53,11 +54,15 @@ public abstract class Movement : MonoBehaviour
 	void ApplyGravity()
 	{
 		gravityDirection = (planet.position - transform.position).normalized;
-
-		if (!groundData.grounded)
-			gravityStrength += planet.GetComponent<Planet>().GravitationalPull * Time.deltaTime;
-		else
+		if (!groundData.grounded) {
+			if (gravityStrength <= 10) {
+				gravityStrength += planet.GetComponent<Planet>().GravitationalPull * Time.deltaTime;
+			} else {
+				gravityStrength = 10;
+			}
+		} else {
 			gravityStrength = moveData.surfaceGravity;
+		}
 	}
 
 
@@ -117,7 +122,7 @@ public abstract class Movement : MonoBehaviour
 
 
 	void CheckGround()
-	{        
+	{
 		if (Physics.CheckSphere(groundCollider.position, moveData.groundColSize, GroundLayerMask))
 		{
 			Physics.Raycast(groundCollider.position, -transform.up, out RaycastHit hit, 5f);
