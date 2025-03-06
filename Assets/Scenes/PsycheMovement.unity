@@ -146,7 +146,7 @@ Transform:
   m_GameObject: {fileID: 1001118254}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1591, y: 2520.6, z: 723.7}
+  m_LocalPosition: {x: -1591, y: 2471.3, z: 723.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -274,7 +274,7 @@ Transform:
   m_GameObject: {fileID: 1147625844}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -612,6 +612,7 @@ GameObject:
   - component: {fileID: 1812506393}
   - component: {fileID: 1812506392}
   - component: {fileID: 1812506398}
+  - component: {fileID: 1812506400}
   m_Layer: 0
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -836,8 +837,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812506391}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15212296, y: 0.0000000044632267, z: -6.8695416e-10, w: 0.9883616}
-  m_LocalPosition: {x: 0, y: 3.00708, z: -9.53717}
+  m_LocalRotation: {x: 0.1521244, y: 1.3023071e-22, z: -1.7887394e-23, w: 0.98836136}
+  m_LocalPosition: {x: 0, y: 1.65708, z: -9.53717}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -855,6 +856,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a40941b92d9a8aaba309d1ac53f195f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1812506400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812506391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7de3aefa901374ba29464584a3109a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraRadius: 1
+  Decollision:
+    Enabled: 1
+    ObstacleLayers:
+      serializedVersion: 2
+      m_Bits: 8
+    UseFollowTarget:
+      Enabled: 0
+      YOffset: 0
+    Damping: 0.5
+    SmoothingTime: 0
+  TerrainResolution:
+    Enabled: 1
+    TerrainLayers:
+      serializedVersion: 2
+      m_Bits: 8
+    MaximumRaycast: 100
+    Damping: 0.5
 --- !u!1 &1855847516
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,8 +914,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1855847516}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15212297, y: 0.000000004463227, z: -6.8695444e-10, w: 0.9883616}
-  m_LocalPosition: {x: 0, y: 3.00708, z: -9.53717}
+  m_LocalRotation: {x: 0.1521244, y: 1.305708e-22, z: -2.0096905e-23, w: 0.98836136}
+  m_LocalPosition: {x: 0, y: 1.65708, z: -9.53717}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
