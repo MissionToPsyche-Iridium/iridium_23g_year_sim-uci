@@ -12,7 +12,7 @@ public class TitleScreen : MonoBehaviour
     }
 
     public void NewMission() {
-        SceneManager.LoadSceneAsync("RocketScene");
+        SceneManager.LoadSceneAsync("LaunchScene");
     }
 
     public void ContinueMission() {
