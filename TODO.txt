@@ -1,0 +1,8 @@
+DANE
+
+Due (?):
+- Fix view clipping through asteroid when panning down with mouse
+Due Tuesday, March 4th:
+- Make movement respective to Camera movement
+Due (?):
+- Increment Queeny's Great Logo
