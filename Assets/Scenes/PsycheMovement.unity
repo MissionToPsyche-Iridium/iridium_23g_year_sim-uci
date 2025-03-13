@@ -838,7 +838,7 @@ Transform:
   m_GameObject: {fileID: 1812506391}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1521244, y: 1.3023071e-22, z: -1.7887394e-23, w: 0.98836136}
-  m_LocalPosition: {x: 0, y: 1.65708, z: -9.53717}
+  m_LocalPosition: {x: 0, y: 3.00708, z: -9.53717}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -915,7 +915,7 @@ Transform:
   m_GameObject: {fileID: 1855847516}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1521244, y: 1.305708e-22, z: -2.0096905e-23, w: 0.98836136}
-  m_LocalPosition: {x: 0, y: 1.65708, z: -9.53717}
+  m_LocalPosition: {x: 0, y: 3.00708, z: -9.53717}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1065,7 +1065,7 @@ Transform:
   m_GameObject: {fileID: 5079817024631164269}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1592, y: -1268, z: -1048}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1000, y: 1000, z: 1000}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1113,7 +1113,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6284383020226976820, guid: 290ed9e17dc4864479d851f52c329cea, type: 3}
+  - {fileID: 2100000, guid: 0e47fa6aa96cfd044b946d9923d4a47a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1142,7 +1142,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5079817024631164269}
-  m_Mesh: {fileID: -2037553814132328803, guid: 290ed9e17dc4864479d851f52c329cea, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: 290ed9e17dc4864479d851f52c329cea, type: 3}
 --- !u!64 &8510923826199763933
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1164,7 +1164,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -2037553814132328803, guid: 290ed9e17dc4864479d851f52c329cea, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: 290ed9e17dc4864479d851f52c329cea, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
