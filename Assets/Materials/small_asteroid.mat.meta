@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 44f9d629006bb76409d3626dd82797c0
+timeCreated: 1489020271
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 84988
+  packageName: Asteroids Pack
+  packageVersion: 1.0
+  assetPath: Assets/Asteroids Pack/Assets/Materials/small_asteroid.mat
+  uploadId: 172354
