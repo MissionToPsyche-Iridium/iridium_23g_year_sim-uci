@@ -14,6 +14,10 @@ public class UIBehaviour : MonoBehaviour
     public GameObject missionsDropdown;
     public GameObject backButton;
     public Image overlayFade;
+    public GameObject upgradesMenu;
+    public GameObject researchMenu;
+    public GameObject mapMenu;
+
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera solarCamera;
     [SerializeField] private float fadeSpeed;
@@ -22,12 +26,49 @@ public class UIBehaviour : MonoBehaviour
     void Start() {
         mainCamera.enabled = true;
         solarCamera.enabled = false;
+        upgradesMenu.SetActive(false);
+        researchMenu.SetActive(false);
+        mapMenu.SetActive(false);
 
         Color fadeColor = overlayFade.color;
         fadeColor.a = 0f; 
         overlayFade.color = fadeColor;
         overlayFade.gameObject.SetActive(false);
     }
+
+
+    public void PauseGameUpgrade() {
+        upgradesMenu.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeGameUpgrade() {
+        upgradesMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+
+    public void PauseGameResearch() {
+        researchMenu.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeGameResearch() {
+        researchMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+
+    public void PauseGameMap() {
+        mapMenu.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeGameMap() {
+        mapMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
 
     public void setCanvas() {
         backButton.SetActive(viewSolarSystem);
