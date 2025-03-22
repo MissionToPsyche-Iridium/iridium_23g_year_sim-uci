@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0e47fa6aa96cfd044b946d9923d4a47a
+timeCreated: 1489020271
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 84988
+  packageName: Asteroids Pack
+  packageVersion: 1.0
+  assetPath: Assets/Asteroids Pack/Assets/Materials/large_asteroid.mat
+  uploadId: 172354
