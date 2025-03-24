@@ -17,11 +17,14 @@ public class UIBehaviour : MonoBehaviour
     public GameObject upgradesMenu;
     public GameObject researchMenu;
     public GameObject mapMenu;
+    public GameObject solarSystemInfoIcon;
+    public GameObject solarSystemInfoPanel;
 
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera solarCamera;
     [SerializeField] private float fadeSpeed;
     private bool viewSolarSystem = false;
+    private bool firstSolarSystemViewOpen = false;
 
     void Start() {
         mainCamera.enabled = true;
@@ -36,7 +39,6 @@ public class UIBehaviour : MonoBehaviour
         overlayFade.gameObject.SetActive(false);
     }
 
-
     public void PauseGameUpgrade() {
         upgradesMenu.SetActive(true);
         Time.timeScale = 0f;
@@ -46,7 +48,6 @@ public class UIBehaviour : MonoBehaviour
         upgradesMenu.SetActive(false);
         Time.timeScale = 1f;
     }
-
 
     public void PauseGameResearch() {
         researchMenu.SetActive(true);
@@ -58,7 +59,6 @@ public class UIBehaviour : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-
     public void PauseGameMap() {
         mapMenu.SetActive(true);
         Time.timeScale = 0f;
@@ -69,9 +69,7 @@ public class UIBehaviour : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-
     public void setCanvas() {
-        backButton.SetActive(viewSolarSystem);
         solarSystemButton.SetActive(!viewSolarSystem);
         upgradesButton.SetActive(!viewSolarSystem);
         researchButton.SetActive(!viewSolarSystem);
@@ -79,6 +77,9 @@ public class UIBehaviour : MonoBehaviour
         completionBar.SetActive(!viewSolarSystem);
         daysCounter.SetActive(!viewSolarSystem);
         missionsDropdown.SetActive(!viewSolarSystem);
+        backButton.SetActive(viewSolarSystem);
+        solarSystemInfoIcon.SetActive(viewSolarSystem);
+        setSolarSystemViewInfo();
     }
 
     IEnumerator setSolarSystemView() {
@@ -132,5 +133,32 @@ public class UIBehaviour : MonoBehaviour
 
         currentColor.a = targetAlpha;
         overlayFade.color = currentColor;
+    }
+
+    public void setSolarSystemViewInfo() {
+        if (!firstSolarSystemViewOpen) {
+            solarSystemInfoPanel.SetActive(true);
+            Time.timeScale = 0f;
+            firstSolarSystemViewOpen = true;
+        } else {
+            solarSystemInfoPanel.SetActive(false);
+        }
+    }
+
+    public void openSolarSystemViewInfo() {
+        solarSystemInfoPanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void closeSolarSystemViewInfo() {
+        Time.timeScale = 1f;
+        Animator iconAnimator = solarSystemInfoIcon.GetComponent<Animator>();
+        iconAnimator.Play("Normal", -1, 0f);
+        StartCoroutine(waitButtonAnimation(solarSystemInfoPanel));
+    }
+
+    IEnumerator waitButtonAnimation(GameObject panel) {
+        yield return new WaitForSecondsRealtime(0.6f);
+        panel.SetActive(false);
     }
 }
