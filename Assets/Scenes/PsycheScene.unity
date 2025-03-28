@@ -2444,7 +2444,7 @@ GameObject:
   - component: {fileID: 306045383}
   - component: {fileID: 306045382}
   m_Layer: 5
-  m_Name: Info
+  m_Name: InfoButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2538,7 +2538,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 488122528}
         m_TargetAssemblyTypeName: UIBehaviour, Assembly-CSharp
-        m_MethodName: openSolarSystemViewInfo
+        m_MethodName: SSVInfoIconClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3424,7 +3424,9 @@ MonoBehaviour:
   researchMenu: {fileID: 1648747137}
   mapMenu: {fileID: 1186492865}
   solarSystemInfoIcon: {fileID: 306045380}
-  solarSystemInfoPanel: {fileID: 1150760878}
+  infoPanel: {fileID: 1150760878}
+  infoTitle: {fileID: 735094698}
+  infoText: {fileID: 197759465}
   mainCamera: {fileID: 1855847520}
   solarCamera: {fileID: 1588446190}
   fadeSpeed: 1
@@ -4269,7 +4271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 0.02745098, g: 0.007843138, b: 0.10980392, a: 0.9411765}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4304,6 +4306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 639258214}
   - component: {fileID: 639258215}
+  - component: {fileID: 639258216}
   m_Layer: 6
   m_Name: PsycheCenter
   m_TagString: Untagged
@@ -4434,6 +4437,19 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &639258216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639258213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1813b93bb1afd0439459b07480f7e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GravitationalPull: 12
 --- !u!1 &657666472
 GameObject:
   m_ObjectHideFlags: 0
@@ -4691,7 +4707,7 @@ GameObject:
   - component: {fileID: 735094699}
   - component: {fileID: 735094698}
   m_Layer: 5
-  m_Name: Solar System View
+  m_Name: InfoTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6871,7 +6887,7 @@ GameObject:
   - component: {fileID: 1150760881}
   - component: {fileID: 1150760880}
   m_Layer: 5
-  m_Name: SolarSystemViewPanel
+  m_Name: InfoPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6914,7 +6930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.02745098, g: 0.007843138, b: 0.10980392, a: 0.9019608}
+  m_Color: {r: 0.02745098, g: 0.007843138, b: 0.10980392, a: 0.9411765}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7152,7 +7168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.02745098, g: 0.007843138, b: 0.10980392, a: 0.9411765}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7594,7 +7610,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1225}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2137783889}
@@ -7636,7 +7652,7 @@ Light:
   m_Intensity: 15000000
   m_Range: 2000
   m_SpotAngle: 179
-  m_InnerSpotAngle: 153.04672
+  m_InnerSpotAngle: 141.26398
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -8174,7 +8190,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 488122528}
         m_TargetAssemblyTypeName: UIBehaviour, Assembly-CSharp
-        m_MethodName: closeSolarSystemViewInfo
+        m_MethodName: closeInfoPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10097,7 +10113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0.02745098, g: 0.007843138, b: 0.10980392, a: 0.9411765}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11910,7 +11926,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1941078450}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44a548fda1ccb4a7a87fe0ade8f3c733, type: 3}
   m_Name: 
@@ -12020,7 +12036,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1941078450}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e795e5a93a1841bea1aac6eef4b0d69, type: 3}
   m_Name: 
@@ -12035,7 +12051,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1941078450}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44a548fda1ccb4a7a87fe0ade8f3c733, type: 3}
   m_Name: 
