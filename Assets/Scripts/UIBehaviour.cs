@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using TMPro;
 
 public class UIBehaviour : MonoBehaviour
 {
@@ -18,13 +19,18 @@ public class UIBehaviour : MonoBehaviour
     public GameObject researchMenu;
     public GameObject mapMenu;
     public GameObject solarSystemInfoIcon;
-    public GameObject solarSystemInfoPanel;
+    public GameObject infoPanel;
+    public TMP_Text infoTitle;
+    public TMP_Text infoText;
 
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera solarCamera;
     [SerializeField] private float fadeSpeed;
     private bool viewSolarSystem = false;
-    private bool firstSolarSystemViewOpen = false;
+    private bool openSolarSystemView = true;
+    private bool openUpgrades = true;
+    private bool openResearch = true;
+    private bool openMap = true;
 
     void Start() {
         mainCamera.enabled = true;
@@ -42,6 +48,13 @@ public class UIBehaviour : MonoBehaviour
     public void PauseGameUpgrade() {
         upgradesMenu.SetActive(true);
         Time.timeScale = 0f;
+
+        if (openUpgrades) {
+            infoPanel.SetActive(true);
+            infoTitle.text = "Upgrades";
+            infoText.text = "Placeholder text for first-time Upgrades open.";
+            openUpgrades = false;
+        } 
     }
 
     public void ResumeGameUpgrade() {
@@ -52,6 +65,13 @@ public class UIBehaviour : MonoBehaviour
     public void PauseGameResearch() {
         researchMenu.SetActive(true);
         Time.timeScale = 0f;
+
+        if (openResearch) {
+            infoPanel.SetActive(true);
+            infoTitle.text = "Research";
+            infoText.text = "Placeholder text for first-time Research open.";
+            openResearch = false;
+        } 
     }
 
     public void ResumeGameResearch() {
@@ -62,6 +82,13 @@ public class UIBehaviour : MonoBehaviour
     public void PauseGameMap() {
         mapMenu.SetActive(true);
         Time.timeScale = 0f;
+
+        if (openMap) {
+            infoPanel.SetActive(true);
+            infoTitle.text = "Map";
+            infoText.text = "Placeholder text for first-time Map open.";
+            openMap = false;
+        } 
     }
 
     public void ResumeGameMap() {
@@ -79,7 +106,7 @@ public class UIBehaviour : MonoBehaviour
         missionsDropdown.SetActive(!viewSolarSystem);
         backButton.SetActive(viewSolarSystem);
         solarSystemInfoIcon.SetActive(viewSolarSystem);
-        setSolarSystemViewInfo();
+        openSolarSystemViewInfo();
     }
 
     IEnumerator setSolarSystemView() {
@@ -135,26 +162,32 @@ public class UIBehaviour : MonoBehaviour
         overlayFade.color = currentColor;
     }
 
-    public void setSolarSystemViewInfo() {
-        if (!firstSolarSystemViewOpen) {
-            solarSystemInfoPanel.SetActive(true);
+    public void openSolarSystemViewInfo() {
+        if (openSolarSystemView) {
+            infoPanel.SetActive(true);
+            infoTitle.text = "Solar System View";
+            infoText.text = "This is where you can view where Psyche is in the Solar System and keep track of its orbit anytime during your gameplay.";
             Time.timeScale = 0f;
-            firstSolarSystemViewOpen = true;
+            openSolarSystemView = false;
         } else {
-            solarSystemInfoPanel.SetActive(false);
+            infoPanel.SetActive(false);
         }
     }
 
-    public void openSolarSystemViewInfo() {
-        solarSystemInfoPanel.SetActive(true);
-        Time.timeScale = 0f;
+    public void SSVInfoIconClick() {
+        openSolarSystemView = true;
+        restartSolarSystemViewInfoIconAnimation();
+        openSolarSystemViewInfo();
     }
 
-    public void closeSolarSystemViewInfo() {
+    public void closeInfoPanel() {
         Time.timeScale = 1f;
+        StartCoroutine(waitButtonAnimation(infoPanel));
+    }
+
+    public void restartSolarSystemViewInfoIconAnimation() {
         Animator iconAnimator = solarSystemInfoIcon.GetComponent<Animator>();
         iconAnimator.Play("Normal", -1, 0f);
-        StartCoroutine(waitButtonAnimation(solarSystemInfoPanel));
     }
 
     IEnumerator waitButtonAnimation(GameObject panel) {
