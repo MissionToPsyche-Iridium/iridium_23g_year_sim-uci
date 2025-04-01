@@ -108,6 +108,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Toggle Cursor"",
+                    ""type"": ""Button"",
+                    ""id"": ""5c9248dd-a892-4e4e-a8b6-aecf50175e4e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -176,6 +185,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f63a709c-85eb-4964-be62-da311203a33d"",
+                    ""path"": ""<Keyboard>/alt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Toggle Cursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -186,6 +206,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_PlayerActionmap = asset.FindActionMap("PlayerActionmap", throwIfNotFound: true);
         m_PlayerActionmap_Movement = m_PlayerActionmap.FindAction("Movement", throwIfNotFound: true);
         m_PlayerActionmap_Jump = m_PlayerActionmap.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerActionmap_ToggleCursor = m_PlayerActionmap.FindAction("Toggle Cursor", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
@@ -268,6 +289,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<IPlayerActionmapActions> m_PlayerActionmapActionsCallbackInterfaces = new List<IPlayerActionmapActions>();
     private readonly InputAction m_PlayerActionmap_Movement;
     private readonly InputAction m_PlayerActionmap_Jump;
+    private readonly InputAction m_PlayerActionmap_ToggleCursor;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerActionmap".
     /// </summary>
@@ -287,6 +309,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerActionmap/Jump".
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_PlayerActionmap_Jump;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerActionmap/ToggleCursor".
+        /// </summary>
+        public InputAction @ToggleCursor => m_Wrapper.m_PlayerActionmap_ToggleCursor;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -319,6 +345,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @ToggleCursor.started += instance.OnToggleCursor;
+            @ToggleCursor.performed += instance.OnToggleCursor;
+            @ToggleCursor.canceled += instance.OnToggleCursor;
         }
 
         /// <summary>
@@ -336,6 +365,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @ToggleCursor.started -= instance.OnToggleCursor;
+            @ToggleCursor.performed -= instance.OnToggleCursor;
+            @ToggleCursor.canceled -= instance.OnToggleCursor;
         }
 
         /// <summary>
@@ -390,5 +422,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Toggle Cursor" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnToggleCursor(InputAction.CallbackContext context);
     }
 }
