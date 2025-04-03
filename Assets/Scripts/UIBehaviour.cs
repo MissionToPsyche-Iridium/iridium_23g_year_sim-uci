@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using TMPro;
+using System;
 
 public class UIBehaviour : MonoBehaviour
 {
@@ -12,17 +13,17 @@ public class UIBehaviour : MonoBehaviour
     public GameObject mapButton;
     public GameObject completionBar;
     public GameObject daysCounter;
+    public TMP_Text daysCounterTime;
     public GameObject missionsDropdown;
     public GameObject backButton;
     public Image overlayFade;
     public GameObject upgradesMenu;
     public GameObject researchMenu;
     public GameObject mapMenu;
-    public GameObject solarSystemInfoIcon;
+    public GameObject infoIcon;
     public GameObject infoPanel;
     public TMP_Text infoTitle;
     public TMP_Text infoText;
-
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera solarCamera;
     [SerializeField] private float fadeSpeed;
@@ -31,6 +32,8 @@ public class UIBehaviour : MonoBehaviour
     private bool openUpgrades = true;
     private bool openResearch = true;
     private bool openMap = true;
+    private float days = 1828f;
+    public bool isPaused = false;
 
     void Start() {
         mainCamera.enabled = true;
@@ -45,9 +48,29 @@ public class UIBehaviour : MonoBehaviour
         overlayFade.gameObject.SetActive(false);
     }
 
+    void Update() {
+        if (!isPaused && days > 0 && Time.timeScale > 0) {
+            days -= Time.deltaTime;
+            UpdateDaysCounter();
+        } else if (days <= 0) {
+            EndGame();
+        }
+    }
+
+    public void UpdateDaysCounter() {
+        int seconds = Mathf.FloorToInt(days);
+        daysCounterTime.text = days.ToString("0000");
+    }
+
+    public void EndGame() {
+
+    }
+
     public void PauseGameUpgrade() {
         upgradesMenu.SetActive(true);
         Time.timeScale = 0f;
+        isPaused = true;
+        Debug.Log("Game is Paused");
 
         if (openUpgrades) {
             infoPanel.SetActive(true);
@@ -60,11 +83,14 @@ public class UIBehaviour : MonoBehaviour
     public void ResumeGameUpgrade() {
         upgradesMenu.SetActive(false);
         Time.timeScale = 1f;
+        isPaused = false;
+        Debug.Log("Game is no longer Paused");
     }
 
     public void PauseGameResearch() {
         researchMenu.SetActive(true);
         Time.timeScale = 0f;
+        isPaused = true;
 
         if (openResearch) {
             infoPanel.SetActive(true);
@@ -77,11 +103,13 @@ public class UIBehaviour : MonoBehaviour
     public void ResumeGameResearch() {
         researchMenu.SetActive(false);
         Time.timeScale = 1f;
+        isPaused = false;
     }
 
     public void PauseGameMap() {
         mapMenu.SetActive(true);
         Time.timeScale = 0f;
+        isPaused = true;
 
         if (openMap) {
             infoPanel.SetActive(true);
@@ -94,6 +122,7 @@ public class UIBehaviour : MonoBehaviour
     public void ResumeGameMap() {
         mapMenu.SetActive(false);
         Time.timeScale = 1f;
+        isPaused = false;
     }
 
     public void setCanvas() {
@@ -105,7 +134,7 @@ public class UIBehaviour : MonoBehaviour
         daysCounter.SetActive(!viewSolarSystem);
         missionsDropdown.SetActive(!viewSolarSystem);
         backButton.SetActive(viewSolarSystem);
-        solarSystemInfoIcon.SetActive(viewSolarSystem);
+        // infoIcon.SetActive(viewSolarSystem);
         openSolarSystemViewInfo();
     }
 
@@ -168,6 +197,7 @@ public class UIBehaviour : MonoBehaviour
             infoTitle.text = "Solar System View";
             infoText.text = "This is where you can view where Psyche is in the Solar System and keep track of its orbit anytime during your gameplay.";
             Time.timeScale = 0f;
+            isPaused = true;
             openSolarSystemView = false;
         } else {
             infoPanel.SetActive(false);
@@ -182,11 +212,12 @@ public class UIBehaviour : MonoBehaviour
 
     public void closeInfoPanel() {
         Time.timeScale = 1f;
+        isPaused = false;
         StartCoroutine(waitButtonAnimation(infoPanel));
     }
 
     public void restartSolarSystemViewInfoIconAnimation() {
-        Animator iconAnimator = solarSystemInfoIcon.GetComponent<Animator>();
+        Animator iconAnimator = infoIcon.GetComponent<Animator>();
         iconAnimator.Play("Normal", -1, 0f);
     }
 
