@@ -3257,6 +3257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsMenu: {fileID: 1651656301}
+  cameraBehavior: {fileID: 1812506398}
   isPaused: 0
 --- !u!4 &488122527
 Transform:

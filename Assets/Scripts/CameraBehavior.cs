@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CameraBehavior : MonoBehaviour {
-	PlayerInputActions _inputActions;
+	public PlayerInputActions _inputActions;
 
 	// Store delegates for subscription/unsubscription
 	private System.Action<InputAction.CallbackContext> _startedCallback;
@@ -33,6 +33,7 @@ public class CameraBehavior : MonoBehaviour {
 
 		EnableCursorListeners();
 
-		ToggleCursor(false);
+		Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Locked;
 	}
 }

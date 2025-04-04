@@ -1,21 +1,14 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
-public class SettingsMenu : MonoBehaviour
-{
+public class SettingsMenu : MonoBehaviour {
     public GameObject settingsMenu;
-    public bool isPaused; // Consider making this a public static bool to make it global
-                        // This is to prevent continuously taking input from user
-                        // Ex: if (!settingsMenu.isPaused)
-    void Start()
-    {
-        settingsMenu.SetActive(false);
-    }
+    public CameraBehavior cameraBehavior;
+    public bool isPaused;
 
-    void Update()
-    {
+    void Start() { settingsMenu.SetActive(false); }
+
+    void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (isPaused) {
                 ResumeGame();
@@ -23,18 +16,31 @@ public class SettingsMenu : MonoBehaviour
                 PauseGame();
             }
         }
+        if (Time.timeScale == 0f) {
+			cameraBehavior.ToggleCursor(true);
+			cameraBehavior.DisableCursorListeners();
+		} else {
+			cameraBehavior.ToggleCursor(false);
+			cameraBehavior.DisableCursorListeners();
+		}
     }
 
     public void PauseGame() {
         settingsMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
+
+		cameraBehavior.ToggleCursor(true);
+        cameraBehavior.DisableCursorListeners();
     }
 
     public void ResumeGame() {
         settingsMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
+
+		cameraBehavior.ToggleCursor(false);
+        cameraBehavior.EnableCursorListeners();
     }
 
     public void GoToMainMenu() {
