@@ -4,23 +4,35 @@ using UnityEngine.InputSystem;
 public class CameraBehavior : MonoBehaviour {
 	PlayerInputActions _inputActions;
 
-	void ToggleCursor(bool isVisible) {
+	// Store delegates for subscription/unsubscription
+	private System.Action<InputAction.CallbackContext> _startedCallback;
+	private System.Action<InputAction.CallbackContext> _canceledCallback;
+
+	public void ToggleCursor(bool isVisible) {
 		Cursor.visible = isVisible;
 		Cursor.lockState = isVisible ? CursorLockMode.None : CursorLockMode.Locked;
 	}
 
-	void Start() {
-		_inputActions = new PlayerInputActions(); // Initialize input actions
-		_inputActions.Enable(); // Enable input actions
-		
-		Cursor.visible = false;
-		Cursor.lockState = CursorLockMode.Locked;
-
-		// Create `ToggleCursor` event listeners to toggle cursor by holding "Alt" key
-		_inputActions.PlayerActionmap.ToggleCursor.started += _ => ToggleCursor(true);
-		_inputActions.PlayerActionmap.ToggleCursor.canceled += _ => ToggleCursor(false);
+	public void EnableCursorListeners() {
+		_inputActions.PlayerActionmap.ToggleCursor.started += _startedCallback;
+		_inputActions.PlayerActionmap.ToggleCursor.canceled += _canceledCallback;
 	}
 
-	// Update is called once per frame
-	//void Update() {}
+	public void DisableCursorListeners() {
+		_inputActions.PlayerActionmap.ToggleCursor.started -= _startedCallback;
+		_inputActions.PlayerActionmap.ToggleCursor.canceled -= _canceledCallback;
+	}
+
+	void Start() {
+		_inputActions = new PlayerInputActions();
+		_inputActions.Enable();
+
+		// Define callbacks once
+		_startedCallback = ctx => ToggleCursor(true);
+		_canceledCallback = ctx => ToggleCursor(false);
+
+		EnableCursorListeners();
+
+		ToggleCursor(false);
+	}
 }
