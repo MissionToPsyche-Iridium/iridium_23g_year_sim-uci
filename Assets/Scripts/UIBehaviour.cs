@@ -207,37 +207,4 @@ public class UIBehaviour : MonoBehaviour
         currentColor.a = targetAlpha;
         overlayFade.color = currentColor;
     }
-
-    public void openSolarSystemViewInfo() {
-        if (openSolarSystemView) {
-            infoPanel.SetActive(true);
-            infoTitle.text = "Solar System View";
-            infoText.text = "This is where you can view where Psyche is in the Solar System and keep track of its orbit anytime during your gameplay.";
-            Time.timeScale = 0f;
-            openSolarSystemView = false;
-        } else {
-            infoPanel.SetActive(false);
-        }
-    }
-
-    public void SSVInfoIconClick() {
-        openSolarSystemView = true;
-        restartSolarSystemViewInfoIconAnimation();
-        openSolarSystemViewInfo();
-    }
-
-    public void closeInfoPanel() {
-        Time.timeScale = 1f;
-        StartCoroutine(waitButtonAnimation(infoPanel));
-    }
-
-    public void restartSolarSystemViewInfoIconAnimation() {
-        Animator iconAnimator = solarSystemInfoIcon.GetComponent<Animator>();
-        iconAnimator.Play("Normal", -1, 0f);
-    }
-
-    IEnumerator waitButtonAnimation(GameObject panel) {
-        yield return new WaitForSecondsRealtime(0.6f);
-        panel.SetActive(false);
-    }
 }
