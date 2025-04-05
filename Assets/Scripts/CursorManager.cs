@@ -3,10 +3,12 @@ using System.Collections;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 
-public class CursorManager : MonoBehaviour {
-	[SerializeField] private Texture2D cursorTexture;
+// TODO: Uncomment all lines related to cursor texture when sprite is assigned!
 
-	private Vector2 cursorHotspot;
+public class CursorManager : MonoBehaviour {
+	//[SerializeField] private Texture2D cursorTexture;
+
+	//private Vector2 cursorHotspot;
 	public PlayerInputActions _inputActions;
 
 	// Store delegates for subscription/unsubscription
@@ -31,8 +33,8 @@ public class CursorManager : MonoBehaviour {
 	// Start is called before the first frame update
 	void Start() {
 		// Set custom cursor
-		cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
-		Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
+		//cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
+		//Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
 
 		// Initialize input actions
 		_inputActions = new PlayerInputActions();
@@ -43,7 +45,7 @@ public class CursorManager : MonoBehaviour {
 		_canceledCallback = ctx => ToggleCursor(false);
 
 		// Initial state is hidden
-		ToggleCursor(false);
 		EnableCursorListeners();
+		ToggleCursor(false);
 	}
 }
