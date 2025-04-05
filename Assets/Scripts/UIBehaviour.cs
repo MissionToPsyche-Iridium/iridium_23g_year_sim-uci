@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class UIBehaviour : MonoBehaviour {
 	[SerializeField] private float fadeSpeed;
-	[SerializeField] private Camera mainCamera; // NOTE: What is "Main Camera"? Does this refer to the "Free Look Camera"? 
+	[SerializeField] private Camera mainCamera; // NOTE: What is "Main Camera"? 
 	[SerializeField] private Camera solarCamera; // NOTE: What does this mean? The camera for the solar system view?
 
 	public GameObject completionBar;
@@ -183,11 +183,9 @@ public class UIBehaviour : MonoBehaviour {
 		yield return StartCoroutine(Fade(0)); // Fade screen in
 		overlayFade.gameObject.SetActive(false);
 	}
-	public void showSolarSystemView() { // NOTE: This function isn't called. Why?
-		StartCoroutine(setSolarSystemView());
-	}
+	public void showSolarSystemView() { StartCoroutine(setSolarSystemView()); } // Called with Unity Inspector
 
-	IEnumerator setPsycheWorld() { // "set" is a little vague. Can we use more clear language? It's okay if it becomes a little more verbose.
+	IEnumerator setPsycheWorld() { // TODO: Clarify function names such as this one!
 		overlayFade.gameObject.SetActive(true);
 		yield return StartCoroutine(Fade(1)); // Fade screen out
 
@@ -200,9 +198,7 @@ public class UIBehaviour : MonoBehaviour {
 		yield return StartCoroutine(Fade(0)); // Fade screen in
 		overlayFade.gameObject.SetActive(false);
 	}
-	public void showPsycheWorldView() { // NOTE: This function isn't called. Why?
-		StartCoroutine(setPsycheWorld());
-	} 
+	public void showPsycheWorldView() { StartCoroutine(setPsycheWorld()); } // Called with Unity Inspector 
 
 	IEnumerator Fade(float targetAlpha) {
 		float startAlpha = overlayFade.color.a;
