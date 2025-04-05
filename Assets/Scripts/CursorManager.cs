@@ -1,7 +1,12 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
-public class CameraBehavior : MonoBehaviour {
+public class CursorManager : MonoBehaviour {
+	[SerializeField] private Texture2D cursorTexture;
+
+	private Vector2 cursorHotspot;
 	public PlayerInputActions _inputActions;
 
 	// Store delegates for subscription/unsubscription
@@ -23,17 +28,22 @@ public class CameraBehavior : MonoBehaviour {
 		_inputActions.PlayerActionmap.ToggleCursor.canceled -= _canceledCallback;
 	}
 
+	// Start is called before the first frame update
 	void Start() {
+		// Set custom cursor
+		cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
+		Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
+
+		// Initialize input actions
 		_inputActions = new PlayerInputActions();
 		_inputActions.Enable();
 
-		// Define callbacks once
+		// Define listener callbacks once
 		_startedCallback = ctx => ToggleCursor(true);
 		_canceledCallback = ctx => ToggleCursor(false);
 
+		// Initial state is hidden
+		ToggleCursor(false);
 		EnableCursorListeners();
-
-		Cursor.visible = false;
-		Cursor.lockState = CursorLockMode.Locked;
 	}
 }
