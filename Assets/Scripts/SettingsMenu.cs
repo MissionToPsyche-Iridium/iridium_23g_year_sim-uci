@@ -6,9 +6,11 @@ public class SettingsMenu : MonoBehaviour {
 	public CursorManager cursorManager;
 	public bool isPaused;
 
+	// Start is called before the first frame update
 	void Start() { settingsMenu.SetActive(false); }
 
 	void Update() {
+		// Pause with keyboard ("Escape" key)
 		if (Input.GetKeyDown(KeyCode.Escape)) {
 			if (isPaused) {
 				ResumeGame();
@@ -21,8 +23,7 @@ public class SettingsMenu : MonoBehaviour {
 		Time.timeScale = 0f;
 		isPaused = true;
 
-		cursorManager.ToggleCursor(true);
-		cursorManager.DisableCursorListeners();
+		cursorManager.ToggleMenuCursor(true);
 	}
 
 	public void ResumeGame() {
@@ -30,12 +31,13 @@ public class SettingsMenu : MonoBehaviour {
 		Time.timeScale = 1f;
 		isPaused = false;
 
-		cursorManager.ToggleCursor(false);
-		cursorManager.EnableCursorListeners();
+		cursorManager.ToggleMenuCursor(false);
 	}
 
 	public void GoToMainMenu() {
 		Time.timeScale = 1f;
 		SceneManager.LoadScene("TitleScreen");
+
+		cursorManager.ToggleMenuCursor(false);
 	}
 }
