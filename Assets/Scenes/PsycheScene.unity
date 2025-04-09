@@ -4542,10 +4542,10 @@ MonoBehaviour:
   miningSpeedImage: {fileID: 21300000, guid: 39c8d1387ca44427c8d0f62c75abe647, type: 3}
   resourceMultiplierImage: {fileID: 21300000, guid: 39c8d1387ca44427c8d0f62c75abe647, type: 3}
   flashlightImage: {fileID: 21300000, guid: 39c8d1387ca44427c8d0f62c75abe647, type: 3}
-  currentDrill: Magnesium
-  currentMiningSpeed: 10
+  currentDrill: Nickel
+  currentMiningSpeed: 5
   currentResourceMultiplier: 1
-  currentLightStrength: 2
+  currentLightStrength: 1
   magnesiumAmount: 5
   ironAmount: 7
   nickelAmount: 2
