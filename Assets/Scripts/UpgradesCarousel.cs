@@ -4,15 +4,22 @@ using System.Collections.Generic;
 using TMPro;
 
 public class UpgradesCarousel : MonoBehaviour {
-    public int index = 0;
+    private int index = 0;
     public GameObject leftArrow;
     public GameObject rightArrow;
     public Image image;
     public TMP_Text type;
     public TMP_Text from;
     public TMP_Text to;
-    public TMP_Text mat1;
-    public TMP_Text req1;
+
+    public VerticalLayoutGroup descriptionGroup;
+    private bool isMax = false; // If an upgrade has reached max upgrade level
+    private Transform maxUpgradeText;
+    private Transform toFromGroup;
+    private Transform requirementsGroup;
+
+    public TMP_Text mat1; // Material 1 Text
+    public TMP_Text req1; // Material Requirement Number Text
     public TMP_Text mat2;
     public TMP_Text req2;
     public TMP_Text mat3;
@@ -53,7 +60,7 @@ public class UpgradesCarousel : MonoBehaviour {
         drillUpgrades = new Dictionary<string, (string, List<string>, List<int>)> {
             { "Magnesium", ("Reinforced Magnesium", new List<string> { "Magnesium" }, new List<int> { 10 }) },
             { "Reinforced Magnesium", ("Iron", new List<string> { "Magnesium", "Iron" }, new List<int> { 20, 10 }) },
-            { "Iron", ("Nickel", new List<string> { "Magnesium", "Iron", "Nickel" }, new List<int> { 50, 30, 10 }) }
+            { "Iron", ("Nickel", new List<string> { "Magnesium", "Iron", "Nickel" }, new List<int> { 50, 30, 10 }) },
         };
 
         miningSpeedUpgrades = new Dictionary<int, (int next, List<string> mats, List<int> amountRequired)> {
@@ -74,6 +81,10 @@ public class UpgradesCarousel : MonoBehaviour {
         };
 
         matAmountsList = new List<int> { magnesiumAmount, ironAmount, nickelAmount };
+        
+        maxUpgradeText = descriptionGroup.transform.GetChild(1);
+        toFromGroup = descriptionGroup.transform.GetChild(2);
+        requirementsGroup = descriptionGroup.transform.GetChild(3);
 
         displayPageInformation();
     }
@@ -95,7 +106,6 @@ public class UpgradesCarousel : MonoBehaviour {
     public void displayPageInformation() {
         type.text = upgradeTypes[index].type;
         image.sprite = upgradeTypes[index].typeImage;
-        from.text = upgradeTypes[index].current.ToString();
 
         mat1.gameObject.SetActive(false);
         mat2.gameObject.SetActive(false);
@@ -103,7 +113,27 @@ public class UpgradesCarousel : MonoBehaviour {
         req1.gameObject.SetActive(false);
         req2.gameObject.SetActive(false);
         req3.gameObject.SetActive(false);
-        
+
+        if (checkIfMaxUpgradeReached(upgradeTypes[index].current)) {
+            isMax = true;
+            displayMaxUpgradeText();
+            descriptionGroup.padding.bottom = 0;
+        }
+        else {
+            isMax = false;
+            displayMaxUpgradeText();
+            descriptionGroup.padding.bottom = -85;
+            descriptionSetUp();
+        }
+    }
+
+    public void displayMaxUpgradeText() { // Hides to and from description and requirements and unhides max upgrade reached text
+        toFromGroup.gameObject.SetActive(!isMax);
+        requirementsGroup.gameObject.SetActive(!isMax);
+        maxUpgradeText.gameObject.gameObject.SetActive(isMax);
+    }
+
+    public void descriptionSetUp() { // Sets up & displays to, from, and material required description
         switch (index) {
             case 1:
                 from.text = upgradeTypes[index].current.ToString() + " seconds";
@@ -128,12 +158,30 @@ public class UpgradesCarousel : MonoBehaviour {
         }
     }
 
-    public void materialRequiredSetUp(List<string> mats, List<int> amountRequired) {
+    public void materialRequiredSetUp(List<string> mats, List<int> amountRequired) { // Displays all materials required
         for (int i = 0; i < mats.Count; i++) {
             matsList[i].gameObject.SetActive(true);
             matsList[i].text = mats[i];
             reqsList[i].gameObject.SetActive(true);
             reqsList[i].text =  matAmountsList[i] +  "/" + amountRequired[i].ToString();
         };
+    }
+
+    public bool checkIfMaxUpgradeReached(object currentUpgrade) {
+        if (index == 0 && currentUpgrade is string mineral && mineral == "Nickel") { // Checks if drill upgrade max
+            return true;
+        }
+        else if (index == 1 && currentUpgrade is int speed && speed == 2) { // Checks if mining speed upgrade max
+            return true;
+        }
+        else if (index == 2 && currentUpgrade is int multiplier && multiplier == 10) { // Checks if resource multiplier upgrade max
+            return true;
+        }
+        else if (index == 3 && currentUpgrade is int light && light == 2) { // Checks if flashlight strength upgrade max
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
