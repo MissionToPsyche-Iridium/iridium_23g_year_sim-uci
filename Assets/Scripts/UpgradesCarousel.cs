@@ -14,7 +14,6 @@ public class UpgradesCarousel : MonoBehaviour {
     public TMP_Text to;
 
     public VerticalLayoutGroup descriptionGroup;
-    private bool isMax = false; // If an upgrade has reached max upgrade level
     private Transform maxUpgradeText;
     private Transform toFromGroup;
     private Transform requirementsGroup;
@@ -41,34 +40,35 @@ public class UpgradesCarousel : MonoBehaviour {
     [SerializeField] public int ironAmount = 0;
     [SerializeField] public int nickelAmount = 0;
     private Dictionary<string, int> matAmountsList;
-    private Dictionary<int, (string type, Sprite typeImage, object current)> upgradeTypes;
+    private Dictionary<int, (string type, Sprite typeImage, bool isMax)> upgradeTypes;
     private Dictionary<string, (string next, Dictionary<string, int> requirements)> drillUpgrades;
     private Dictionary<int, (int next, Dictionary<string, int> requirements)> miningSpeedUpgrades;
     private Dictionary<int, (int next, Dictionary<string, int> requirements)> resourceMultiplierUpgrades;
     private Dictionary<int, (int next, Dictionary<string, int> requirements)> lightStrengthUpgrades;
+    private List<int> currentUpgradesTypeInt;
 
     void Start() {
         matsList = new List<TMP_Text> { mat1, mat2, mat3 };
         reqsList = new List<TMP_Text> { req1, req2, req3 };
 
-        upgradeTypes = new Dictionary<int, (string, Sprite, object)> {
-            { 0, ("Drill", drillImage, currentDrill) },
-            { 1, ("Mining Speed", miningSpeedImage, currentMiningSpeed) },
-            { 2, ("Resource Multiplier", resourceMultiplierImage, currentResourceMultiplier) },
-            { 3, ("Flashlight Strength", flashlightImage, currentLightStrength) }
+        upgradeTypes = new Dictionary<int, (string, Sprite, bool)> {
+            { 0, ("Drill", drillImage, false) },
+            { 1, ("Mining Speed", miningSpeedImage, false) },
+            { 2, ("Resource Multiplier", resourceMultiplierImage, false) },
+            { 3, ("Flashlight Strength", flashlightImage, false) }
         };
 
         drillUpgrades = new Dictionary<string, (string, Dictionary<string, int>)> {
-            { "Magnesium", ("Reinforced Magnesium", new Dictionary<string, int> { 
+            { "Magnesium", ("Reinforced Magnesium", new Dictionary<string, int> { // Magnesium -> Reinforced Magnesium
                     { "Magnesium", 10 } 
                 }) 
             },
-            { "Reinforced Magnesium", ("Iron", new Dictionary<string, int> { 
+            { "Reinforced Magnesium", ("Iron", new Dictionary<string, int> { // Reinforced Magnesium -> Iron
                     { "Magnesium", 20 }, 
                     { "Iron", 10 }
                 })
             },
-            { "Iron", ("Nickel", new Dictionary<string, int> { 
+            { "Iron", ("Nickel", new Dictionary<string, int> { // Iron -> Nickel
                     { "Magnesium", 50 }, 
                     { "Iron", 30 }, 
                     { "Nickel", 10 } 
@@ -77,16 +77,16 @@ public class UpgradesCarousel : MonoBehaviour {
         };
 
         miningSpeedUpgrades = new Dictionary<int, (int next, Dictionary<string, int>)> {
-            { 10, (8, new Dictionary<string, int> { 
+            { 10, (8, new Dictionary<string, int> { // 10 seconds -> 8 seconds
                     { "Magnesium", 10 }
                 }) 
             },
-            { 8, (5, new Dictionary<string, int> { 
+            { 8, (5, new Dictionary<string, int> { // 8 seconds -> 5 seconds
                     { "Magnesium", 25 },
                     { "Iron", 10 }
                 }) 
             },
-            { 5, (2, new Dictionary<string, int> { 
+            { 5, (2, new Dictionary<string, int> { // 5 seconds -> 2 seconds
                     { "Iron", 30 },
                     { "Nickel", 15 }
                 }) 
@@ -94,27 +94,27 @@ public class UpgradesCarousel : MonoBehaviour {
         };
 
         resourceMultiplierUpgrades = new Dictionary<int, (int next, Dictionary<string, int>)> {
-            { 1, (2, new Dictionary<string, int> { 
+            { 1, (2, new Dictionary<string, int> { // 1x -> 2x
                     { "Magnesium", 20 }
                 }) 
             },
-            { 2, (5, new Dictionary<string, int> { 
+            { 2, (5, new Dictionary<string, int> { // 2x -> 5x
                     { "Iron", 20 }
                 }) 
             },
-            { 5, (10, new Dictionary<string, int> { 
+            { 5, (10, new Dictionary<string, int> { // 5x -> 10x
                     { "Nickel", 20 }
                 }) 
             }
         };
 
         lightStrengthUpgrades = new Dictionary<int, (int next, Dictionary<string, int>)> {
-            { 1, (2, new Dictionary<string, int> { 
-                    { "Magnesium", 10 }
+            { 1, (2, new Dictionary<string, int> { // Level 1 -> Level 2
+                    { "Iron", 10 }
                 }) 
             },
-            { 2, (3, new Dictionary<string, int> { 
-                    { "Iron", 10 }
+            { 2, (3, new Dictionary<string, int> { // Level 2 -> Level 3
+                    { "Nickel", 10 }
                 }) 
             }
         };
@@ -122,12 +122,14 @@ public class UpgradesCarousel : MonoBehaviour {
         matAmountsList = new Dictionary<string, int> { 
             { "Magnesium", magnesiumAmount},
             { "Iron", ironAmount},
-            {"Nickel", nickelAmount }
+            { "Nickel", nickelAmount }
         };
         
         maxUpgradeText = descriptionGroup.transform.GetChild(1);
         toFromGroup = descriptionGroup.transform.GetChild(2);
         requirementsGroup = descriptionGroup.transform.GetChild(3);
+
+        currentUpgradesTypeInt = new List<int> { currentMiningSpeed, currentResourceMultiplier, currentLightStrength };
 
         displayPageInformation();
     }
@@ -151,18 +153,18 @@ public class UpgradesCarousel : MonoBehaviour {
         image.sprite = upgradeTypes[index].typeImage;
 
         resetMaterialsNeededInformation();
+        var upgrade = upgradeTypes[index];
 
-        if (checkIfMaxUpgradeReached(upgradeTypes[index].current)) {
-            isMax = true;
-            displayMaxUpgradeText();
+        if (upgrade.isMax || checkIfMaxUpgradeReached()) {
+            upgrade.isMax = true;
+            upgradeTypes[index] = upgrade;
             descriptionGroup.padding.bottom = 0;
         }
         else {
-            isMax = false;
-            displayMaxUpgradeText();
             descriptionGroup.padding.bottom = -85;
             descriptionSetUp();
         }
+        displayMaxUpgradeText(upgrade.isMax);
     }
 
     public void resetMaterialsNeededInformation() {
@@ -174,38 +176,38 @@ public class UpgradesCarousel : MonoBehaviour {
         req3.gameObject.SetActive(false);
     }
 
-    public void displayMaxUpgradeText() { // Hides to and from description and requirements and unhides max upgrade reached text
+    public void displayMaxUpgradeText(bool isMax) { // Hides to, from, and requirements descriptions and unhides max upgrade reached text
         toFromGroup.gameObject.SetActive(!isMax);
         requirementsGroup.gameObject.SetActive(!isMax);
         maxUpgradeText.gameObject.gameObject.SetActive(isMax);
     }
 
-    public void descriptionSetUp() { // Sets up & displays to, from, and material required descriptions // TODO: UPDATE WITH DICT
+    public void descriptionSetUp() { // Sets up & displays to, from, and material required descriptions // TODO: Check y from not changing after upgrading
         switch (index) {
             case 1:
-                from.text = upgradeTypes[index].current.ToString() + " seconds";
+                from.text = currentMiningSpeed.ToString() + " seconds";
                 to.text = miningSpeedUpgrades[currentMiningSpeed].next.ToString() + " seconds";
                 materialRequiredSetUp(miningSpeedUpgrades[currentMiningSpeed].requirements);
                 break;
             case 2:
-                from.text = upgradeTypes[index].current.ToString() + " multiplier";
+                from.text = currentResourceMultiplier.ToString() + " multiplier";
                 to.text = resourceMultiplierUpgrades[currentResourceMultiplier].next.ToString() + " multiplier";
                 materialRequiredSetUp(resourceMultiplierUpgrades[currentResourceMultiplier].requirements);;
                 break;
             case 3:
-                from.text = "Level " + upgradeTypes[index].current.ToString();
+                from.text = "Level " + currentLightStrength.ToString();
                 to.text = "Level " + lightStrengthUpgrades[currentLightStrength].next.ToString();
                 materialRequiredSetUp(lightStrengthUpgrades[currentLightStrength].requirements);
                 break;
             default:
-                from.text = upgradeTypes[index].current.ToString();
+                from.text = currentDrill;
                 to.text = drillUpgrades[currentDrill].next;
                 materialRequiredSetUp(drillUpgrades[currentDrill].requirements);
                 break;
         }
     }
 
-    public void materialRequiredSetUp(Dictionary<string, int> requirements) { // Displays all materials required // TODO: UPDATE WITH DICT
+    public void materialRequiredSetUp(Dictionary<string, int> requirements) { // Displays all materials required
         List<string> keys = requirements.Keys.ToList();
 
         for (int i = 0; i < keys.Count; i++) {
@@ -216,17 +218,17 @@ public class UpgradesCarousel : MonoBehaviour {
         };
     }
 
-    public bool checkIfMaxUpgradeReached(object currentUpgrade) {
-        if (index == 0 && currentUpgrade is string mineral && mineral == "Nickel") { // Checks if drill upgrade max
+    public bool checkIfMaxUpgradeReached() {
+        if (index == 0 && currentDrill == "Nickel") { // Checks if drill upgrade max
             return true;
         }
-        else if (index == 1 && currentUpgrade is int speed && speed == 2) { // Checks if mining speed upgrade max
+        else if (index == 1 && currentMiningSpeed == 2) { // Checks if mining speed upgrade max
             return true;
         }
-        else if (index == 2 && currentUpgrade is int multiplier && multiplier == 10) { // Checks if resource multiplier upgrade max
+        else if (index == 2 && currentResourceMultiplier == 10) { // Checks if resource multiplier upgrade max
             return true;
         }
-        else if (index == 3 && currentUpgrade is int light && light == 2) { // Checks if flashlight strength upgrade max
+        else if (index == 3 && currentLightStrength == 3) { // Checks if flashlight strength upgrade max
             return true;
         }
         else {
@@ -234,30 +236,48 @@ public class UpgradesCarousel : MonoBehaviour {
         }
     }
 
-    public bool checkIfCanUpgrade(List<string> mats, List<int> amountRequired) { // Checks if user can upgrade
-        for (int i = 0; i < mats.Count; i++) {
-            // if (matAmountsList[i].gameObject != amountRequired[i]) { // TODO: Can't do this
-            //     return false;
-            // }
+    public bool checkIfCanUpgrade(Dictionary<string, int> requirements) { // Checks if user has enough minerals to upgrade
+        List<string> keys = requirements.Keys.ToList();
+
+        for (int i = 0; i < keys.Count; i++) {
+            if (matAmountsList[keys[i]] <= requirements[keys[i]]) {
+                return false;
+            }
         }
         return true;
     }
 
-    public void upgradeSelectedUpgrade() { // Upgrades the selected upgrade // TODO: UPDATE WITH DICT
-        // switch (index) {
-        //     case 0:
-        //         if (checkIfCanUpgrade(drillUpgrades[currentDrill].mats, drillUpgrades[currentDrill].amountRequired)) {
-        //             currentDrill = drillUpgrades[currentDrill].next;
-        //             // TODO: Update mats
-        //         }
-        //         break;
-        //     default:
-        //         Debug.Log("Not Enough Mats To Upgrade");
-        //         break;
-        // }
+    public void upgradeSelectedUpgrade() { // Upgrades the selected upgrade
+        if (index == 0 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(drillUpgrades[currentDrill].requirements)) {
+            deductMineralAmount(drillUpgrades[currentDrill].requirements);
+            currentDrill = drillUpgrades[currentDrill].next;
+        }
+        else if (index == 1 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(miningSpeedUpgrades[currentMiningSpeed].requirements)) {
+            deductMineralAmount(miningSpeedUpgrades[currentMiningSpeed].requirements);
+            currentMiningSpeed = miningSpeedUpgrades[currentMiningSpeed].next;
+        }
+        else if (index == 2 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(resourceMultiplierUpgrades[currentResourceMultiplier].requirements)) {
+            deductMineralAmount(resourceMultiplierUpgrades[currentResourceMultiplier].requirements);
+            currentResourceMultiplier = resourceMultiplierUpgrades[currentResourceMultiplier].next;
+        }
+        else if (index == 3 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(lightStrengthUpgrades[currentLightStrength].requirements)) {
+            deductMineralAmount(lightStrengthUpgrades[currentLightStrength].requirements);
+            currentLightStrength = lightStrengthUpgrades[currentLightStrength].next;
+        }
+        else {
+            Debug.Log("Not enough resources");
+        }
+        displayPageInformation(); // Updates page after upgrade
     }
 
-    public void resetMineralAmount() {
-        // for (int i = 0; i < )
+    public void deductMineralAmount(Dictionary<string, int> requirements) {  // Player's mineral amount - required mineral amount for upgrade = new Player's mineral amount
+       List<string> keys = requirements.Keys.ToList();
+
+        for (int i = 0; i < keys.Count; i++) {
+            matAmountsList[keys[i]] -= requirements[keys[i]];
+            if (matAmountsList[keys[i]] < 0) {
+                matAmountsList[keys[i]] = 0;
+            }
+        }
     }
 }
