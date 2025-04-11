@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using System.Linq;
@@ -12,6 +13,7 @@ public class UpgradesCarousel : MonoBehaviour {
     public TMP_Text type;
     public TMP_Text from;
     public TMP_Text to;
+    public TMP_Text error;
 
     public VerticalLayoutGroup descriptionGroup;
     private Transform maxUpgradeText;
@@ -262,7 +264,7 @@ public class UpgradesCarousel : MonoBehaviour {
             currentLightStrength = lightStrengthUpgrades[currentLightStrength].next;
         }
         else {
-            Debug.Log("Not enough resources");
+            StartCoroutine(ErrorPopUpTextFade()); // Error text appears when not enough resources
         }
         displayPageInformation(); // Updates page after upgrade
     }
@@ -276,5 +278,28 @@ public class UpgradesCarousel : MonoBehaviour {
                 matAmountsList[keys[i]] = 0;
             }
         }
+    }
+
+    IEnumerator ErrorPopUpTextFade() {
+        yield return StartCoroutine(Fade(1)); // Fade in
+        yield return new WaitForSecondsRealtime(5f);
+        yield return StartCoroutine(Fade(0)); // Fade out
+    }
+
+    IEnumerator Fade(float targetAlpha) {
+        float startAlpha = error.color.a;
+        float elapsedTime = 0f;
+        Color currentColor = error.color;
+
+        while (elapsedTime < 1f)
+        {
+            currentColor.a = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / 1f);
+            error.color = currentColor;
+            elapsedTime += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        currentColor.a = targetAlpha;
+        error.color = currentColor;
     }
 }

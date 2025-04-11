@@ -19,8 +19,6 @@ public class UIBehaviour : MonoBehaviour
     public GameObject upgradesMenu;
     public GameObject researchMenu;
     public GameObject researchButton;
-    // public GameObject mapButton; // Uncomment to implement
-    // public GameObject mapMenu; // Uncomment to implement
     public GameObject missionsDropdown;
     public GameObject backButton;
     public Image overlayFade;
@@ -41,7 +39,6 @@ public class UIBehaviour : MonoBehaviour
         solarSystemCamera.enabled = false;
         upgradesMenu.SetActive(false);
         researchMenu.SetActive(false);
-        // mapMenu.SetActive(false); // Uncomment to implement
 
         Color fadeColor = overlayFade.color;
         fadeColor.a = 0f; 
@@ -86,7 +83,6 @@ public class UIBehaviour : MonoBehaviour
             tutorialOn = null;
         }
     }
-
 
     void ShowNextInteractable() { // Shows each interactable UI one by one during Tutorial
         if (clickCount == 0) { // Initialize first interactable
@@ -150,21 +146,10 @@ public class UIBehaviour : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    // public void PauseGameMap() { // Uncomment to implement
-    //     mapMenu.SetActive(true);
-    //     Time.timeScale = 0f;
-    // }
-
-    // public void ResumeGameMap() {
-    //     mapMenu.SetActive(false);
-    //     Time.timeScale = 1f;
-    // }
-
     public void setCanvas() {
         solarSystemButton.SetActive(!viewSolarSystem);
         upgradesButton.SetActive(!viewSolarSystem);
         researchButton.SetActive(!viewSolarSystem);
-        // mapButton.SetActive(!viewSolarSystem);
         completionBar.SetActive(!viewSolarSystem);
         daysCounter.SetActive(!viewSolarSystem);
         missionsDropdown.SetActive(!viewSolarSystem);
