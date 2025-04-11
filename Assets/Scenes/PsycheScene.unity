@@ -4547,7 +4547,7 @@ MonoBehaviour:
   currentMiningSpeed: 10
   currentResourceMultiplier: 1
   currentLightStrength: 1
-  magnesiumAmount: 0
+  magnesiumAmount: 30
   ironAmount: 200
   nickelAmount: 100
 --- !u!1001 &500598015

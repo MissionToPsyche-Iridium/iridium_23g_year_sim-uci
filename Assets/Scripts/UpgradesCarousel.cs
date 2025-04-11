@@ -239,7 +239,7 @@ public class UpgradesCarousel : MonoBehaviour {
         List<string> keys = requirements.Keys.ToList();
 
         for (int i = 0; i < keys.Count; i++) {
-            if (matAmountsList[keys[i]] <= requirements[keys[i]]) {
+            if (matAmountsList[keys[i]] < requirements[keys[i]]) {
                 return false;
             }
         }
@@ -278,6 +278,13 @@ public class UpgradesCarousel : MonoBehaviour {
                 matAmountsList[keys[i]] = 0;
             }
         }
+        SyncMatsFromDict();
+    }
+
+    public void SyncMatsFromDict() { // matAmountsList only stores copies so need to manually update the variables
+        magnesiumAmount = matAmountsList["Magnesium"];
+        ironAmount = matAmountsList["Iron"];
+        nickelAmount = matAmountsList["Nickel"];
     }
 
     IEnumerator ErrorPopUpTextFade() {
