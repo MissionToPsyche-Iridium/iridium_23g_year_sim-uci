@@ -45,7 +45,6 @@ public class UpgradesCarousel : MonoBehaviour {
     private Dictionary<int, (int next, Dictionary<string, int> requirements)> miningSpeedUpgrades;
     private Dictionary<int, (int next, Dictionary<string, int> requirements)> resourceMultiplierUpgrades;
     private Dictionary<int, (int next, Dictionary<string, int> requirements)> lightStrengthUpgrades;
-    private List<int> currentUpgradesTypeInt;
 
     void Start() {
         matsList = new List<TMP_Text> { mat1, mat2, mat3 };
@@ -129,8 +128,6 @@ public class UpgradesCarousel : MonoBehaviour {
         toFromGroup = descriptionGroup.transform.GetChild(2);
         requirementsGroup = descriptionGroup.transform.GetChild(3);
 
-        currentUpgradesTypeInt = new List<int> { currentMiningSpeed, currentResourceMultiplier, currentLightStrength };
-
         displayPageInformation();
     }
 
@@ -182,7 +179,7 @@ public class UpgradesCarousel : MonoBehaviour {
         maxUpgradeText.gameObject.gameObject.SetActive(isMax);
     }
 
-    public void descriptionSetUp() { // Sets up & displays to, from, and material required descriptions // TODO: Check y from not changing after upgrading
+    public void descriptionSetUp() { // Sets up & displays to, from, and material required descriptions
         switch (index) {
             case 1:
                 from.text = currentMiningSpeed.ToString() + " seconds";
@@ -190,8 +187,8 @@ public class UpgradesCarousel : MonoBehaviour {
                 materialRequiredSetUp(miningSpeedUpgrades[currentMiningSpeed].requirements);
                 break;
             case 2:
-                from.text = currentResourceMultiplier.ToString() + " multiplier";
-                to.text = resourceMultiplierUpgrades[currentResourceMultiplier].next.ToString() + " multiplier";
+                from.text = currentResourceMultiplier.ToString() + "x";
+                to.text = resourceMultiplierUpgrades[currentResourceMultiplier].next.ToString() + "x";
                 materialRequiredSetUp(resourceMultiplierUpgrades[currentResourceMultiplier].requirements);;
                 break;
             case 3:
