@@ -263,7 +263,7 @@ public class UpgradesCarousel : MonoBehaviour {
             deductMineralAmount(lightStrengthUpgrades[currentLightStrength].requirements);
             currentLightStrength = lightStrengthUpgrades[currentLightStrength].next;
         }
-        else {
+        else if (!checkIfMaxUpgradeReached()) {
             StartCoroutine(ErrorPopUpTextFade()); // Error text appears when not enough resources
         }
         displayPageInformation(); // Updates page after upgrade
@@ -289,7 +289,7 @@ public class UpgradesCarousel : MonoBehaviour {
 
     IEnumerator ErrorPopUpTextFade() {
         yield return StartCoroutine(Fade(1)); // Fade in
-        yield return new WaitForSecondsRealtime(5f);
+        yield return new WaitForSecondsRealtime(3f);
         yield return StartCoroutine(Fade(0)); // Fade out
     }
 
