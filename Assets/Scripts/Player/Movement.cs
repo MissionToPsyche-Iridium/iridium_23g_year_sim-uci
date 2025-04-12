@@ -92,12 +92,6 @@ public abstract class Movement : MonoBehaviour {
 	}
 	
 	void LookAtCamera() {
-        Vector3 targetPoint = transform.position + cameraTransform.forward * 5f;
-		// if (model.transform.rotation.y != cameraTransform.rotation.y) {
-		// 	model.transform.Rotate(0, model.transform.rotation.y - cameraTransform.rotation.y, 0);
-		// }
-		// model.transform.Rotate(0, cameraTransform.rotation.y, 0);
-		model.transform.localRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
-		// model.transform.LookAt(targetPoint, transform.up);
+		model.transform.localRotation = new Quaternion(0, cameraTransform.localRotation.y, 0, cameraTransform.localRotation.w);
 	}
 }
