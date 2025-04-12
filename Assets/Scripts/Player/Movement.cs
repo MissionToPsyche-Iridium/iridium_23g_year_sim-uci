@@ -1,7 +1,4 @@
 using UnityEngine;
-using System.Collections;
-using UnityEngine.Analytics;
-using UnityEngine.InputSystem;
 
 public abstract class Movement : MonoBehaviour {
 	#region --
@@ -25,6 +22,8 @@ public abstract class Movement : MonoBehaviour {
 	Transform groundCollider;
 	[SerializeField]
 	Transform cameraTransform; // Reference to camera
+	[SerializeField]
+	GameObject model;
 
 	RayData groundData;
 	#endregion
@@ -34,17 +33,16 @@ public abstract class Movement : MonoBehaviour {
 
 		_inputActions = new PlayerInputActions();
 		_inputActions.Enable();
-		_inputActions.PlayerActionmap.Jump.performed += Jump;
 	}
 
 	void Update() {
 		ApplyGravity();
 		CheckGround();
+		LookAtCamera();
 		RotateToSurface();
 		Move();
 	}
-
-	void ApplyGravity() {
+    void ApplyGravity() {
 		gravityDirection = (planet.position - transform.position).normalized;
 		if (!groundData.grounded) { //Limits max gravitational pull increase
 			if (gravityStrength <= 10) {
@@ -63,28 +61,6 @@ public abstract class Movement : MonoBehaviour {
 		Quaternion finalRotation = Quaternion.Lerp(gravityRotation, surfaceRotation, moveData.stickToSurface);
 
 		transform.rotation = Quaternion.Slerp(transform.rotation, finalRotation, moveData.surfaceRotationSpeed * Time.deltaTime);
-	}
-
-	void Jump(InputAction.CallbackContext context) {
-		if (groundData.grounded) {
-			StartCoroutine(ApplyJump());
-		}
-	}
-
-	IEnumerator ApplyJump() {
-		gravityStrength = 0f;
-		jumpVector = Vector3.zero;
-
-		float force = moveData.jumpForce;
-		float t = 0f;
-
-		while (t < moveData.jumpDuration) {
-			jumpVector = -gravityDirection * force;
-			force = Mathf.Lerp(moveData.jumpForce, 0f, t / moveData.jumpDuration);
-			t += Time.deltaTime;
-			yield return new WaitForFixedUpdate();
-		}
-		jumpVector = Vector3.zero;
 	}
 
 	void Move() {
@@ -113,5 +89,15 @@ public abstract class Movement : MonoBehaviour {
 
 		groundData.grounded = false;
 		groundData.normal = -gravityDirection;
+	}
+	
+	void LookAtCamera() {
+        Vector3 targetPoint = transform.position + cameraTransform.forward * 5f;
+		// if (model.transform.rotation.y != cameraTransform.rotation.y) {
+		// 	model.transform.Rotate(0, model.transform.rotation.y - cameraTransform.rotation.y, 0);
+		// }
+		// model.transform.Rotate(0, cameraTransform.rotation.y, 0);
+		model.transform.localRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
+		// model.transform.LookAt(targetPoint, transform.up);
 	}
 }
