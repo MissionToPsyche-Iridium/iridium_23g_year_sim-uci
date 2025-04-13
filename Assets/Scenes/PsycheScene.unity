@@ -7633,6 +7633,7 @@ MonoBehaviour:
     m_Bits: 72
   groundCollider: {fileID: 1253254889}
   cameraTransform: {fileID: 1855847517}
+  model: {fileID: 1159697641}
 --- !u!54 &1001118261
 Rigidbody:
   m_ObjectHideFlags: 0
