@@ -4539,10 +4539,10 @@ MonoBehaviour:
   req2: {fileID: 6764398}
   mat3: {fileID: 613465681}
   req3: {fileID: 72526775}
-  drillImage: {fileID: 21300000, guid: 39c8d1387ca44427c8d0f62c75abe647, type: 3}
-  miningSpeedImage: {fileID: 21300000, guid: 39c8d1387ca44427c8d0f62c75abe647, type: 3}
-  resourceMultiplierImage: {fileID: 21300000, guid: 39c8d1387ca44427c8d0f62c75abe647, type: 3}
-  flashlightImage: {fileID: 21300000, guid: 39c8d1387ca44427c8d0f62c75abe647, type: 3}
+  drillImage: {fileID: 21300000, guid: d0b9fbf84ddb44db8980c298ed8517a3, type: 3}
+  miningSpeedImage: {fileID: 21300000, guid: 142810b0780dc40aaa4b8beed1c0baec, type: 3}
+  resourceMultiplierImage: {fileID: 21300000, guid: 625720e3663134b759909760918a5deb, type: 3}
+  flashlightImage: {fileID: 21300000, guid: 582dbb6b61af54dcaa9e21b101401567, type: 3}
   currentDrill: Magnesium
   currentMiningSpeed: 10
   currentResourceMultiplier: 1

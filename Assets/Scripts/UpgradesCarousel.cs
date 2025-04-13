@@ -41,7 +41,7 @@ public class UpgradesCarousel : MonoBehaviour {
     [SerializeField] public int magnesiumAmount = 0;
     [SerializeField] public int ironAmount = 0;
     [SerializeField] public int nickelAmount = 0;
-    private Dictionary<string, int> matAmountsList;
+    private Dictionary<string, int> matAmountsList; // Dictionary of user's mineral amounts. Note: when updating amounts through this dictionary, make sure to call SyncMatsFromDict() after
     private Dictionary<int, (string type, Sprite typeImage, bool isMax)> upgradeTypes;
     private Dictionary<string, (string next, Dictionary<string, int> requirements)> drillUpgrades;
     private Dictionary<int, (int next, Dictionary<string, int> requirements)> miningSpeedUpgrades;
