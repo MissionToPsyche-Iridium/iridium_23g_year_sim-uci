@@ -7,8 +7,10 @@ using System;
 
 public class UIBehaviour : MonoBehaviour
 {
-    [SerializeField] private Camera mainCamera;
-    [SerializeField] private Camera solarCamera;
+    [SerializeField] private Camera playerCamera;
+    [SerializeField] private Camera solarSystemCamera;
+    public GameObject canvas;
+    public GameObject settingsButton;
     public GameObject completionBar;
     public GameObject daysCounter;
     public TMP_Text daysCounterTime;
@@ -17,8 +19,6 @@ public class UIBehaviour : MonoBehaviour
     public GameObject upgradesMenu;
     public GameObject researchMenu;
     public GameObject researchButton;
-    // public GameObject mapButton; // Uncomment to implement
-    // public GameObject mapMenu; // Uncomment to implement
     public GameObject missionsDropdown;
     public GameObject backButton;
     public Image overlayFade;
@@ -35,24 +35,24 @@ public class UIBehaviour : MonoBehaviour
 
     private GameObject[] UI;
     void Start() {
-        mainCamera.enabled = true;
-        solarCamera.enabled = false;
+        playerCamera.enabled = true;
+        solarSystemCamera.enabled = false;
         upgradesMenu.SetActive(false);
         researchMenu.SetActive(false);
-        // mapMenu.SetActive(false); // Uncomment to implement
 
         Color fadeColor = overlayFade.color;
         fadeColor.a = 0f; 
         overlayFade.color = fadeColor;
         overlayFade.gameObject.SetActive(false);
-        UI = new GameObject[] { completionBar, daysCounter, solarSystemButton, upgradesButton, researchButton, missionsDropdown };
-        tutorialTitle = new string[] { "COMPLETION BAR", "DAYS COUNTDOWN", "SOLAR SYSTEM VIEW", "UPGRADES", "RESEARCH", "MISSIONS", "END TUTORIAL" };
-        tutorialText = new string[] { "This will display how much you've completed your mission. This includes gathering all research papers, maxing all upgrades, and completing mini missions.",
+
+        UI = new GameObject[] { missionsDropdown, completionBar, daysCounter, solarSystemButton, upgradesButton, researchButton };
+        tutorialTitle = new string[] { "MISSIONS", "COMPLETION BAR", "DAYS COUNTDOWN", "SOLAR SYSTEM VIEW", "UPGRADES", "RESEARCH", "END TUTORIAL" };
+        tutorialText = new string[] { "Mini-missions will help guide you to completing your main mission: Gather as much data from Psyche as you can in a year. Complete them all to complete the game.",
+                                    "This will display how much you've completed your mission. This includes gathering all research papers, maxing all upgrades, and completing mini missions.",
                                     "Psyche has 1828 days in a year. For the sake of gameplay, each day is a second in real life. Complete your mission before time is up. Time stops when Upgrades, Research, or Settings is open.",
                                     "This is where you can view where Psyche is in the Solar System and keep track of its orbit in the year anytime during your gameplay.",
                                     "Gather minerals and use them to upgrade your Rover throughout the game! Max out upgrades before the game ends to complete your mission.",
                                     "Generate all research papers that you will get from discovering something new about Psyche.",
-                                    "Sub-missions will help guide you to completing your main mission: Gather as much data from Psyche as you can in a year. Complete them all to complete the game.",
                                     "That is all. Goodluck and have fun!"
                                     };
         Time.timeScale = 0f;
@@ -84,18 +84,30 @@ public class UIBehaviour : MonoBehaviour
         }
     }
 
-
-    void ShowNextInteractable() {
-        if (clickCount == 0) {
+    void ShowNextInteractable() { // Shows each interactable UI one by one during Tutorial
+        if (clickCount == 0) { // Initialize first interactable
             UI[clickCount].transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() + 1);
         } 
         else {
+            if (clickCount < 3) {
+                moveCompletionBarHierarchy();
+            }
             UI[clickCount - 1].transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() - 1);
             UI[clickCount].transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() + 1);
         }
         infoTitle.text = tutorialTitle[clickCount];
         infoText.text = tutorialText[clickCount];
         clickCount++;
+    }
+
+    void moveCompletionBarHierarchy() {
+        if (clickCount == 2) { // Move completionBar back into missionsDropdown
+            completionBar.transform.SetParent(missionsDropdown.transform);
+        } 
+        else if (clickCount == 1) { // Move completionBar outside of missionsDropdown
+            completionBar.transform.SetParent(canvas.transform);
+            completionBar.transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() + 1);
+        }
     }
 
     void EndTutorial() {
@@ -134,34 +146,24 @@ public class UIBehaviour : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    // public void PauseGameMap() { // Uncomment to implement
-    //     mapMenu.SetActive(true);
-    //     Time.timeScale = 0f;
-    // }
-
-    // public void ResumeGameMap() {
-    //     mapMenu.SetActive(false);
-    //     Time.timeScale = 1f;
-    // }
-
     public void setCanvas() {
         solarSystemButton.SetActive(!viewSolarSystem);
         upgradesButton.SetActive(!viewSolarSystem);
         researchButton.SetActive(!viewSolarSystem);
-        // mapButton.SetActive(!viewSolarSystem);
         completionBar.SetActive(!viewSolarSystem);
         daysCounter.SetActive(!viewSolarSystem);
         missionsDropdown.SetActive(!viewSolarSystem);
+        settingsButton.SetActive(!viewSolarSystem);
         backButton.SetActive(viewSolarSystem);
     }
 
-    IEnumerator setSolarSystemView() {
+    IEnumerator switchToSolarSystemView() {
         overlayFade.gameObject.SetActive(true);
         yield return StartCoroutine(Fade(1)); // Fade Out
 
         viewSolarSystem = true;
-        mainCamera.enabled = false;
-        solarCamera.enabled = true;
+        playerCamera.enabled = false;
+        solarSystemCamera.enabled = true;
 
         setCanvas();
 
@@ -169,13 +171,13 @@ public class UIBehaviour : MonoBehaviour
         overlayFade.gameObject.SetActive(false);
     }
 
-    IEnumerator setPsycheWorld() {
+    IEnumerator switchToPsycheWorld() {
         overlayFade.gameObject.SetActive(true);
         yield return StartCoroutine(Fade(1)); // Fade Out
 
         viewSolarSystem = false;
-        solarCamera.enabled = false;
-        mainCamera.enabled = true;
+        solarSystemCamera.enabled = false;
+        playerCamera.enabled = true;
 
         setCanvas();
 
@@ -184,11 +186,11 @@ public class UIBehaviour : MonoBehaviour
     }
 
     public void showSolarSystemView() {
-        StartCoroutine(setSolarSystemView());
+        StartCoroutine(switchToSolarSystemView());
     }
 
     public void showPsycheWorldView() {
-        StartCoroutine(setPsycheWorld());
+        StartCoroutine(switchToPsycheWorld());
     }
 
     IEnumerator Fade(float targetAlpha) {
