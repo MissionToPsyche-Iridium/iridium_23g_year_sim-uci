@@ -886,6 +886,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a40941b92d9a8aaba309d1ac53f195f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  cursorTexture: {fileID: 0}
 --- !u!1 &1855847516
 GameObject:
   m_ObjectHideFlags: 0
