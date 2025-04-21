@@ -22,7 +22,7 @@ public class Mineable : MonoBehaviour
     public OnEmpty onEmpty;
 
     private void Start() {
-      resourcesRemaining = Random.Range(minResources, maxResources);
+      resourcesRemaining = minResources;
     }
 
     public void EnterMine(Miner m) {
