@@ -117,7 +117,6 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 1
     - _Metallic: 0.2
-    - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueOffset: 0
@@ -128,7 +127,6 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:

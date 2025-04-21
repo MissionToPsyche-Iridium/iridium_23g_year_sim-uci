@@ -3,8 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
+<<<<<<< HEAD
   tags:
   - Mine
+=======
+  tags: []
+>>>>>>> danesBranch
   layers:
   - Default
   - TransparentFX

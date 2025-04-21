@@ -4,7 +4,11 @@ using UnityEngine.InputSystem;
 using System.Collections.Generic;
 
 public class CursorManager : MonoBehaviour {
+<<<<<<< HEAD
 	//[SerializeField] private Camera mainCamera; // TODO: Re-implement with Ivan/Queeny.
+=======
+	[SerializeField] private Camera mainCamera; // TODO: Re-implement with Ivan/Queeny.
+>>>>>>> danesBranch
 	[SerializeField] private Texture2D cursorTexture;
 
 	private Vector2 cursorHotspot;
