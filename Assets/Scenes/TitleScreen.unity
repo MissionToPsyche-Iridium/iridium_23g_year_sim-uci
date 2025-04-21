@@ -3465,11 +3465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotation: {x: 0, y: 0, z: 98}
   speed: -0.1
-<<<<<<< HEAD
-  psyche: {fileID: 1455513267}
-=======
   psyche: {fileID: 2033693296}
->>>>>>> danesBranch
 --- !u!4 &1249880680
 Transform:
   m_ObjectHideFlags: 0
@@ -3521,10 +3517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsMenu: {fileID: 1858856474}
-<<<<<<< HEAD
-=======
   cursorManager: {fileID: 0}
->>>>>>> danesBranch
   isPaused: 0
 --- !u!1 &1257347111
 GameObject:
@@ -4673,17 +4666,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dcd974281fa624d258cb981b6de18234, type: 3}
       propertyPath: m_LocalPosition.x
-<<<<<<< HEAD
-      value: 28.8
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dcd974281fa624d258cb981b6de18234, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -23.4
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: dcd974281fa624d258cb981b6de18234, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -20
-=======
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dcd974281fa624d258cb981b6de18234, type: 3}
@@ -4693,7 +4675,6 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: dcd974281fa624d258cb981b6de18234, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
->>>>>>> danesBranch
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dcd974281fa624d258cb981b6de18234, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5476,14 +5457,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001240992}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
-=======
 --- !u!1 &2033693296 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dcd974281fa624d258cb981b6de18234, type: 3}
   m_PrefabInstance: {fileID: 1770139177}
   m_PrefabAsset: {fileID: 0}
->>>>>>> danesBranch
 --- !u!1 &2056188853
 GameObject:
   m_ObjectHideFlags: 0

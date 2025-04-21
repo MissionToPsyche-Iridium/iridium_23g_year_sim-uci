@@ -5833,7 +5833,7 @@ MonoBehaviour:
   gravityStrength: 5
   GroundLayerMask:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 8
   groundCollider: {fileID: 1253254889}
   cameraTransform: {fileID: 1855847517}
 --- !u!54 &1001118261
@@ -8714,6 +8714,10 @@ PrefabInstance:
     - target: {fileID: 910631588650625121, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
       propertyPath: m_Name
       value: Magnesium
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127547087465276517, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6066306025261532133, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12831,6 +12835,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Magnesium
       objectReference: {fileID: 0}
+    - target: {fileID: 5127547087465276517, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6066306025261532133, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 76.92
@@ -12907,7 +12915,7 @@ GameObject:
   - component: {fileID: 8510923826199763932}
   - component: {fileID: 5223984279624449923}
   - component: {fileID: 8510923826199763933}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Psyche 16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12966,7 +12974,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5079817024631164269}
-  m_Mesh: {fileID: -2432090755550338912, guid: 290ed9e17dc4864479d851f52c329cea, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: a952846144beb71a7b98814bc6cd4b5d, type: 3}
 --- !u!64 &8510923826199763933
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12988,7 +12996,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: 290ed9e17dc4864479d851f52c329cea, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: a952846144beb71a7b98814bc6cd4b5d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
