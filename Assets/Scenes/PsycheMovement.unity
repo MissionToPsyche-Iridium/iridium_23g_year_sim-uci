@@ -146,7 +146,7 @@ Transform:
   m_GameObject: {fileID: 1001118254}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1591, y: 2471.3, z: 723.7}
+  m_LocalPosition: {x: 0, y: 1236, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -229,7 +229,7 @@ Transform:
   m_GameObject: {fileID: 1017307316}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1592, y: 1268, z: 1048}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -837,7 +837,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812506391}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14882328, y: 0.022818388, z: -0.0034350862, w: 0.9885946}
+  m_LocalRotation: {x: 0.14882214, y: 0.022831885, z: -0.0034370928, w: 0.9885944}
   m_LocalPosition: {x: 0, y: 3.00708, z: -9.53717}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -886,7 +886,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a40941b92d9a8aaba309d1ac53f195f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
   cursorTexture: {fileID: 0}
 --- !u!1 &1855847516
 GameObject:
@@ -916,8 +915,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1855847516}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14882329, y: 0.022818388, z: -0.0034350865, w: 0.98859453}
-  m_LocalPosition: {x: 0, y: 3.00708, z: -9.53717}
+  m_LocalRotation: {x: 0.14882214, y: 0.022831885, z: -0.0034370923, w: 0.9885944}
+  m_LocalPosition: {x: 0, y: 3.0070572, z: -9.537169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1144,7 +1143,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5079817024631164269}
-  m_Mesh: {fileID: -2432090755550338912, guid: 290ed9e17dc4864479d851f52c329cea, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: a952846144beb71a7b98814bc6cd4b5d, type: 3}
 --- !u!64 &8510923826199763933
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1166,7 +1165,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: 290ed9e17dc4864479d851f52c329cea, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: a952846144beb71a7b98814bc6cd4b5d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
