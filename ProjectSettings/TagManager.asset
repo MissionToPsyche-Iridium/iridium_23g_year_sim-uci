@@ -9,11 +9,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - PsycheLight
+  - Surface
   - Water
   - UI
-  - 
-  - 
+  - PsycheLight
+  - IgnorePsycheLight
   - 
   - 
   - 
