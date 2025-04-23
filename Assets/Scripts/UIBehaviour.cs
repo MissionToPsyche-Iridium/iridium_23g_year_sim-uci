@@ -9,7 +9,8 @@ public class UIBehaviour : MonoBehaviour {
 	[SerializeField] private float fadeSpeed;
 	[SerializeField] private Camera playerCamera; 
 	[SerializeField] private Camera solarSystemCamera; 
-
+	
+	public GameObject canvas;
 	public GameObject completionBar;
 	public GameObject daysCounter;
 	public TMP_Text daysCounterTime;
@@ -19,7 +20,6 @@ public class UIBehaviour : MonoBehaviour {
 	public GameObject upgradesMenu;
 	public GameObject researchMenu;
 	public GameObject researchButton;
-	/// Uncomment to implement:
 	public GameObject missionsDropdown;
 	public GameObject backButton;
 	public GameObject infoPanel;
@@ -181,7 +181,6 @@ public class UIBehaviour : MonoBehaviour {
 		yield return StartCoroutine(Fade(0)); // Fade screen in
 		overlayFade.gameObject.SetActive(false);
 	}
-	public void showSolarSystemView() { StartCoroutine(setSolarSystemView()); } // Called with Unity Inspector
 
     IEnumerator switchToPsycheWorld() {
         overlayFade.gameObject.SetActive(true);
