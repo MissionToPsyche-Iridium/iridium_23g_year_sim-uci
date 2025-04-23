@@ -4722,7 +4722,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9bc46846d58ff4c3b876115d488439f1, type: 2}
     - target: {fileID: 919132149155446097, guid: dcd974281fa624d258cb981b6de18234, type: 3}
       propertyPath: m_Name
-      value: PSYCHE
+      value: Psyche
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
