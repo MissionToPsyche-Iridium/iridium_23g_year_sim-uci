@@ -1,44 +1,46 @@
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using System.Collections;
 using TMPro;
 using System;
+using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
-public class UIBehaviour : MonoBehaviour
-{
-    [SerializeField] private Camera playerCamera;
-    [SerializeField] private Camera solarSystemCamera;
-    public GameObject canvas;
-    public GameObject settingsButton;
-    public GameObject completionBar;
-    public GameObject daysCounter;
-    public TMP_Text daysCounterTime;
-    public GameObject solarSystemButton;
-    public GameObject upgradesButton;
-    public GameObject upgradesMenu;
-    public GameObject researchMenu;
-    public GameObject researchButton;
-    public GameObject missionsDropdown;
-    public GameObject backButton;
-    public Image overlayFade;
-    [SerializeField] private float fadeSpeed;
-    public GameObject infoPanel;
-    public TMP_Text infoTitle;
-    public TMP_Text infoText;
-    private bool viewSolarSystem = false;
-    public float days = 1828f;
-    private int clickCount = 0;
-    private string[] tutorialTitle;
-    private string[] tutorialText;
-    public bool? tutorialOn = true;
+public class UIBehaviour : MonoBehaviour {
+	[SerializeField] private float fadeSpeed;
+	[SerializeField] private Camera playerCamera; 
+	[SerializeField] private Camera solarSystemCamera; 
+	
+	public GameObject canvas;
+	public GameObject completionBar;
+	public GameObject daysCounter;
+	public TMP_Text daysCounterTime;
+	public GameObject solarSystemButton;
+	public GameObject settingsButton;
+	public GameObject upgradesButton;
+	public GameObject upgradesMenu;
+	public GameObject researchMenu;
+	public GameObject researchButton;
+	public GameObject missionsDropdown;
+	public GameObject backButton;
+	public GameObject infoPanel;
+	public CursorManager cursorManager;
 
-    private GameObject[] UI;
-    void Start() {
-        playerCamera.enabled = true;
-        solarSystemCamera.enabled = false;
-        upgradesMenu.SetActive(false);
-        researchMenu.SetActive(false);
+	public Image overlayFade;
+	public TMP_Text infoTitle;
+	public TMP_Text infoText;
+	private bool viewSolarSystem = false;
+	public float days = 1828f;
+	private int clickCount = 0;
+	private string[] tutorialTitle;
+	private string[] tutorialText;
+	public bool? tutorialOn = true;
+	private GameObject[] UI;
+
+	void Start() {
+		playerCamera.enabled = true;
+		solarSystemCamera.enabled = false;
+		upgradesMenu.SetActive(false);
+		researchMenu.SetActive(false);
 
         Color fadeColor = overlayFade.color;
         fadeColor.a = 0f; 
@@ -58,47 +60,56 @@ public class UIBehaviour : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    void Update() {
-        if (tutorialOn != null) {
-            Tutorial();
-        }
-        else if (days > 0 && Time.timeScale > 0) {
-            days -= Time.deltaTime;
-            UpdateDaysCounter();
-        } else if (days <= 0) {
-            EndGame();
-        }
-    }
+	void Update() {
+		if (tutorialOn != null) {
+			Tutorial();
+		}
+		else if (days > 0 && Time.timeScale > 0) {
+			days -= Time.deltaTime;
+			UpdateDaysCounter();
+		} else if (days <= 0) {
+			EndGame();
+		}
+	}
 
-    void Tutorial() {
-        if (clickCount < UI.Length && Input.GetMouseButtonDown(0)) {
-            ShowNextInteractable();
-        }
-        else if (clickCount >= UI.Length && Input.GetMouseButtonDown(0) && tutorialOn == true) {
-            EndTutorial();
-        }
-        else if (tutorialOn == false && Input.GetMouseButtonDown(0)) {
-            infoPanel.SetActive(false);
-            Time.timeScale = 1f;
-            tutorialOn = null;
-        }
-    }
+	void EndTutorial() {
+		UI[UI.Length - 1].transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() - 1);
+		infoTitle.text = tutorialTitle[tutorialTitle.Length - 1];
+		infoText.text = tutorialText[tutorialTitle.Length - 1];
+		tutorialOn = false;
+		cursorManager.ToggleMenuCursor(false);
+	}
 
-    void ShowNextInteractable() { // Shows each interactable UI one by one during Tutorial
-        if (clickCount == 0) { // Initialize first interactable
-            UI[clickCount].transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() + 1);
-        } 
-        else {
+	void Tutorial() {
+		cursorManager.ToggleMenuCursor(true);
+		if (clickCount < UI.Length && Input.GetMouseButtonDown(0)) {
+			ShowNextInteractable();
+		}
+		else if (clickCount >= UI.Length && Input.GetMouseButtonDown(0) && tutorialOn == true) {
+			EndTutorial();
+		}
+		else if (tutorialOn == false && Input.GetMouseButtonDown(0)) {
+			infoPanel.SetActive(false);
+			Time.timeScale = 1f;
+			tutorialOn = null;
+			cursorManager.ToggleMenuCursor(false);
+		}
+	}
+	void ShowNextInteractable() { // Shows each interactable UI one by one during Tutorial
+		if (clickCount == 0) { // Initialize first interactable
+			UI[clickCount].transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() + 1);
+		} 
+		else {
             if (clickCount < 3) {
                 moveCompletionBarHierarchy();
             }
-            UI[clickCount - 1].transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() - 1);
-            UI[clickCount].transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() + 1);
-        }
-        infoTitle.text = tutorialTitle[clickCount];
-        infoText.text = tutorialText[clickCount];
-        clickCount++;
-    }
+			UI[clickCount - 1].transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() - 1);
+			UI[clickCount].transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() + 1);
+		}
+		infoTitle.text = tutorialTitle[clickCount];
+		infoText.text = tutorialText[clickCount];
+		clickCount++;
+	}
 
     void moveCompletionBarHierarchy() {
         if (clickCount == 2) { // Move completionBar back into missionsDropdown
@@ -110,52 +121,52 @@ public class UIBehaviour : MonoBehaviour
         }
     }
 
-    void EndTutorial() {
-        UI[UI.Length - 1].transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() - 1);
-        infoTitle.text = tutorialTitle[tutorialTitle.Length - 1];
-        infoText.text = tutorialText[tutorialTitle.Length - 1];
-        tutorialOn = false;
-    }
+	public void UpdateDaysCounter() {
+		int seconds = Mathf.FloorToInt(days);
+		daysCounterTime.text = days.ToString("0000");
+	}
 
-    public void UpdateDaysCounter() {
-        int seconds = Mathf.FloorToInt(days);
-        daysCounterTime.text = days.ToString("0000");
-    }
+	public void EndGame() {
+		SceneManager.LoadScene("TitleScreen");
+		cursorManager.ToggleMenuCursor(true);
+	}
 
-    public void EndGame() {
-        SceneManager.LoadScene("TitleScreen");
-    }
+	public void PauseGameUpgrade() {
+		upgradesMenu.SetActive(true);
+		Time.timeScale = 0f;
+		cursorManager.ToggleMenuCursor(true);
+	}
 
-    public void PauseGameUpgrade() {
-        upgradesMenu.SetActive(true);
-        Time.timeScale = 0f;
-    }
+	public void ResumeGameUpgrade() {
+		upgradesMenu.SetActive(false);
+		Time.timeScale = 1f;
+		cursorManager.ToggleMenuCursor(false);
+	}
 
-    public void ResumeGameUpgrade() {
-        upgradesMenu.SetActive(false);
-        Time.timeScale = 1f;
-    }
+	public void PauseGameResearch() {
+		researchMenu.SetActive(true);
+		Time.timeScale = 0f;
+		cursorManager.ToggleMenuCursor(true);
+	}
 
-    public void PauseGameResearch() {
-        researchMenu.SetActive(true);
-        Time.timeScale = 0f;
-    }
+	public void ResumeGameResearch() {
+		researchMenu.SetActive(false);
+		Time.timeScale = 1f;
+		cursorManager.ToggleMenuCursor(false);
+	}
 
-    public void ResumeGameResearch() {
-        researchMenu.SetActive(false);
-        Time.timeScale = 1f;
-    }
 
-    public void setCanvas() {
-        solarSystemButton.SetActive(!viewSolarSystem);
-        upgradesButton.SetActive(!viewSolarSystem);
-        researchButton.SetActive(!viewSolarSystem);
-        completionBar.SetActive(!viewSolarSystem);
-        daysCounter.SetActive(!viewSolarSystem);
-        missionsDropdown.SetActive(!viewSolarSystem);
-        settingsButton.SetActive(!viewSolarSystem);
-        backButton.SetActive(viewSolarSystem);
-    }
+	public void setCanvas() {
+		solarSystemButton.SetActive(!viewSolarSystem);
+		upgradesButton.SetActive(!viewSolarSystem);
+		researchButton.SetActive(!viewSolarSystem);
+		completionBar.SetActive(!viewSolarSystem);
+		daysCounter.SetActive(!viewSolarSystem);
+		missionsDropdown.SetActive(!viewSolarSystem);
+		settingsButton.SetActive(!viewSolarSystem);
+		backButton.SetActive(viewSolarSystem);
+		cursorManager.ToggleMenuCursor(viewSolarSystem);
+	}
 
     IEnumerator switchToSolarSystemView() {
         overlayFade.gameObject.SetActive(true);
@@ -165,11 +176,11 @@ public class UIBehaviour : MonoBehaviour
         playerCamera.enabled = false;
         solarSystemCamera.enabled = true;
 
-        setCanvas();
+		setCanvas();
 
-        yield return StartCoroutine(Fade(0)); // Fade In
-        overlayFade.gameObject.SetActive(false);
-    }
+		yield return StartCoroutine(Fade(0)); // Fade screen in
+		overlayFade.gameObject.SetActive(false);
+	}
 
     IEnumerator switchToPsycheWorld() {
         overlayFade.gameObject.SetActive(true);
@@ -179,7 +190,7 @@ public class UIBehaviour : MonoBehaviour
         solarSystemCamera.enabled = false;
         playerCamera.enabled = true;
 
-        setCanvas();
+		setCanvas();
 
         yield return StartCoroutine(Fade(0)); // Fade In
         overlayFade.gameObject.SetActive(false);
@@ -193,20 +204,17 @@ public class UIBehaviour : MonoBehaviour
         StartCoroutine(switchToPsycheWorld());
     }
 
-    IEnumerator Fade(float targetAlpha) {
-        float startAlpha = overlayFade.color.a;
-        float elapsedTime = 0f;
-        Color currentColor = overlayFade.color;
-
-        while (elapsedTime < fadeSpeed)
-        {
-            currentColor.a = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / fadeSpeed);
-            overlayFade.color = currentColor;
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        currentColor.a = targetAlpha;
-        overlayFade.color = currentColor;
-    }
+	IEnumerator Fade(float targetAlpha) {
+		float startAlpha = overlayFade.color.a;
+		float elapsedTime = 0f;
+		Color currentColor = overlayFade.color;
+		while (elapsedTime < fadeSpeed){
+			currentColor.a = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / fadeSpeed);
+			overlayFade.color = currentColor;
+			elapsedTime += Time.deltaTime;
+			yield return null;
+		}
+		currentColor.a = targetAlpha;
+		overlayFade.color = currentColor;
+	}
 }
