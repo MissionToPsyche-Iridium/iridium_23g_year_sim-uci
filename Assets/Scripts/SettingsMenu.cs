@@ -1,44 +1,43 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
-public class SettingsMenu : MonoBehaviour
-{
-    public GameObject settingsMenu;
-    public bool isPaused; // Consider making this a public static bool to make it global
-                        // This is to prevent continuously taking input from user
-                        // Ex: if (!settingsMenu.isPaused)
-    void Start()
-    {
-        settingsMenu.SetActive(false);
-    }
+public class SettingsMenu : MonoBehaviour {
+	public GameObject settingsMenu;
+	public CursorManager cursorManager;
+	public bool isPaused;
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (isPaused) {
-                ResumeGame();
-            } else {
-                PauseGame();
-            }
-        }
-    }
+	// Start is called before the first frame update
+	void Start() { settingsMenu.SetActive(false); }
 
-    public void PauseGame() {
-        settingsMenu.SetActive(true);
-        Time.timeScale = 0f;
-        isPaused = true;
-    }
+	void Update() {
+		// Pause with keyboard ("Escape" key)
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			if (isPaused) {
+				ResumeGame();
+			} else { PauseGame(); }
+		}
+	}
 
-    public void ResumeGame() {
-        settingsMenu.SetActive(false);
-        Time.timeScale = 1f;
-        isPaused = false;
-    }
+	public void PauseGame() {
+		settingsMenu.SetActive(true);
+		Time.timeScale = 0f;
+		isPaused = true;
 
-    public void GoToMainMenu() {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("TitleScreen");
-    }
+		cursorManager.ToggleMenuCursor(true);
+	}
+
+	public void ResumeGame() {
+		settingsMenu.SetActive(false);
+		Time.timeScale = 1f;
+		isPaused = false;
+
+		cursorManager.ToggleMenuCursor(false);
+	}
+
+	public void GoToMainMenu() {
+		Time.timeScale = 1f;
+		SceneManager.LoadScene("TitleScreen");
+
+		cursorManager.ToggleMenuCursor(false);
+	}
 }
