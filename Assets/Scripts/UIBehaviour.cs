@@ -48,7 +48,7 @@ public class UIBehaviour : MonoBehaviour {
         overlayFade.color = fadeColor;
         overlayFade.gameObject.SetActive(false);
 
-        UI = new GameObject[] { missionsDropdown, completionBar, daysCounter, solarSystemButton, upgradesButton, researchButton };
+        UI = new GameObject[] { missionsDropdown, dupeCompletionBar, daysCounter, solarSystemButton, upgradesButton, researchButton };
         tutorialTitle = new string[] { "MISSIONS", "COMPLETION BAR", "DAYS COUNTDOWN", "SOLAR SYSTEM VIEW", "UPGRADES", "RESEARCH", "END TUTORIAL" };
         tutorialText = new string[] { "Mini-missions will help guide you to completing your main mission: Gather as much data from Psyche as you can in a year. Complete them all to complete the game.",
                                     "This will display how much you've completed your mission. This includes gathering all research papers, maxing all upgrades, and completing mini missions.",
