@@ -9,18 +9,19 @@ public class UIBehaviour : MonoBehaviour {
 	[SerializeField] private float fadeSpeed;
 	[SerializeField] private Camera playerCamera; 
 	[SerializeField] private Camera solarSystemCamera; 
-	
+
 	public GameObject canvas;
+    public GameObject missionsDropdown;
 	public GameObject completionBar;
+    public GameObject dupeCompletionBar; // Due to hierarchy difficulty with layout settings, a dupe image of the completion bar will be used ONLY for the tutorial.
 	public GameObject daysCounter;
 	public TMP_Text daysCounterTime;
 	public GameObject solarSystemButton;
-	public GameObject settingsButton;
 	public GameObject upgradesButton;
 	public GameObject upgradesMenu;
 	public GameObject researchMenu;
 	public GameObject researchButton;
-	public GameObject missionsDropdown;
+    public GameObject settingsButton;
 	public GameObject backButton;
 	public GameObject infoPanel;
 	public CursorManager cursorManager;
@@ -47,7 +48,7 @@ public class UIBehaviour : MonoBehaviour {
         overlayFade.color = fadeColor;
         overlayFade.gameObject.SetActive(false);
 
-        UI = new GameObject[] { missionsDropdown, completionBar, daysCounter, solarSystemButton, upgradesButton, researchButton };
+        UI = new GameObject[] { missionsDropdown, dupeCompletionBar, daysCounter, solarSystemButton, upgradesButton, researchButton };
         tutorialTitle = new string[] { "MISSIONS", "COMPLETION BAR", "DAYS COUNTDOWN", "SOLAR SYSTEM VIEW", "UPGRADES", "RESEARCH", "END TUTORIAL" };
         tutorialText = new string[] { "Mini-missions will help guide you to completing your main mission: Gather as much data from Psyche as you can in a year. Complete them all to complete the game.",
                                     "This will display how much you've completed your mission. This includes gathering all research papers, maxing all upgrades, and completing mini missions.",
@@ -72,14 +73,6 @@ public class UIBehaviour : MonoBehaviour {
 		}
 	}
 
-	void EndTutorial() {
-		UI[UI.Length - 1].transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() - 1);
-		infoTitle.text = tutorialTitle[tutorialTitle.Length - 1];
-		infoText.text = tutorialText[tutorialTitle.Length - 1];
-		tutorialOn = false;
-		cursorManager.ToggleMenuCursor(false);
-	}
-
 	void Tutorial() {
 		cursorManager.ToggleMenuCursor(true);
 		if (clickCount < UI.Length && Input.GetMouseButtonDown(0)) {
@@ -100,8 +93,8 @@ public class UIBehaviour : MonoBehaviour {
 			UI[clickCount].transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() + 1);
 		} 
 		else {
-            if (clickCount < 3) {
-                moveCompletionBarHierarchy();
+            if (clickCount == 2) {
+                hideDupeCompletionBar();
             }
 			UI[clickCount - 1].transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() - 1);
 			UI[clickCount].transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() + 1);
@@ -111,15 +104,17 @@ public class UIBehaviour : MonoBehaviour {
 		clickCount++;
 	}
 
-    void moveCompletionBarHierarchy() {
-        if (clickCount == 2) { // Move completionBar back into missionsDropdown
-            completionBar.transform.SetParent(missionsDropdown.transform);
-        } 
-        else if (clickCount == 1) { // Move completionBar outside of missionsDropdown
-            completionBar.transform.SetParent(canvas.transform);
-            completionBar.transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() + 1);
-        }
+    void hideDupeCompletionBar() { // Hide Dupe Completion Bar
+        dupeCompletionBar.SetActive(false);
     }
+
+    void EndTutorial() {
+		UI[UI.Length - 1].transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() - 1);
+		infoTitle.text = tutorialTitle[tutorialTitle.Length - 1];
+		infoText.text = tutorialText[tutorialTitle.Length - 1];
+		tutorialOn = false;
+		cursorManager.ToggleMenuCursor(false);
+	}
 
 	public void UpdateDaysCounter() {
 		int seconds = Mathf.FloorToInt(days);
@@ -154,7 +149,6 @@ public class UIBehaviour : MonoBehaviour {
 		Time.timeScale = 1f;
 		cursorManager.ToggleMenuCursor(false);
 	}
-
 
 	public void setCanvas() {
 		solarSystemButton.SetActive(!viewSolarSystem);
