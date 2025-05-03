@@ -3751,8 +3751,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Welcome to Year on Psyche! Let's take a look around the tools that will
-    help you complete your mission shall we?
+  m_text: 'PLACEHOLDER TEXT: SHOULD NEVER APPEAR'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f2f0a279ba4a4488a953728b7b68c63, type: 2}
   m_sharedMaterial: {fileID: 5659635374452186767, guid: 9f2f0a279ba4a4488a953728b7b68c63, type: 2}
@@ -15971,14 +15970,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1510923196}
         m_TargetAssemblyTypeName: MessageManager, Assembly-CSharp
-        m_MethodName: setMessage
-        m_Mode: 1
+        m_MethodName: SetLines
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: New Text Lines
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1510923194}
@@ -17284,7 +17283,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c9f36e574f4364f980b0bbdfe95040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: {fileID: 327814630}
+  text: {fileID: 327814632}
+  lines:
+  - Hello
+  - World
+  textSpeed: 0.3
 --- !u!1001 &1520351664
 PrefabInstance:
   m_ObjectHideFlags: 0

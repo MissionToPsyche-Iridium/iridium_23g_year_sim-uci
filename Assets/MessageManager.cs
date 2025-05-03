@@ -9,9 +9,14 @@ public class MessageManager : MonoBehaviour
     public float textSpeed;
     private int index;
 
-    public void Start()
+    public void SetLines(string dialogue)
     {
-        text.text= string.Empty;
+        lines = dialogue.Split(" ");
+    }
+
+    public void OnEnable()
+    {
+        text.text = string.Empty;
         StartDialogue();
     }
 
