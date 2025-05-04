@@ -1,22 +1,32 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class MessageManager : MonoBehaviour
 {
-    [SerializeField] public TextMeshProUGUI text;
-    public string[] lines;
+    [SerializeField] public TextMeshProUGUI textbox;
+    [SerializeField] public TextMeshProUGUI speakerbox;
+    public List<string> lines;
+    public List<string> speakers;
     public float textSpeed;
     private int index;
+    
 
     public void SetLines(string dialogue)
     {
-        lines = dialogue.Split(" ");
+        string[] temp; //Stores Strings containing the speaker and their dialogue
+        temp = dialogue.Split(",");
+        foreach (string speech in temp) //For each Speaker + Dialogue String
+        {
+            speakers.Add(speech.Split(":")[0].Trim());
+            lines.Add(speech.Split(":")[1].Trim()); 
+        }
     }
 
     public void OnEnable()
     {
-        text.text = string.Empty;
+        textbox.text = string.Empty;
         StartDialogue();
     }
 
@@ -24,14 +34,14 @@ public class MessageManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (text.text == lines[index])
+            if (textbox.text == lines[index])
             {
                 NextLine();
             }
             else
             {
                 StopAllCoroutines();
-                text.text = lines[index];
+                textbox.text = lines[index];
             }
         }
     }
@@ -39,6 +49,7 @@ public class MessageManager : MonoBehaviour
     void StartDialogue()
     {
         index = 0;
+        speakerbox.text = speakers[index];
         StartCoroutine(TypeLine());
     }
 
@@ -46,17 +57,18 @@ public class MessageManager : MonoBehaviour
     {
         foreach (char c in lines[index].ToCharArray())
         {
-            text.text += c;
+            textbox.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
     }
 
     void NextLine()
     {
-        if (index < lines.Length - 1) 
+        if (index < lines.Count - 1) 
         {
             index++;
-            text.text = string.Empty;
+            speakerbox.text = speakers[index];
+            textbox.text = string.Empty;
             StartCoroutine(TypeLine());
         }
         else

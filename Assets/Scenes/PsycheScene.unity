@@ -533,7 +533,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.44500002, y: 0.15461063}
   m_AnchorMax: {x: 0.5151943, y: 0.2937532}
-  m_AnchoredPosition: {x: 28.66, y: -0.5}
+  m_AnchoredPosition: {x: 28.66, y: -0.50006104}
   m_SizeDelta: {x: -2, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &79718954
@@ -13963,7 +13963,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MESSAGE HERE
+  m_text: 'PLACEHOLDER SPEAKER: SHOULD NOT APPEAR'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 36318f4958ae24787a245964fcb3be58, type: 2}
   m_sharedMaterial: {fileID: 1104012020608945117, guid: 36318f4958ae24787a245964fcb3be58, type: 2}
@@ -15977,7 +15977,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: New Text Lines
+          m_StringArgument: 'Rover : Hello Ground Control, Ground Control : Hello'
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1510923194}
@@ -17283,10 +17283,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c9f36e574f4364f980b0bbdfe95040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 327814632}
-  lines:
-  - Hello
-  - World
+  textbox: {fileID: 327814632}
+  speakerbox: {fileID: 1167205516}
+  lines: []
+  speakers: []
   textSpeed: 0.3
 --- !u!1001 &1520351664
 PrefabInstance:
