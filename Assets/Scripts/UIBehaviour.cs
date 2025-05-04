@@ -49,13 +49,14 @@ public class UIBehaviour : MonoBehaviour {
         overlayFade.gameObject.SetActive(false);
 
         UI = new GameObject[] { missionsDropdown, dupeCompletionBar, daysCounter, solarSystemButton, upgradesButton, researchButton };
-        tutorialTitle = new string[] { "MISSIONS", "COMPLETION BAR", "DAYS COUNTDOWN", "SOLAR SYSTEM VIEW", "UPGRADES", "RESEARCH", "END TUTORIAL" };
+        tutorialTitle = new string[] { "MISSIONS", "COMPLETION BAR", "DAYS COUNTDOWN", "SOLAR SYSTEM VIEW", "UPGRADES", "RESEARCH", "CURSOR", "END TUTORIAL" };
         tutorialText = new string[] { "Mini-missions will help guide you to completing your main mission: Gather as much data from Psyche as you can in a year. Complete them all to complete the game.",
                                     "This will display how much you've completed your mission. This includes gathering all research papers, maxing all upgrades, and completing mini missions.",
                                     "Psyche has 1828 days in a year. For the sake of gameplay, each day is a second in real life. Complete your mission before time is up. Time stops when Upgrades, Research, or Settings is open.",
                                     "This is where you can view where Psyche is in the Solar System and keep track of its orbit in the year anytime during your gameplay.",
                                     "Gather minerals and use them to upgrade your Rover throughout the game! Max out upgrades before the game ends to complete your mission.",
                                     "Generate all research papers that you will get from discovering something new about Psyche.",
+									"Holding the Alt key (or Option key) will show the cursor to interact with the on-screen buttons.",
                                     "That is all. Goodluck and have fun!"
                                     };
         Time.timeScale = 0f;
@@ -79,13 +80,10 @@ public class UIBehaviour : MonoBehaviour {
 			ShowNextInteractable();
 		}
 		else if (clickCount >= UI.Length && Input.GetMouseButtonDown(0) && tutorialOn == true) {
-			EndTutorial();
+			TransistionToEndTutorial();
 		}
 		else if (tutorialOn == false && Input.GetMouseButtonDown(0)) {
-			infoPanel.SetActive(false);
-			Time.timeScale = 1f;
-			tutorialOn = null;
-			cursorManager.ToggleMenuCursor(false);
+			EndTutorial();
 		}
 	}
 	void ShowNextInteractable() { // Shows each interactable UI one by one during Tutorial
@@ -108,11 +106,24 @@ public class UIBehaviour : MonoBehaviour {
         dupeCompletionBar.SetActive(false);
     }
 
-    void EndTutorial() {
-		UI[UI.Length - 1].transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() - 1);
-		infoTitle.text = tutorialTitle[tutorialTitle.Length - 1];
-		infoText.text = tutorialText[tutorialTitle.Length - 1];
-		tutorialOn = false;
+    void TransistionToEndTutorial() { // Shows Cursor and End tutorial panels
+		if (clickCount == 6) { // Cursor panel
+			UI[UI.Length - 1].transform.SetSiblingIndex(infoPanel.transform.GetSiblingIndex() - 1);
+			infoTitle.text = tutorialTitle[clickCount];
+			infoText.text = tutorialText[clickCount];
+			clickCount++;
+		} else {
+			infoTitle.text = tutorialTitle[tutorialTitle.Length - 1];
+			infoText.text = tutorialText[tutorialTitle.Length - 1];
+			tutorialOn = false;
+			cursorManager.ToggleMenuCursor(false);
+		}
+	}
+
+	void EndTutorial() {
+		infoPanel.SetActive(false);
+		Time.timeScale = 1f;
+		tutorialOn = null;
 		cursorManager.ToggleMenuCursor(false);
 	}
 
