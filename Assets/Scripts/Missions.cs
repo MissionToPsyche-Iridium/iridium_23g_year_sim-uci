@@ -15,6 +15,8 @@ public class Missions : MonoBehaviour {
     public GameObject expandButton;
     public GameObject collapseButton;
 
+    public UpgradesCarousel upgrades;
+
     public GameObject task1;
     public GameObject task2;
     public GameObject task3;
@@ -51,6 +53,8 @@ public class Missions : MonoBehaviour {
     }
 
     void Update() {
+        checkStates();
+        
         if (expandButton.activeSelf) {
             displayMissions();
             hideMissions();
@@ -91,6 +95,13 @@ public class Missions : MonoBehaviour {
         return null;
     }
 
+    public void checkStates() {
+        checkDrillState();
+        checkMiningSpeedState();
+        checkMultiplierState();
+        checkFlashlightState();
+    }
+
     public void mineralMissions() {
         if (!magnesiumFlag) {
             task1text.text = "Mine Magnesium";
@@ -105,6 +116,18 @@ public class Missions : MonoBehaviour {
         }
         else {
             task1.gameObject.SetActive(false);
+        }
+    }
+
+    public void checkDrillState() {
+        if (upgrades.currentDrill == "Reinforced Magnesium") {
+            drillReinforcedMagFlag = true;
+        } 
+        else if (upgrades.currentDrill == "Iron") {
+            drillIronFlag = true;
+        }
+        else if (upgrades.currentDrill == "Nickel") {
+            drillNickelFlag = true;
         }
     }
 
@@ -126,6 +149,18 @@ public class Missions : MonoBehaviour {
         }
     }
 
+    public void checkMiningSpeedState() {
+        if (upgrades.currentMiningSpeed == 8) {
+            miningSpeed8Flag = true;
+        } 
+        else if (upgrades.currentMiningSpeed == 5) {
+            miningSpeed5Flag = true;
+        }
+        else if (upgrades.currentMiningSpeed == 2) {
+            miningSpeed2Flag = true;
+        }
+    }
+
     public void miningSpeedMissions() {
         if (magnesiumFlag && !miningSpeed8Flag) {
             task3.gameObject.SetActive(true);
@@ -144,6 +179,18 @@ public class Missions : MonoBehaviour {
         }
     }
 
+    public void checkMultiplierState() {
+        if (upgrades.currentResourceMultiplier == 2) {
+            multiplier2Flag = true;
+        } 
+        else if (upgrades.currentResourceMultiplier == 5) {
+            multiplier5Flag = true;
+        }
+        else if (upgrades.currentResourceMultiplier == 10) {
+            multiplier10Flag = true;
+        }
+    }
+
     public void multiplierMissions() {
         if (magnesiumFlag && !multiplier2Flag) {
             task4.gameObject.SetActive(true);
@@ -159,6 +206,15 @@ public class Missions : MonoBehaviour {
         }
         else {
             task4.gameObject.SetActive(false);
+        }
+    }
+
+    public void checkFlashlightState() {
+        if (upgrades.currentLightStrength == 2) {
+            flashlight2Flag = true;
+        } 
+        else if (upgrades.currentLightStrength == 3) {
+            flashlight3Flag = true;
         }
     }
 

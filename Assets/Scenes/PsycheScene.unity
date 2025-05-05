@@ -6147,7 +6147,7 @@ MonoBehaviour:
   currentMiningSpeed: 10
   currentResourceMultiplier: 1
   currentLightStrength: 1
-  magnesiumAmount: 30
+  magnesiumAmount: 300
   ironAmount: 200
   nickelAmount: 100
 --- !u!114 &488122530
@@ -6203,6 +6203,7 @@ MonoBehaviour:
   missionsBody: {fileID: 790901329}
   expandButton: {fileID: 1700037219}
   collapseButton: {fileID: 1219617300}
+  upgrades: {fileID: 488122529}
   task1: {fileID: 443026397}
   task2: {fileID: 449942369}
   task3: {fileID: 1239143383}
