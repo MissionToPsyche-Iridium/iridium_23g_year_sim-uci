@@ -37,7 +37,6 @@ public class ProximityTransparency : MonoBehaviour
         else {
             SetMaterial(true);
         }
-        // Debug.Log(_alpha);
 
         // Set the material's alpha value
         Color color = _renderer.material.color;
