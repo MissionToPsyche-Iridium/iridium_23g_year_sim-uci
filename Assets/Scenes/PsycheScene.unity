@@ -2603,6 +2603,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 430b803c7c4bb4d2aa9081705c93bace, type: 3}
       insertIndex: -1
       addedObject: {fileID: 242574514}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 430b803c7c4bb4d2aa9081705c93bace, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 242574515}
   m_SourcePrefab: {fileID: 100100000, guid: 430b803c7c4bb4d2aa9081705c93bace, type: 3}
 --- !u!4 &242574512 stripped
 Transform:
@@ -2721,6 +2724,22 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &242574515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242574513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06711cce37fd74919aab5352198ada2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDynamicScaler: 1
+  referencePlanet: {fileID: 4667523120203507125}
+  maxDistance: 4000
+  minScaleFactor: 0.1
 --- !u!1 &243865741
 GameObject:
   m_ObjectHideFlags: 0
@@ -11985,7 +12004,7 @@ Transform:
   m_GameObject: {fileID: 1017307316}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3000}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
