@@ -37,7 +37,6 @@ public class Mineable : MonoBehaviour
       if (resourcesRemaining == 0) {
         return;
       }
-
       countdown += Time.deltaTime * 1.0f;
 
       if (countdown >= miningTime) {

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class TitleScreen : MonoBehaviour
 {
+    public GameObject settingsMenu;
     public GameObject creditsPanel;
     public GameObject storyPanel;
     public GameObject beginMissionButton;
@@ -40,14 +41,28 @@ public class TitleScreen : MonoBehaviour
 
     }
 
+	public void OpenSettings() {
+		settingsMenu.SetActive(true);
+		Time.timeScale = 0f;
+		SoundManager.PlaySound(SoundType.SELECT);
+	}
+
+    public void CloseSettingsMenu() {
+        Time.timeScale = 1f;
+        StartCoroutine(waitButtonAnimation(settingsMenu));
+        SoundManager.PlaySound(SoundType.SELECT);
+    }
+
     public void OpenCredits() {
         creditsPanel.SetActive(true);
         Time.timeScale = 0f;
+        SoundManager.PlaySound(SoundType.SELECT);
     }
 
     public void CloseCreditsMenu() {
         Time.timeScale = 1f;
         StartCoroutine(waitButtonAnimation(creditsPanel));
+        SoundManager.PlaySound(SoundType.SELECT);
     }
 
     IEnumerator waitButtonAnimation(GameObject panel) {
