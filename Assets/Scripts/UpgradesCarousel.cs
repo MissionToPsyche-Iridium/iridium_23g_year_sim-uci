@@ -133,6 +133,20 @@ public class UpgradesCarousel : MonoBehaviour {
         displayPageInformation();
     }
 
+    // Raymond - Added this function to test the upgrade system
+    public void AddMaterial(string type, int amount) {
+        matAmountsList[type] += amount;
+        SyncMatsFromDict();
+        UpdateResourceUI();
+        displayPageInformation();
+    }
+
+    public void UpdateResourceUI() {
+        mat1.text = "Magnesium: " + matAmountsList["Magnesium"].ToString();
+        mat2.text = "Iron: " + matAmountsList["Iron"].ToString();
+        mat3.text = "Nickel: " + matAmountsList["Nickel"].ToString();
+    }
+
     public void Prev() {
         if (index != 0) {
             index -= 1;
@@ -309,4 +323,5 @@ public class UpgradesCarousel : MonoBehaviour {
         currentColor.a = targetAlpha;
         error.color = currentColor;
     }
+    
 }
