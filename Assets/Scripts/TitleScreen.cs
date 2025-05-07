@@ -68,10 +68,6 @@ public class TitleScreen : MonoBehaviour
         panel.SetActive(false);
     }
 
-    public void ExitGame() {
-        Application.Quit();
-    }
-
     IEnumerator Fade(float targetAlpha) {
         float startAlpha = overlayFade.color.a;
         float elapsedTime = 0f;
