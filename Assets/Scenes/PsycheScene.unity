@@ -6155,6 +6155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsMenu: {fileID: 1651656301}
   cursorManager: {fileID: 1812506398}
+  currentScene:
+    m_Handle: 0
   isPaused: 0
 --- !u!4 &488122527
 Transform:
@@ -12048,8 +12050,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001118254}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0071324157, y: 0.7338909, z: 0.007706429, w: -0.6791862}
-  m_LocalPosition: {x: 76.92, y: 1176.11, z: -291.1875}
+  m_LocalRotation: {x: -0.39984387, y: 0.08883034, z: -0.011180169, w: -0.9122001}
+  m_LocalPosition: {x: 212.72076, y: 685.02936, z: 784.87964}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12057,7 +12059,7 @@ Transform:
   - {fileID: 1147625845}
   - {fileID: 1253254889}
   m_Father: {fileID: 639258214}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 47.009, y: -12.977, z: -4.259}
 --- !u!114 &1001118260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21185,8 +21187,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812506391}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.19240409, y: -0.0000070156584, z: 0.0000013563348, w: -0.9813158}
-  m_LocalPosition: {x: -0.0001425147, y: 4.4046893, z: -10.800552}
+  m_LocalRotation: {x: -0.19240446, y: -0.000007362904, z: 0.0000014404565, w: -0.98131573}
+  m_LocalPosition: {x: -0.00006586313, y: 4.4042954, z: -10.8008175}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22078,8 +22080,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1855847516}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.19240403, y: -0.000007009198, z: 0.0000013731794, w: -0.98131585}
-  m_LocalPosition: {x: -0.0001425147, y: 4.4046893, z: -10.800552}
+  m_LocalRotation: {x: -0.19240448, y: -0.0000073174256, z: 0.0000014604557, w: -0.98131573}
+  m_LocalPosition: {x: -0.00006586313, y: 4.4042954, z: -10.8008175}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

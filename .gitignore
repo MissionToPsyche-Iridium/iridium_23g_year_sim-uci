@@ -77,4 +77,4 @@ crashlytics-build.properties
 .fake
 
 # Fix font caching issue
-/[Aa]ssets/[Tt]ext[Mm]esh [Pp]ro/[Rr]esources/[Ff]onts & [Mm]aterials/[Ll]iberation[Ss]ans*
+/[Aa]ssets/[Tt]ext[Mm]esh [Pp]ro/[Rr]esources/[Ff]onts & [Mm]aterials/[Ll]iberation[Ss]ans SDF*
