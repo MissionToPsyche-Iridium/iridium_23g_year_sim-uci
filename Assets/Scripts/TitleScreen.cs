@@ -11,7 +11,6 @@ public class TitleScreen : MonoBehaviour
     public GameObject beginMissionButton;
     public GameObject settingsButton;
     public GameObject creditsButton;
-    public GameObject exitButton;
     public GameObject psyche;
     public Image overlayFade;
     public Image psycheLogo;
@@ -26,7 +25,6 @@ public class TitleScreen : MonoBehaviour
         beginMissionButton.SetActive(true);
         settingsButton.SetActive(true);
         creditsButton.SetActive(true);
-        exitButton.SetActive(true);
         psyche.SetActive(true);
         psycheLogo.gameObject.SetActive(true);
         yearOnPsycheLogo.gameObject.SetActive(true);
@@ -53,10 +51,6 @@ public class TitleScreen : MonoBehaviour
     IEnumerator waitButtonAnimation(GameObject panel) {
         yield return new WaitForSecondsRealtime(0.6f);
         panel.SetActive(false);
-    }
-
-    public void ExitGame() {
-        Application.Quit();
     }
 
     IEnumerator Fade(float targetAlpha) {
@@ -88,7 +82,6 @@ public class TitleScreen : MonoBehaviour
         beginMissionButton.SetActive(false);
         settingsButton.SetActive(false);
         creditsButton.SetActive(false);
-        exitButton.SetActive(false);
         psyche.SetActive(false);
         psycheLogo.gameObject.SetActive(false);
         yearOnPsycheLogo.gameObject.SetActive(false);
