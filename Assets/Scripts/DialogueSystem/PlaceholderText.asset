@@ -15,3 +15,5 @@ MonoBehaviour:
   dialogues:
   - Speaker: Rover
     Line: BLAH BLAH BLAH BLAH
+  - Speaker: Ground Control
+    Line: You good?
