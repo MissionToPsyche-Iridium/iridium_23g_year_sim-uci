@@ -6,6 +6,8 @@ using TMPro;
 using System.Linq;
 
 public class UpgradesCarousel : MonoBehaviour {
+    public Missions missions;
+
     private int index = 0; // Tracks which page the user was on
     public GameObject leftArrow;
     public GameObject rightArrow;
@@ -250,18 +252,22 @@ public class UpgradesCarousel : MonoBehaviour {
         if (index == 0 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(drillUpgrades[currentDrill].requirements)) {
             deductMineralAmount(drillUpgrades[currentDrill].requirements);
             currentDrill = drillUpgrades[currentDrill].next;
+            missions.task2Transitioned = false;
         }
         else if (index == 1 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(miningSpeedUpgrades[currentMiningSpeed].requirements)) {
             deductMineralAmount(miningSpeedUpgrades[currentMiningSpeed].requirements);
             currentMiningSpeed = miningSpeedUpgrades[currentMiningSpeed].next;
+            missions.task3Transitioned = false;
         }
         else if (index == 2 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(resourceMultiplierUpgrades[currentResourceMultiplier].requirements)) {
             deductMineralAmount(resourceMultiplierUpgrades[currentResourceMultiplier].requirements);
             currentResourceMultiplier = resourceMultiplierUpgrades[currentResourceMultiplier].next;
+            missions.task4Transitioned = false;
         }
         else if (index == 3 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(lightStrengthUpgrades[currentLightStrength].requirements)) {
             deductMineralAmount(lightStrengthUpgrades[currentLightStrength].requirements);
             currentLightStrength = lightStrengthUpgrades[currentLightStrength].next;
+            missions.task5Transitioned = false;
         }
         else if (!checkIfMaxUpgradeReached()) {
             StartCoroutine(ErrorPopUpTextFade()); // Error text appears when not enough resources
