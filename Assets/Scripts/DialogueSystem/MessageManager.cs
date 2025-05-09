@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,14 +14,11 @@ public class MessageManager : MonoBehaviour
     private int index;
     
 
-    public void SetLines(string dialogue)
+    public void SetLines(Dialogue dialogue)
     {
-        string[] temp; //Stores Strings containing the speaker and their dialogue
-        temp = dialogue.Split(",");
-        foreach (string speech in temp) //For each Speaker + Dialogue String
-        {
-            speakers.Add(speech.Split(":")[0].Trim());
-            lines.Add(speech.Split(":")[1].Trim()); 
+        foreach (var item in dialogue.dialogues) {
+            speakers.Add(item.Speaker);
+            lines.Add(item.Line);
         }
     }
 
