@@ -4184,7 +4184,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mine Magnesium
+  m_text: Upgrade Mining Speed to 8 seconds
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f2f0a279ba4a4488a953728b7b68c63, type: 2}
   m_sharedMaterial: {fileID: 5659635374452186767, guid: 9f2f0a279ba4a4488a953728b7b68c63, type: 2}
@@ -5443,6 +5443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 443026398}
   - component: {fileID: 443026399}
+  - component: {fileID: 443026400}
   m_Layer: 5
   m_Name: Task1
   m_TagString: Untagged
@@ -5497,6 +5498,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!225 &443026400
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443026397}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &443673482
 GameObject:
   m_ObjectHideFlags: 0
@@ -5663,6 +5676,7 @@ GameObject:
   m_Component:
   - component: {fileID: 449942370}
   - component: {fileID: 449942371}
+  - component: {fileID: 449942372}
   m_Layer: 5
   m_Name: Task2
   m_TagString: Untagged
@@ -5717,6 +5731,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!225 &449942372
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449942369}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &461779197
 GameObject:
   m_ObjectHideFlags: 0
@@ -6357,6 +6383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0ba57f25f2e495392bce177947a462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missions: {fileID: 488122531}
   leftArrow: {fileID: 376030236}
   rightArrow: {fileID: 1825143609}
   image: {fileID: 393307383}
@@ -6379,9 +6406,9 @@ MonoBehaviour:
   currentMiningSpeed: 10
   currentResourceMultiplier: 1
   currentLightStrength: 1
-  magnesiumAmount: 30
-  ironAmount: 200
-  nickelAmount: 100
+  magnesiumAmount: 0
+  ironAmount: 0
+  nickelAmount: 0
 --- !u!114 &488122530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6435,6 +6462,7 @@ MonoBehaviour:
   missionsBody: {fileID: 790901329}
   expandButton: {fileID: 1700037219}
   collapseButton: {fileID: 1219617300}
+  upgrades: {fileID: 488122529}
   task1: {fileID: 443026397}
   task2: {fileID: 449942369}
   task3: {fileID: 1239143383}
@@ -6445,6 +6473,23 @@ MonoBehaviour:
   task3text: {fileID: 345580006}
   task4text: {fileID: 1352180759}
   task5text: {fileID: 1561639197}
+  task1image: {fileID: 1018209710}
+  task2image: {fileID: 1073478665}
+  task3image: {fileID: 28608368}
+  task4image: {fileID: 675025790}
+  task5image: {fileID: 1854174103}
+  emptyCheckbox: {fileID: 21300000, guid: 4aeb5c45421984f6fb7c3799a6b3dcda, type: 3}
+  crossedCheckbox: {fileID: 21300000, guid: a07f4bd7ec00f498db8582fedbd7feba, type: 3}
+  task1CanvasGroup: {fileID: 443026400}
+  task2CanvasGroup: {fileID: 449942372}
+  task3CanvasGroup: {fileID: 1239143386}
+  task4CanvasGroup: {fileID: 1701434680}
+  task5CanvasGroup: {fileID: 529387912}
+  task1Transitioned: 0
+  task2Transitioned: 0
+  task3Transitioned: 0
+  task4Transitioned: 0
+  task5Transitioned: 0
   magnesiumFlag: 0
   ironFlag: 0
   nickelFlag: 0
@@ -6781,6 +6826,7 @@ GameObject:
   m_Component:
   - component: {fileID: 529387910}
   - component: {fileID: 529387911}
+  - component: {fileID: 529387912}
   m_Layer: 5
   m_Name: Task5
   m_TagString: Untagged
@@ -6806,7 +6852,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 190, y: -205}
+  m_AnchoredPosition: {x: 190, y: -255}
   m_SizeDelta: {x: 360, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &529387911
@@ -6835,6 +6881,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!225 &529387912
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529387909}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &531416815
 GameObject:
   m_ObjectHideFlags: 0
@@ -14599,7 +14657,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1700037219}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -14611,7 +14669,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 488122531}
         m_TargetAssemblyTypeName: Missions, Assembly-CSharp
@@ -14815,6 +14873,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1239143384}
   - component: {fileID: 1239143385}
+  - component: {fileID: 1239143386}
   m_Layer: 5
   m_Name: Task3
   m_TagString: Untagged
@@ -14869,6 +14928,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!225 &1239143386
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239143383}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1253254888
 GameObject:
   m_ObjectHideFlags: 0
@@ -15741,7 +15812,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mine Magnesium
+  m_text: Upgrade Resource Multiplier to x2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f2f0a279ba4a4488a953728b7b68c63, type: 2}
   m_sharedMaterial: {fileID: 5659635374452186767, guid: 9f2f0a279ba4a4488a953728b7b68c63, type: 2}
@@ -17898,7 +17969,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mine Magnesium
+  m_text: Upgrade Flashlight to Level 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f2f0a279ba4a4488a953728b7b68c63, type: 2}
   m_sharedMaterial: {fileID: 5659635374452186767, guid: 9f2f0a279ba4a4488a953728b7b68c63, type: 2}
@@ -19181,7 +19252,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mine Magnesium
+  m_text: Upgrade Drill to Reinforced Magnesium
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f2f0a279ba4a4488a953728b7b68c63, type: 2}
   m_sharedMaterial: {fileID: 5659635374452186767, guid: 9f2f0a279ba4a4488a953728b7b68c63, type: 2}
@@ -19964,6 +20035,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1701434678}
   - component: {fileID: 1701434679}
+  - component: {fileID: 1701434680}
   m_Layer: 5
   m_Name: Task4
   m_TagString: Untagged
@@ -19989,7 +20061,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 190, y: -155}
+  m_AnchoredPosition: {x: 190, y: -205}
   m_SizeDelta: {x: 360, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1701434679
@@ -20018,6 +20090,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!225 &1701434680
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701434677}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1727533935
 GameObject:
   m_ObjectHideFlags: 0
@@ -20574,6 +20658,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Solar System View
+  size: {fileID: 0}
   radius: 1.1
   wrapAngle: 360
   scaleFactor: 100
