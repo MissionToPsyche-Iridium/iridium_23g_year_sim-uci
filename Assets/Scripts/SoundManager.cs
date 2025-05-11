@@ -1,0 +1,38 @@
+using UnityEngine;
+using System.Collections.Generic; // Needed for Dictionary
+
+public enum SoundType {
+	MINE, // Must match element order in the Inspector
+	SELECT
+}
+
+[RequireComponent(typeof(AudioSource))] // Ensure sound manager always has an audio source component on it
+
+public class SoundManager : MonoBehaviour {
+	[SerializeField] private AudioClip[] soundList; // Pass audio clip object in the Inspector using `[SerializeField]`
+	private static SoundManager instance;
+	private Dictionary<SoundType, AudioSource> audioSources = new Dictionary<SoundType, AudioSource>(); // One AudioSource per sound type
+
+	private void Awake() {
+		instance = this; // Assign class object to `instance` variable for child object referencing using `.`
+
+		// Initialize and assign one AudioSource per sound type
+		foreach (SoundType sound in System.Enum.GetValues(typeof(SoundType))) {
+			AudioSource source = gameObject.AddComponent<AudioSource>();
+			source.clip = soundList[(int)sound];
+			source.playOnAwake = false;
+			audioSources[sound] = source;
+		}
+	}
+
+	public static void PlaySound(SoundType sound, float volume = 1) /*SoundType, Volume*/ {
+		var source = instance.audioSources[sound];
+		source.volume = volume;
+		source.Play(); // Play clip using separate AudioSource
+	}
+
+	public static void StopSound(SoundType sound, float volume = 1) {
+		var source = instance.audioSources[sound];
+		source.Stop(); // Stop only this sound's AudioSource
+	}
+}
