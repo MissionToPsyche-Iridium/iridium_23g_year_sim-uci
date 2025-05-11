@@ -6402,9 +6402,9 @@ MonoBehaviour:
   currentMiningSpeed: 10
   currentResourceMultiplier: 1
   currentLightStrength: 1
-  magnesiumAmount: 300
-  ironAmount: 200
-  nickelAmount: 100
+  magnesiumAmount: 0
+  ironAmount: 0
+  nickelAmount: 0
 --- !u!114 &488122530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20542,6 +20542,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Solar System View
+  size: {fileID: 0}
   radius: 1.1
   wrapAngle: 360
   scaleFactor: 100

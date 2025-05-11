@@ -135,6 +135,10 @@ public class UpgradesCarousel : MonoBehaviour {
         displayPageInformation();
     }
 
+    void Update() {
+        descriptionSetUp();
+    }
+
     public void Prev() {
         if (index != 0) {
             index -= 1;
@@ -210,13 +214,14 @@ public class UpgradesCarousel : MonoBehaviour {
 
     public void materialRequiredSetUp(Dictionary<string, int> requirements) { // Displays all materials required
         List<string> keys = requirements.Keys.ToList();
+        SyncDictFromMats(); // Sync dictionary 
 
         for (int i = 0; i < keys.Count; i++) {
             matsList[i].gameObject.SetActive(true);
             matsList[i].text = keys[i];
             reqsList[i].gameObject.SetActive(true);
             reqsList[i].text =  matAmountsList[keys[i]] +  "/" + requirements[keys[i]].ToString();
-        };
+        }
     }
 
     public bool checkIfMaxUpgradeReached() {
@@ -291,6 +296,12 @@ public class UpgradesCarousel : MonoBehaviour {
         magnesiumAmount = matAmountsList["Magnesium"];
         ironAmount = matAmountsList["Iron"];
         nickelAmount = matAmountsList["Nickel"];
+    }
+
+    public void SyncDictFromMats() { // matAmountsList only stores copies so need to manually update the dictionary from the variables
+        matAmountsList["Magnesium"] = magnesiumAmount;
+        ironAmount = matAmountsList["Iron"] = ironAmount;
+        matAmountsList["Nickel"] = nickelAmount;
     }
 
     IEnumerator ErrorPopUpTextFade() {
