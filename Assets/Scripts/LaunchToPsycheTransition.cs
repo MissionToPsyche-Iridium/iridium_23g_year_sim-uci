@@ -2,14 +2,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class Launch2 : MonoBehaviour
+public class Launch1 : MonoBehaviour
 {
     public float transitionTime = 5f;
-    public GDTFadeEffect fadeEffect; // Change type to GDTFadeEffect
+    public GDTFadeEffect fadeEffect;
 
     void Start()
     {
-        StartCoroutine(SwitchToScene("LaunchScene3"));
+        StartCoroutine(SwitchToScene("PsycheScene"));
     }
 
     IEnumerator SwitchToScene(string sceneName)
@@ -18,7 +18,7 @@ public class Launch2 : MonoBehaviour
 
         if (fadeEffect != null)
         {
-            fadeEffect.gameObject.SetActive(true);  // Ensure it's active
+            fadeEffect.gameObject.SetActive(true);
             fadeEffect.StartEffect();  // Start the fading effect
         }
 
