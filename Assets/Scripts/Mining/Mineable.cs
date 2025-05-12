@@ -1,20 +1,17 @@
 using UnityEngine;
-// using System.Collections;
-// using System.Collections.Generic;
 
 public class Mineable : MonoBehaviour
 {
     Miner currentMiner = null;
 
-    [SerializeField] private string currentResource = "Magnesium";
+    [SerializeField] private ResourceType resourceType = ResourceType.Magnesium;
     [SerializeField] private UpgradesCarousel upgradesCarousel;
     [SerializeField] private int resource = 0;
     [SerializeField] private int minResources = 1;
-    [SerializeField] private int maxResources = 5;
-    [SerializeField] private float miningTime = 1.0f;
+    [SerializeField] private int resourceAmount = 1;
     private int resourcesRemaining = 0;
     private float countdown = 0f;
-    public float MiningProgress => countdown / miningTime;
+    public float MiningProgress => countdown / upgradesCarousel.currentMiningSpeed;
 
     public delegate void OnEmpty();
     public OnEmpty onEmpty;
@@ -46,7 +43,7 @@ public class Mineable : MonoBehaviour
 
       countdown += Time.deltaTime * 1.0f; // Increase countdown based on time passed
 
-      if (countdown >= miningTime) { // Mining is complete
+      if (countdown >= upgradesCarousel.currentMiningSpeed) { // Mining is complete
         countdown = 0f;
         resourcesRemaining--;
       }
@@ -54,28 +51,29 @@ public class Mineable : MonoBehaviour
       if (resourcesRemaining == 0) {  // All resources have been mined -> delete the mineral
         gameObject.SetActive(false);
         onEmpty?.Invoke();
-        AddResource(1);
+        AddResource(upgradesCarousel.currentResourceMultiplier);
       }
     }
 
+    // Add resources to the UpgradesCarousel by amount
     public void AddResource(int amount) {
       if (upgradesCarousel == null) {
         Debug.LogError("UpgradesCarousel is not assigned.");
         return;
       }
 
-      switch (currentResource) {
-        case "Magnesium":
+      switch (resourceType) {
+        case ResourceType.Magnesium:
           upgradesCarousel.AddMaterial("Magnesium", amount);
           break;
-        case "Iron":
+        case ResourceType.Iron:
           upgradesCarousel.AddMaterial("Iron", amount);
           break;
-        case "Nickel":
+        case ResourceType.Nickel:
           upgradesCarousel.AddMaterial("Nickel", amount);
           break;
         default:
-          Debug.LogError("Unknown resource type: " + currentResource);
+          Debug.LogError("Unknown resource type");
           break;
       }
     }
