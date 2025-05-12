@@ -106,12 +106,12 @@ public class TitleScreen : MonoBehaviour
     }
 
     public void CloseStory() {
-        fadeOut();
-        SceneManager.LoadSceneAsync("LaunchScene");
+        StartCoroutine(FadeOutAndLoadScene());
     }
 
-    IEnumerator fadeOut() {
+    IEnumerator FadeOutAndLoadScene() {
         overlayFade.gameObject.SetActive(true);
-        yield return StartCoroutine(Fade(1)); // Fade Out
+        yield return Fade(1); // Fade Out
+        SceneManager.LoadSceneAsync("LaunchScene");
     }
 }
