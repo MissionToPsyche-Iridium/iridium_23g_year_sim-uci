@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class UIBehaviour : MonoBehaviour {
 	[SerializeField] private float fadeSpeed;
 	[SerializeField] private Camera playerCamera; 
 	[SerializeField] private Camera solarSystemCamera; 
-
+	[SerializeField] private UnityEvent tutorialDialogue;
+	public GameObject messages;
 	public GameObject canvas;
     public GameObject missionsDropdown;
 	public GameObject completionBar;
@@ -35,6 +37,7 @@ public class UIBehaviour : MonoBehaviour {
 	private string[] tutorialTitle;
 	private string[] tutorialText;
 	public bool? tutorialOn = true;
+	public string dialogueStatus = "landed";
 	private GameObject[] UI;
 
 	void Start() {
@@ -60,11 +63,24 @@ public class UIBehaviour : MonoBehaviour {
 									"Holding the Alt key (or Option key) will show the cursor to interact with the on-screen buttons.",
                                     "That is all. Goodluck and have fun!"
                                     };
-        Time.timeScale = 0f;
+        Time.timeScale = 1f;
     }
 
 	void Update() {
-		if (tutorialOn != null) {
+		if (dialogueStatus == "landed") {
+			cursorManager.ToggleMenuCursor(false);
+			tutorialDialogue.Invoke();
+			dialogueStatus = "started";
+		}
+		else if (dialogueStatus == "started") {
+			if (!messages.activeSelf) {
+				dialogueStatus = "finished";
+			}
+		}
+		else if (tutorialOn != null) {
+			Time.timeScale = 0f;
+			cursorManager.ToggleMenuCursor(true);
+			infoPanel.SetActive(true);
 			Tutorial();
 		}
 		else if (days > 0 && Time.timeScale > 0) {

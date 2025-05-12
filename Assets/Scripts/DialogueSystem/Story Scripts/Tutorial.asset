@@ -13,5 +13,13 @@ MonoBehaviour:
   m_Name: Tutorial
   m_EditorClassIdentifier: 
   dialogues:
-  - Speaker: 
-    Line: 
+  - Speaker: Mission Control
+    Line: Eros, are you online? Do a system health check.
+  - Speaker: Eros
+    Line: 'Hello, Mission Control. Executing system health check........ 105/105
+      tests executed. Health status: 100%'
+  - Speaker: Mission Control
+    Line: Great. Go ahead and test out your movement system by using your WASD keys.
+  - Speaker: Mission Control
+    Line: "Fantastic - let\u2019s get this show on the road. Let\u2019s quickly brief
+      you one how to navigate through your HUD."

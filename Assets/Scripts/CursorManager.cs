@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class CursorManager : MonoBehaviour {
 	//[SerializeField] private Camera mainCamera; // TODO: Re-implement with Ivan/Queeny.

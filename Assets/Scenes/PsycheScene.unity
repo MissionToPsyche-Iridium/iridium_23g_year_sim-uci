@@ -6352,6 +6352,34 @@ MonoBehaviour:
   fadeSpeed: 1
   playerCamera: {fileID: 1855847520}
   solarSystemCamera: {fileID: 1588446190}
+  tutorialDialogue:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1510923196}
+        m_TargetAssemblyTypeName: MessageManager, Assembly-CSharp
+        m_MethodName: SetLines
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: ad29ba17330c99c42be692667a9c2793, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1510923194}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  messages: {fileID: 1510923194}
   canvas: {fileID: 217176694}
   missionsDropdown: {fileID: 1261377622}
   completionBar: {fileID: 1492382006}
@@ -6371,6 +6399,7 @@ MonoBehaviour:
   infoTitle: {fileID: 1390853400}
   infoText: {fileID: 1375965124}
   days: 1828
+  dialogueStatus: landed
 --- !u!114 &488122529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10569,7 +10598,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &829104357
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17613,8 +17642,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textbox: {fileID: 327814632}
   speakerbox: {fileID: 1167205516}
-  lines: []
-  speakers: []
   textSpeed: 0.3
 --- !u!1001 &1520351664
 PrefabInstance:
