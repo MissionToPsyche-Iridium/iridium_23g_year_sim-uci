@@ -8,17 +8,17 @@ public class MessageManager : MonoBehaviour
 {
     [SerializeField] public TextMeshProUGUI textbox;
     [SerializeField] public TextMeshProUGUI speakerbox;
-    public List<string> lines;
-    public List<string> speakers;
+    public Queue<string> lines = new Queue<string>();
+    public string line;
+    public Queue<string> speakers = new Queue<string>();
     public float textSpeed;
-    private int index;
     
 
     public void SetLines(Dialogue dialogue)
     {
         foreach (var item in dialogue.dialogues) {
-            speakers.Add(item.Speaker);
-            lines.Add(item.Line);
+            speakers.Enqueue(item.Speaker);
+            lines.Enqueue(item.Line);
         }
     }
 
@@ -32,28 +32,28 @@ public class MessageManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (textbox.text == lines[index])
+            if (textbox.text == line)
             {
                 NextLine();
             }
             else
             {
                 StopAllCoroutines();
-                textbox.text = lines[index];
+                textbox.text = line;
             }
         }
     }
 
     void StartDialogue()
     {
-        index = 0;
-        speakerbox.text = speakers[index];
+        speakerbox.text = speakers.Dequeue();
+        line = lines.Dequeue();
         StartCoroutine(TypeLine());
     }
 
     IEnumerator TypeLine()
     {
-        foreach (char c in lines[index].ToCharArray())
+        foreach (char c in line.ToCharArray())
         {
             textbox.text += c;
             yield return new WaitForSeconds(textSpeed);
@@ -62,11 +62,11 @@ public class MessageManager : MonoBehaviour
 
     void NextLine()
     {
-        if (index < lines.Count - 1) 
+        if (lines.Count > 0) 
         {
-            index++;
-            speakerbox.text = speakers[index];
+            speakerbox.text = speakers.Dequeue();
             textbox.text = string.Empty;
+            line = lines.Dequeue();
             StartCoroutine(TypeLine());
         }
         else
