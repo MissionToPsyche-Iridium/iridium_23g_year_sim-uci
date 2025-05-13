@@ -1,41 +1,57 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-
-// public class SimpleRocketLaunch : MonoBehaviour
-// {
-//     [SerializeField] private float speed = 1;
-//     [SerializeField] private float acceleration = 1;
-//     [SerializeField] private float maxSpeed = 5;
-//     // Update is called once per frame
-//     void Update()
-//     {
-//         transform.Translate(Vector3.up * speed * Time.deltaTime, Space.World);
-//         if(speed < maxSpeed)
-//             speed += acceleration * Time.deltaTime;
-//         Debug.Log("Speed" + speed);
-//     }
-// }
-
-
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class RocketLaunch : MonoBehaviour
 {
-    [SerializeField] Transform Rocket;
-    [SerializeField] float SpeedIncrease;
-    [SerializeField] float LaunchSpeed;
+    public Transform orbitingObject;
+    public Ellipse orbitPath;
 
-    void Start()
-    {
+    [Range(0f, 1f)]
+    public float orbitProgress = 0f;
+    public float orbitPeriod = 3f;
+    public bool orbitActive = true;
 
+    void Start() {
+        if (orbitingObject == null) {
+            orbitActive = false;
+            return;
+        }
+
+        TrailRenderer trail = orbitingObject.GetComponent<TrailRenderer>();
+        if (trail != null) {
+            trail.enabled = false;
+        }
+    
+        setOrbitingObjectPosition();
+
+        if (trail != null) {
+        StartCoroutine(EnableTrailAfterFrame(trail));
+    }
+        StartCoroutine (AnimateOrbit());
     }
 
-    void Update()
-    {
-        LaunchSpeed += SpeedIncrease * Time.deltaTime;
-        Rocket.Translate(0, LaunchSpeed, 0);
+    void setOrbitingObjectPosition() {
+        Vector2 orbitPos = orbitPath.Evaluate(orbitProgress);
+        orbitingObject.localPosition = new Vector3(orbitPos.x, orbitPos.y, 0);
+    }
+
+    IEnumerator EnableTrailAfterFrame(TrailRenderer trail) {
+        yield return null;
+        trail.Clear();
+        trail.enabled = true;
+    }
+
+    IEnumerator AnimateOrbit() {
+        if (orbitPeriod <= 0.1f) {
+            orbitPeriod = 0.1f;
+        }
+        float orbitSpeed = 1f / orbitPeriod;
+        while (orbitActive) {
+            orbitProgress += Time.deltaTime * orbitSpeed;
+            orbitProgress %= 1f;
+            setOrbitingObjectPosition();
+            yield return null;
+        }
     }
 }
