@@ -12,8 +12,8 @@ public class InputManager : MonoBehaviour
     [SerializeField] private Miner miner = null;
 
     [Header("Inputs interpretted")]
-    [SerializeField] KeyCode inventoryKey = KeyCode.Tab;
-    [SerializeField] KeyCode moveKey = KeyCode.Mouse0;
+    // [SerializeField] KeyCode inventoryKey = KeyCode.Tab;
+    // [SerializeField] KeyCode moveKey = KeyCode.Mouse0;
     [SerializeField] KeyCode miningKey = KeyCode.Mouse1;
 
     private void Start()

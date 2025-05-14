@@ -35,7 +35,12 @@ public abstract class Movement : MonoBehaviour {
 		_inputActions.Enable();
 	}
 
-	void Update() {
+    void OnDisable()
+    {
+        _inputActions.Disable();
+    }
+
+    void Update() {
 		ApplyGravity();
 		CheckGround();
 		LookAtCamera();
