@@ -7,6 +7,11 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class Missions : MonoBehaviour {
+    public UnityEvent MagnesiumEvent;
+    public UnityEvent IronEvent;
+    public UnityEvent UpgradeNickelEvent;
+    public UnityEvent MiningSpeed2Event;
+    public UnityEvent Flashlight3Event;
     [SerializeField]
     private Image completionBarImage;
     public TMP_Text percentage;
@@ -126,10 +131,12 @@ public class Missions : MonoBehaviour {
     public void checkMineralState() {
         if (!magnesiumFlag && upgrades.magnesiumAmount > 0) {
             magnesiumFlag = true;
+            MagnesiumEvent.Invoke();
             StartCoroutine(TransitionMineralTask(task1image, task1text, task1CanvasGroup));
         } 
         else if (!ironFlag && upgrades.ironAmount > 0) {
             ironFlag = true;
+            IronEvent.Invoke();
             StartCoroutine(TransitionMineralTask(task1image, task1text, task1CanvasGroup));
 
         } 
@@ -165,12 +172,16 @@ public class Missions : MonoBehaviour {
     public void checkDrillState() {
         if (upgrades.currentDrill == "Reinforced Magnesium") {
             drillReinforcedMagFlag = true;
+
         } 
         else if (upgrades.currentDrill == "Iron") {
             drillIronFlag = true;
         }
         else if (upgrades.currentDrill == "Nickel") {
-            drillNickelFlag = true;
+            if (!drillNickelFlag) {
+                drillNickelFlag = true;
+                UpgradeNickelEvent.Invoke();
+            }
         }
     }
 
@@ -213,7 +224,10 @@ public class Missions : MonoBehaviour {
             miningSpeed5Flag = true;
         }
         else if (upgrades.currentMiningSpeed == 2) {
-            miningSpeed2Flag = true;
+            if (!miningSpeed2Flag) {
+                miningSpeed2Flag = true;
+                MiningSpeed2Event.Invoke();
+            }
         }
     }
 
@@ -296,7 +310,10 @@ public class Missions : MonoBehaviour {
             flashlight2Flag = true;
         } 
         else if (upgrades.currentLightStrength == 3) {
-            flashlight3Flag = true;
+            if (!flashlight3Flag) {
+                flashlight3Flag = true;
+                Flashlight3Event.Invoke();
+            }
         }
     }
 
