@@ -10,7 +10,8 @@ public class SettingsMenu : MonoBehaviour {
 	//public GameObject playerInputActions; // Potential fix for crash upon clicking "Return To Main Menu" in settings?
 	public Scene currentScene;
 	public bool isPaused;
-	public GameObject cancelButton;
+	public GameObject warningCancelButton;
+	public GameObject helpMenu;
 
 	// Start is called before the first frame update
 	void Start() {
@@ -50,12 +51,25 @@ public class SettingsMenu : MonoBehaviour {
 		cursorManager.ToggleMenuCursor(true);
 
         // Force Button to reset visually and logically
-        ResetButtonVisual(cancelButton);
+        ResetButtonVisual(warningCancelButton);
 	}
 
 	public void WarningPopUpClose() {
-		ResetButtonVisual(cancelButton);
+		ResetButtonVisual(warningCancelButton);
         warningPopUp.SetActive(false);
+	}
+
+	public void HelpMenuOpen() {
+		helpMenu.SetActive(true);
+		cursorManager.ToggleMenuCursor(true);
+
+        // Force Button to reset visually and logically
+        // ResetButtonVisual(warningCancelButton);
+	}
+
+	public void HelpMenuClose() {
+		// ResetButtonVisual(warningCancelButton);
+        helpMenu.SetActive(false);
 	}
 
 	public void GoToMainMenu() {

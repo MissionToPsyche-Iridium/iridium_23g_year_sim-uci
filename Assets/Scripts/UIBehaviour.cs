@@ -53,7 +53,7 @@ public class UIBehaviour : MonoBehaviour {
 
         UI = new GameObject[] { missionsDropdown, dupeCompletionBar, daysCounter, solarSystemButton, upgradesButton, researchButton, settingsButton };
         tutorialTitle = new string[] { "MISSIONS", "COMPLETION BAR", "DAYS COUNTDOWN", "SOLAR SYSTEM VIEW", "UPGRADES", "RESEARCH", "SETTINGS", "CURSOR", "END TUTORIAL" };
-        tutorialText = new string[] { "Mini-missions will help guide you to completing your main mission: Gather as much data from Psyche as you can in a year. Complete them all to complete the game.",
+        tutorialText = new string[] { "Missions will help guide you to completing your main mission: Gather as much data from Psyche as you can in a year. Complete them all to complete the game.",
                                     "This will display how much you've completed your mission. This includes gathering all research papers, maxing all upgrades, and completing mini missions.",
                                     "Psyche has 1828 days in a year. For the sake of gameplay, each day is a second in real life. Complete your mission before time is up. Time stops when Upgrades, Research, or Settings is open.",
                                     "This is where you can view where Psyche is in the Solar System and keep track of its orbit in the year anytime during your gameplay.",
