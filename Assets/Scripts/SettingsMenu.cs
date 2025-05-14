@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class SettingsMenu : MonoBehaviour {
 	public GameObject settingsMenu;
 	public CursorManager cursorManager;
-	//public GameObject playerInputActions; // Potential fix for crash upon clicking "Return To Main Menu" in settings?
 	public Scene currentScene;
 	public bool isPaused;
 
@@ -43,7 +42,6 @@ public class SettingsMenu : MonoBehaviour {
 
 	public void GoToMainMenu() {
 		Time.timeScale = 1f;
-		//playerInputActions.PlayerActionmap.Disable(); // (See variable assignment)
 		SceneManager.LoadScene("TitleScreen");
 		cursorManager.ToggleMenuCursor(true);
 	}

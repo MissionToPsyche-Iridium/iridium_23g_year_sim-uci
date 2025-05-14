@@ -40,8 +40,13 @@ public class CursorManager : MonoBehaviour {
 		}
 	}
 
-	// Start is called before the first frame update
-	void Start() {
+    void OnDisable()
+    {
+        _inputActions.Disable();
+    }
+
+    // Start is called before the first frame update
+    void Start() {
 		// Set custom cursor
 		cursorHotspot = new Vector2(7, 0); // Coordinates of selection point (pixels from top, left)
 		//cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2); // Use to place hotspot in the center of sprite
