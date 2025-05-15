@@ -34,6 +34,7 @@ public class Mineable : MonoBehaviour
 
     // Rover mines the resource
     public void MineResource() {
+      SoundManager.PlaySound(SoundType.MINING);
       if (resourcesRemaining == 0) { // No resources left to mine
         return;
       }
@@ -41,6 +42,7 @@ public class Mineable : MonoBehaviour
       countdown += Time.deltaTime * 1.0f; // Increase countdown based on time passed
 
       if (countdown >= miningTime) { // Mining is complete
+		SoundManager.PlaySound(SoundType.MINED);
         countdown = 0f;
         resourcesRemaining--;
       }
@@ -49,6 +51,5 @@ public class Mineable : MonoBehaviour
         gameObject.SetActive(false);
         onEmpty?.Invoke();
       }
-
     }
 }
