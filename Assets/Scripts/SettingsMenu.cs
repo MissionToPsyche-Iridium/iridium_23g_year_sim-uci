@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class SettingsMenu : MonoBehaviour {
 	public GameObject settingsMenu;
 	public GameObject warningPopUp;
+	public GameObject helpMenuObject; // HelpMenu GameObject for set active true and false
+	public HelpMenu helpMenu;	// Help Menu script to control button animation state resetting
 	public CursorManager cursorManager;
 	//public GameObject playerInputActions; // Potential fix for crash upon clicking "Return To Main Menu" in settings?
 	public Scene currentScene;
 	public bool isPaused;
 	public GameObject warningCancelButton;
-	public GameObject helpMenu;
 
 	// Start is called before the first frame update
 	void Start() {
@@ -60,16 +61,14 @@ public class SettingsMenu : MonoBehaviour {
 	}
 
 	public void HelpMenuOpen() {
-		helpMenu.SetActive(true);
+		helpMenuObject.SetActive(true);
 		cursorManager.ToggleMenuCursor(true);
-
-        // Force Button to reset visually and logically
-        // ResetButtonVisual(warningCancelButton);
+		helpMenu.resetButtonStates();
 	}
 
 	public void HelpMenuClose() {
-		// ResetButtonVisual(warningCancelButton);
-        helpMenu.SetActive(false);
+		helpMenu.resetButtonStates();
+        helpMenuObject.SetActive(false);
 	}
 
 	public void GoToMainMenu() {
@@ -79,7 +78,7 @@ public class SettingsMenu : MonoBehaviour {
 		cursorManager.ToggleMenuCursor(true);
 	}
 
-	private void ResetButtonVisual(GameObject buttonObject) {
+	private void ResetButtonVisual(GameObject buttonObject) { // Resets setting button animation back to Normal manually
 		var button = buttonObject.GetComponent<Button>();
 		if (button == null) return;
 
@@ -90,6 +89,5 @@ public class SettingsMenu : MonoBehaviour {
 			button.targetGraphic.color = Color.white;
 			button.transform.localScale = Vector3.one;
 		}
-}
-
+	}
 }
