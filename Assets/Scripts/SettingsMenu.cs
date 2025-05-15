@@ -64,6 +64,7 @@ public class SettingsMenu : MonoBehaviour {
 		helpMenuObject.SetActive(true);
 		cursorManager.ToggleMenuCursor(true);
 		helpMenu.resetButtonStates();
+		helpMenu.infoContent.gameObject.SetActive(false);
 	}
 
 	public void HelpMenuClose() {
