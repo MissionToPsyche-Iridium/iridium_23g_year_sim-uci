@@ -34,7 +34,6 @@ public class Mineable : MonoBehaviour
 
     // Rover mines the resource
     public void MineResource() {
-      SoundManager.PlaySound(SoundType.MINING);
       if (resourcesRemaining == 0) { // No resources left to mine
         return;
       }
