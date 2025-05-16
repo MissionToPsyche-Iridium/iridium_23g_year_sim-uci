@@ -6707,7 +6707,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundList:
-  - {fileID: 8300000, guid: 92645e1ff58e95798be5fb52bbcc54a9, type: 3}
+  - {fileID: 8300000, guid: baeb7b4002a6b8d3cb013da276bee184, type: 3}
+  - {fileID: 8300000, guid: 9aa45f6944570be52a1394b56d852705, type: 3}
+  - {fileID: 8300000, guid: ea215cf70514c6a1397bfcac8f495c67, type: 3}
+  - {fileID: 8300000, guid: ce8a2c1254b0cd9528a5e1eed617624b, type: 3}
   - {fileID: 8300000, guid: 9f23d7362b490123cbaf122140ba2f72, type: 3}
 --- !u!1001 &500598015
 PrefabInstance:
