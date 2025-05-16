@@ -5880,7 +5880,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: e5c994aef8d9249b3ae8c8bf227739e8, type: 3}
+  m_Texture: {fileID: 2800000, guid: ca75347155e617f46a3b949e23c8e1e1, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -12306,8 +12306,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   miner: {fileID: 1001118264}
-  inventoryKey: 9
-  moveKey: 323
   miningKey: 324
 --- !u!1 &1005557110
 GameObject:
