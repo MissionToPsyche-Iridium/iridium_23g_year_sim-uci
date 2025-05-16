@@ -20,6 +20,7 @@ public class MessageManager : MonoBehaviour
             speakers.Enqueue(item.Speaker);
             lines.Enqueue(item.Line);
         }
+        gameObject.SetActive(true);
     }
 
     public void OnEnable()
@@ -56,7 +57,7 @@ public class MessageManager : MonoBehaviour
         foreach (char c in line.ToCharArray())
         {
             textbox.text += c;
-            yield return new WaitForSeconds(textSpeed);
+            yield return new WaitForSecondsRealtime(textSpeed);
         }
     }
 
