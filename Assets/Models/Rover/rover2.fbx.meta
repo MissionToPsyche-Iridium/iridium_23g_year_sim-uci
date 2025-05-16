@@ -3,7 +3,62 @@ guid: 9e041a977b43ed34da274691a0cc95d2
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Camera
+    second: {fileID: 2100000, guid: dfebf39030327d34eadbe33c16bb4fd3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Camera Head
+    second: {fileID: 2100000, guid: 8bba23365d1034c489c24f3e93caf20e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chipped Paint
+    second: {fileID: 2100000, guid: 1b67b2211cbaa1347a480540faa07cb5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dark grey pvc
+    second: {fileID: 2100000, guid: 09b4b6e6b032bc040acc306848a8d95e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grey PVC
+    second: {fileID: 2100000, guid: 464b5593f23589a44b4294b9d278bfb7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Procedural Solar Panels.004
+    second: {fileID: 2100000, guid: 3e1603ab8d0ba0e43ac81a3a8d5dfaf2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Purple
+    second: {fileID: 2100000, guid: 2537f68b18758294e8581d02fd6f64c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Scratched Metal
+    second: {fileID: 2100000, guid: 189b4585b5752474b8f5474b99b38ab5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Smooth Bolt
+    second: {fileID: 2100000, guid: 1504052977def82468efb7312c6060aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Smooth Rubber_
+    second: {fileID: 2100000, guid: d5f0f3f4829cb4e489fe01a5e9925f02, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tool Door
+    second: {fileID: 2100000, guid: fc267e1cd549b6a42b3743a23a045e61, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
