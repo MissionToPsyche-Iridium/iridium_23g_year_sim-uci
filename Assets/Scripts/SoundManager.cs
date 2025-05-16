@@ -1,8 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic; // Needed for Dictionary
 
-public enum SoundType {
-	MINE, // Must match element order in the Inspector
+public enum SoundType { // Must match element order in the Inspector
+	GAME_AMBIENCE,
+	MENU_THEME,
+	MINED,
+	MINING,
 	SELECT
 }
 
@@ -25,7 +28,7 @@ public class SoundManager : MonoBehaviour {
 		}
 	}
 
-	public static void PlaySound(SoundType sound, float volume = 1) /*SoundType, Volume*/ {
+	public static void PlaySound(SoundType sound, float volume = 1) /* SoundType, Volume */ {
 		var source = instance.audioSources[sound];
 		source.volume = volume;
 		source.Play(); // Play clip using separate AudioSource

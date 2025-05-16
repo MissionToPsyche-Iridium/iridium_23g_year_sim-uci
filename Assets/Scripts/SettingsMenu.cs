@@ -9,7 +9,6 @@ public class SettingsMenu : MonoBehaviour {
 	public GameObject helpMenuObject; // HelpMenu GameObject for set active true and false
 	public HelpMenu helpMenu;	// Help Menu script to control button animation state resetting
 	public CursorManager cursorManager;
-	//public GameObject playerInputActions; // Potential fix for crash upon clicking "Return To Main Menu" in settings?
 	public Scene currentScene;
 	public bool isPaused;
 	public GameObject warningCancelButton;
@@ -74,7 +73,6 @@ public class SettingsMenu : MonoBehaviour {
 
 	public void GoToMainMenu() {
 		Time.timeScale = 1f;
-		//playerInputActions.PlayerActionmap.Disable(); // (See variable assignment)
 		SceneManager.LoadScene("TitleScreen");
 		cursorManager.ToggleMenuCursor(true);
 	}
