@@ -5488,7 +5488,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e041a977b43ed34da274691a0cc95d2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 466688473}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e041a977b43ed34da274691a0cc95d2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 466688474}
   m_SourcePrefab: {fileID: 100100000, guid: 9e041a977b43ed34da274691a0cc95d2, type: 3}
 --- !u!1 &443026397
 GameObject:
@@ -5937,7 +5943,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: ca75347155e617f46a3b949e23c8e1e1, type: 3}
+  m_Texture: {fileID: 2800000, guid: e5c994aef8d9249b3ae8c8bf227739e8, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -5952,11 +5958,78 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462803221}
   m_CullTransparentMesh: 1
+--- !u!1 &466688471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e041a977b43ed34da274691a0cc95d2, type: 3}
+  m_PrefabInstance: {fileID: 432322713}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &466688472 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9e041a977b43ed34da274691a0cc95d2, type: 3}
   m_PrefabInstance: {fileID: 432322713}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &466688473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466688471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb2208121c6c984098bec40a3af36f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transparencyThreshold: 5
+  transparencySpeed: 5
+  mainCamera: {fileID: 1855847520}
+  opaque: {fileID: 2100000, guid: 13408a10982424e47941c22dce46e0b7, type: 2}
+  transparent: {fileID: 2100000, guid: 9641c1320816fcb41a27811d779bdb0b, type: 2}
+--- !u!23 &466688474
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466688471}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &483148828
 GameObject:
   m_ObjectHideFlags: 0
@@ -6429,6 +6502,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1510923194}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   messages: {fileID: 1510923194}
   canvas: {fileID: 217176694}
   missionsDropdown: {fileID: 1261377622}
@@ -6538,79 +6623,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MagnesiumEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1510923196}
-        m_TargetAssemblyTypeName: MessageManager, Assembly-CSharp
-        m_MethodName: SetLines
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 629a82d815d51ca46b67dca2cbd48182, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   IronEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1510923196}
-        m_TargetAssemblyTypeName: MessageManager, Assembly-CSharp
-        m_MethodName: SetLines
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 8c352be265e43a547a2f29c22efbc35d, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   UpgradeNickelEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1510923196}
-        m_TargetAssemblyTypeName: MessageManager, Assembly-CSharp
-        m_MethodName: SetLines
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: a42c4413cfa4ee24f8e7103eea577e06, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   MiningSpeed2Event:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1510923196}
-        m_TargetAssemblyTypeName: MessageManager, Assembly-CSharp
-        m_MethodName: SetLines
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 5172ddafe059e4e48958584131b8a5a3, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   Flashlight3Event:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1510923196}
-        m_TargetAssemblyTypeName: MessageManager, Assembly-CSharp
-        m_MethodName: SetLines
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 15b1ffecbccc6c149928d74ac69e29f8, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   completionBarImage: {fileID: 1492382009}
   percentage: {fileID: 696402258}
   missionsBody: {fileID: 790901329}
@@ -12269,7 +12294,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1159697642}
   - {fileID: 466688472}
   - {fileID: 1147625845}
   - {fileID: 1253254889}
@@ -12289,14 +12313,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveData: {fileID: 11400000, guid: 5360c4e9632a9b24c9388a0bc25d85c9, type: 2}
   planet: {fileID: 639258214}
-  transformBody: {fileID: 0}
+  transformBody: {fileID: 466688472}
   gravityStrength: 5
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 8
   groundCollider: {fileID: 1253254889}
   cameraTransform: {fileID: 1855847517}
-  model: {fileID: 0}
+  model: {fileID: 466688471}
 --- !u!54 &1001118261
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14168,110 +14192,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152866047}
   m_CullTransparentMesh: 1
---- !u!1 &1159697641
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1159697642}
-  - component: {fileID: 1159697645}
-  - component: {fileID: 1159697644}
-  - component: {fileID: 1159697646}
-  m_Layer: 0
-  m_Name: Capsule
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1159697642
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159697641}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1001118259}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &1159697644
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159697641}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 13408a10982424e47941c22dce46e0b7, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1159697645
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159697641}
-  m_Mesh: {fileID: 0}
---- !u!114 &1159697646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159697641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eb2208121c6c984098bec40a3af36f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transparencyThreshold: 5
-  transparencySpeed: 5
-  mainCamera: {fileID: 1855847520}
-  opaque: {fileID: 2100000, guid: 13408a10982424e47941c22dce46e0b7, type: 2}
-  transparent: {fileID: 2100000, guid: 9641c1320816fcb41a27811d779bdb0b, type: 2}
 --- !u!1 &1167205514
 GameObject:
   m_ObjectHideFlags: 0
@@ -16359,6 +16279,18 @@ MonoBehaviour:
           m_StringArgument: 'Rover : Hello Ground Control, Ground Control : Hello'
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1510923194}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!135 &1378995260
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -17758,7 +17690,7 @@ MonoBehaviour:
   textbox: {fileID: 327814632}
   speakerbox: {fileID: 1167205516}
   line: 
-  textSpeed: 0.1
+  textSpeed: 0.3
 --- !u!1001 &1520351664
 PrefabInstance:
   m_ObjectHideFlags: 0
