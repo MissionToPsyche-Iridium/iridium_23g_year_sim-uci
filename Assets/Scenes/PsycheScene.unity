@@ -5937,7 +5937,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: e5c994aef8d9249b3ae8c8bf227739e8, type: 3}
+  m_Texture: {fileID: 2800000, guid: ca75347155e617f46a3b949e23c8e1e1, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -6429,18 +6429,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1510923194}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
   messages: {fileID: 1510923194}
   canvas: {fileID: 217176694}
   missionsDropdown: {fileID: 1261377622}
@@ -6548,6 +6536,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf7ce556f46949ec856d83b346aa78e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MagnesiumEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1510923196}
+        m_TargetAssemblyTypeName: MessageManager, Assembly-CSharp
+        m_MethodName: SetLines
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 629a82d815d51ca46b67dca2cbd48182, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  IronEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1510923196}
+        m_TargetAssemblyTypeName: MessageManager, Assembly-CSharp
+        m_MethodName: SetLines
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 8c352be265e43a547a2f29c22efbc35d, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  UpgradeNickelEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1510923196}
+        m_TargetAssemblyTypeName: MessageManager, Assembly-CSharp
+        m_MethodName: SetLines
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: a42c4413cfa4ee24f8e7103eea577e06, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  MiningSpeed2Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1510923196}
+        m_TargetAssemblyTypeName: MessageManager, Assembly-CSharp
+        m_MethodName: SetLines
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 5172ddafe059e4e48958584131b8a5a3, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Flashlight3Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1510923196}
+        m_TargetAssemblyTypeName: MessageManager, Assembly-CSharp
+        m_MethodName: SetLines
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 15b1ffecbccc6c149928d74ac69e29f8, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   completionBarImage: {fileID: 1492382009}
   percentage: {fileID: 696402258}
   missionsBody: {fileID: 790901329}
@@ -16296,18 +16359,6 @@ MonoBehaviour:
           m_StringArgument: 'Rover : Hello Ground Control, Ground Control : Hello'
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1510923194}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!135 &1378995260
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -17707,7 +17758,7 @@ MonoBehaviour:
   textbox: {fileID: 327814632}
   speakerbox: {fileID: 1167205516}
   line: 
-  textSpeed: 0.3
+  textSpeed: 0.1
 --- !u!1001 &1520351664
 PrefabInstance:
   m_ObjectHideFlags: 0

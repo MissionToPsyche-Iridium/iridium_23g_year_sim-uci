@@ -39,6 +39,7 @@ public class UIBehaviour : MonoBehaviour {
 	public bool? tutorialOn = true;
 	public string dialogueStatus = "landed";
 	private GameObject[] UI;
+	private int solarSystemSecondsViewed = 0;
 
 	void Start() {
 		playerCamera.enabled = true;

@@ -140,7 +140,8 @@ public class UpgradesCarousel : MonoBehaviour {
     }
 
     public void Prev() {
-        if (index != 0) {
+        if (index != 0)
+        {
             index -= 1;
         }
         displayPageInformation();
@@ -190,24 +191,32 @@ public class UpgradesCarousel : MonoBehaviour {
     public void descriptionSetUp() { // Sets up & displays to, from, and material required descriptions
         switch (index) {
             case 1:
-                from.text = currentMiningSpeed.ToString() + " seconds";
-                to.text = miningSpeedUpgrades[currentMiningSpeed].next.ToString() + " seconds";
-                materialRequiredSetUp(miningSpeedUpgrades[currentMiningSpeed].requirements);
+                if (currentMiningSpeed != 2) {
+                    from.text = currentMiningSpeed.ToString() + " seconds";
+                    to.text = miningSpeedUpgrades[currentMiningSpeed].next.ToString() + " seconds";
+                    materialRequiredSetUp(miningSpeedUpgrades[currentMiningSpeed].requirements);
+                }
                 break;
             case 2:
-                from.text = currentResourceMultiplier.ToString() + "x";
-                to.text = resourceMultiplierUpgrades[currentResourceMultiplier].next.ToString() + "x";
-                materialRequiredSetUp(resourceMultiplierUpgrades[currentResourceMultiplier].requirements);;
+                if (currentResourceMultiplier != 10) {
+                    from.text = currentResourceMultiplier.ToString() + "x";
+                    to.text = resourceMultiplierUpgrades[currentResourceMultiplier].next.ToString() + "x";
+                    materialRequiredSetUp(resourceMultiplierUpgrades[currentResourceMultiplier].requirements); ;
+                }
                 break;
             case 3:
-                from.text = "Level " + currentLightStrength.ToString();
-                to.text = "Level " + lightStrengthUpgrades[currentLightStrength].next.ToString();
-                materialRequiredSetUp(lightStrengthUpgrades[currentLightStrength].requirements);
+                if (currentLightStrength != 3) {
+                    from.text = "Level " + currentLightStrength.ToString();
+                    to.text = "Level " + lightStrengthUpgrades[currentLightStrength].next.ToString();
+                    materialRequiredSetUp(lightStrengthUpgrades[currentLightStrength].requirements);
+                }
                 break;
             default:
-                from.text = currentDrill;
-                to.text = drillUpgrades[currentDrill].next;
-                materialRequiredSetUp(drillUpgrades[currentDrill].requirements);
+                if (currentDrill != "Nickel") {
+                    from.text = currentDrill;
+                    to.text = drillUpgrades[currentDrill].next;
+                    materialRequiredSetUp(drillUpgrades[currentDrill].requirements);
+                }
                 break;
         }
     }
