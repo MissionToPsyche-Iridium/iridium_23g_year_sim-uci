@@ -3,16 +3,18 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 
+public Missions missions;
+
 public class ResearchPaperLock : MonoBehaviour
 {
     [System.Serializable]
     public class ResearchEntry
     {
-        public string key;                 
-        public Button button;             
-        public TMP_Text label;            
-        public bool isUnlocked = false;    
-        public string unlockedText;       
+        public string key;
+        public Button button;
+        public TMP_Text label;
+        public bool isUnlocked = false;
+        public string unlockedText;
     }
 
     public List<ResearchEntry> researchEntries;
@@ -62,4 +64,5 @@ public class ResearchPaperLock : MonoBehaviour
             entry.label.text = "??? ";
         }
     }
+    
 }

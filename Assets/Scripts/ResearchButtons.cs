@@ -34,6 +34,7 @@ public class ResearchButtons : MonoBehaviour
 
     public ResearchPaperLock paperLock;
 
+
     private void OnEnable()
     {
         coreButton.onClick.AddListener(() => HandleClick("Core", topicCoreImage, GetCoreText()));
