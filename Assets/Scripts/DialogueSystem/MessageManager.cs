@@ -7,10 +7,10 @@ using UnityEngine;
 public class MessageManager : MonoBehaviour {
 	[SerializeField] public TextMeshProUGUI textbox;
 	[SerializeField] public TextMeshProUGUI speakerbox;
-	public Queue<string> lines = new Queue<string>();
 	public string line;
-	public Queue<string> speakers = new Queue<string>();
 	public float textSpeed;
+	public Queue<string> lines = new Queue<string>();
+	public Queue<string> speakers = new Queue<string>();
 
 	public void SetLines(Dialogue dialogue) {
 		foreach (var item in dialogue.dialogues) {
