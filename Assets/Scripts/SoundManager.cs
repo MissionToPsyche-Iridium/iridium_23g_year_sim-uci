@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic; // Needed for Dictionary
 
 public enum SoundType { // Must match element order in the Inspector
+	DIALOGUE_CHARACTER_BEEP,
 	GAME_AMBIENCE,
 	MENU_THEME,
 	MINED,

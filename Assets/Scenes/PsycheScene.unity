@@ -671,7 +671,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.44500002, y: 0.15461063}
   m_AnchorMax: {x: 0.5151943, y: 0.2937532}
-  m_AnchoredPosition: {x: 28.66, y: -0.50006104}
+  m_AnchoredPosition: {x: 28.660004, y: -0.5001221}
   m_SizeDelta: {x: -2, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &79718954
@@ -6794,6 +6794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundList:
+  - {fileID: 8300000, guid: b8c553e8de5fdd0239506da398abf2d3, type: 3}
   - {fileID: 8300000, guid: baeb7b4002a6b8d3cb013da276bee184, type: 3}
   - {fileID: 8300000, guid: 9aa45f6944570be52a1394b56d852705, type: 3}
   - {fileID: 8300000, guid: ea215cf70514c6a1397bfcac8f495c67, type: 3}
@@ -17690,7 +17691,7 @@ MonoBehaviour:
   textbox: {fileID: 327814632}
   speakerbox: {fileID: 1167205516}
   line: 
-  textSpeed: 0.3
+  textSpeed: 0.024
 --- !u!1001 &1520351664
 PrefabInstance:
   m_ObjectHideFlags: 0

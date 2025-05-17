@@ -2988,6 +2988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundList:
+  - {fileID: 8300000, guid: b8c553e8de5fdd0239506da398abf2d3, type: 3}
   - {fileID: 8300000, guid: baeb7b4002a6b8d3cb013da276bee184, type: 3}
   - {fileID: 8300000, guid: 9aa45f6944570be52a1394b56d852705, type: 3}
   - {fileID: 8300000, guid: ea215cf70514c6a1397bfcac8f495c67, type: 3}
@@ -5116,6 +5117,7 @@ MonoBehaviour:
     implied, by Arizona State University or National Aeronautics and Space Administration.
     The content is solely the responsibility of the authors and does not necessarily
     represent the official views of ASU or NASA.\n\n2. 'Discovery' by Scott Buckley
+    - released under CC-BY 4.0. www.scottbuckley.com.au\n\n3. 'Aurora' by Scott Buckley
     - released under CC-BY 4.0. www.scottbuckley.com.au"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f2f0a279ba4a4488a953728b7b68c63, type: 2}
