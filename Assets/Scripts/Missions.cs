@@ -75,6 +75,8 @@ public class Missions : MonoBehaviour {
                                     flashlight2Flag, flashlight3Flag, missionComplete };
 
     void Start() {
+		SoundManager.StopSound(SoundType.MENU_THEME); // Stop menu music
+		SoundManager.LoopSound(SoundType.GAME_AMBIENCE); // Begin game ambience upon Mission start
     }
 
     void Update() {

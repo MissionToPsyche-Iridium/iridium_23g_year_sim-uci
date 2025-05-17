@@ -18,7 +18,14 @@ public class SoundManager : MonoBehaviour {
 	private Dictionary<SoundType, AudioSource> audioSources = new Dictionary<SoundType, AudioSource>(); // One AudioSource per sound type
 
 	private void Awake() {
-		instance = this; // Assign class object to `instance` variable for child object referencing using `.`
+		// Check for pre-existing instance of `SoundManager` object
+		if (instance != null && instance != this) {
+			Destroy(gameObject);
+			return;
+		}
+
+		instance = this;
+		DontDestroyOnLoad(gameObject); // Prevent object from being destroyed on scene change to facilitate music transitions
 
 		// Initialize and assign one AudioSource per sound type
 		foreach (SoundType sound in System.Enum.GetValues(typeof(SoundType))) {
@@ -31,6 +38,7 @@ public class SoundManager : MonoBehaviour {
 
 	public static void PlaySound(SoundType sound, float volume = 1) /* SoundType, Volume */ {
 		var source = instance.audioSources[sound];
+		source.loop = false;
 		source.volume = volume;
 		source.Play(); // Play clip using separate AudioSource
 	}
@@ -38,5 +46,12 @@ public class SoundManager : MonoBehaviour {
 	public static void StopSound(SoundType sound, float volume = 1) {
 		var source = instance.audioSources[sound];
 		source.Stop(); // Stop only this sound's AudioSource
+	}
+
+	public static void LoopSound(SoundType sound, float volume = 1) {
+		var source = instance.audioSources[sound];
+		source.loop = true;
+		source.volume = volume;
+		source.Play();
 	}
 }
