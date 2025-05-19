@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Research3
   m_EditorClassIdentifier: 
   dialogues:
-  - Speaker: 
-    Line: 
+  - Speaker: Placeholder
+    Line: Research 3
