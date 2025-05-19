@@ -56,6 +56,7 @@ public class Mineable : MonoBehaviour
       countdown += Time.deltaTime * 1.0f; // Increase countdown based on time passed
 
       if (countdown >= upgradesCarousel.currentMiningSpeed) { // Mining is complete
+		SoundManager.PlaySound(SoundType.MINED);
         countdown = 0f;
         resourcesRemaining--;
       }

@@ -4,10 +4,14 @@ using UnityEngine.SceneManagement;
 public class SettingsMenu : MonoBehaviour {
 	public GameObject settingsMenu;
 	public CursorManager cursorManager;
+	public Scene currentScene;
 	public bool isPaused;
 
 	// Start is called before the first frame update
-	void Start() { settingsMenu.SetActive(false); }
+	void Start() {
+		settingsMenu.SetActive(false);
+		currentScene = SceneManager.GetActiveScene();
+	}
 
 	void Update() {
 		// Pause with keyboard ("Escape" key)
@@ -22,22 +26,23 @@ public class SettingsMenu : MonoBehaviour {
 		settingsMenu.SetActive(true);
 		Time.timeScale = 0f;
 		isPaused = true;
-
-		cursorManager.ToggleMenuCursor(true);
+		if (currentScene.name != "TitleScreen") {
+			cursorManager.ToggleMenuCursor(true);
+		}
 	}
 
 	public void ResumeGame() {
 		settingsMenu.SetActive(false);
 		Time.timeScale = 1f;
 		isPaused = false;
-
-		cursorManager.ToggleMenuCursor(false);
+		if (currentScene.name != "TitleScreen") {
+			cursorManager.ToggleMenuCursor(false);
+		}
 	}
 
 	public void GoToMainMenu() {
 		Time.timeScale = 1f;
 		SceneManager.LoadScene("TitleScreen");
-
-		cursorManager.ToggleMenuCursor(false);
+		cursorManager.ToggleMenuCursor(true);
 	}
 }

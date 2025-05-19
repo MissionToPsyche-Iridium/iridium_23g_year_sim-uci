@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class TitleScreen : MonoBehaviour
 {
+    public GameObject settingsMenu;
     public GameObject creditsPanel;
     public GameObject storyPanel;
     public GameObject beginMissionButton;
     public GameObject settingsButton;
     public GameObject creditsButton;
-    public GameObject exitButton;
     public GameObject psyche;
     public Image overlayFade;
     public Image psycheLogo;
@@ -26,10 +26,10 @@ public class TitleScreen : MonoBehaviour
         beginMissionButton.SetActive(true);
         settingsButton.SetActive(true);
         creditsButton.SetActive(true);
-        exitButton.SetActive(true);
         psyche.SetActive(true);
         psycheLogo.gameObject.SetActive(true);
         yearOnPsycheLogo.gameObject.SetActive(true);
+        SoundManager.LoopSound(SoundType.MENU_THEME);
     }
 
     public void NewMission() {
@@ -40,23 +40,33 @@ public class TitleScreen : MonoBehaviour
 
     }
 
+	public void OpenSettings() {
+		settingsMenu.SetActive(true);
+		Time.timeScale = 0f;
+		SoundManager.PlaySound(SoundType.SELECT);
+	}
+
+    public void CloseSettingsMenu() {
+        Time.timeScale = 1f;
+        StartCoroutine(waitButtonAnimation(settingsMenu));
+        SoundManager.PlaySound(SoundType.SELECT);
+    }
+
     public void OpenCredits() {
         creditsPanel.SetActive(true);
         Time.timeScale = 0f;
+        SoundManager.PlaySound(SoundType.SELECT);
     }
 
     public void CloseCreditsMenu() {
         Time.timeScale = 1f;
         StartCoroutine(waitButtonAnimation(creditsPanel));
+        SoundManager.PlaySound(SoundType.SELECT);
     }
 
     IEnumerator waitButtonAnimation(GameObject panel) {
         yield return new WaitForSecondsRealtime(0.6f);
         panel.SetActive(false);
-    }
-
-    public void ExitGame() {
-        Application.Quit();
     }
 
     IEnumerator Fade(float targetAlpha) {
@@ -88,7 +98,6 @@ public class TitleScreen : MonoBehaviour
         beginMissionButton.SetActive(false);
         settingsButton.SetActive(false);
         creditsButton.SetActive(false);
-        exitButton.SetActive(false);
         psyche.SetActive(false);
         psycheLogo.gameObject.SetActive(false);
         yearOnPsycheLogo.gameObject.SetActive(false);
@@ -98,12 +107,12 @@ public class TitleScreen : MonoBehaviour
     }
 
     public void CloseStory() {
-        fadeOut();
-        SceneManager.LoadSceneAsync("LaunchScene");
+        StartCoroutine(FadeOutAndLoadScene());
     }
 
-    IEnumerator fadeOut() {
+    IEnumerator FadeOutAndLoadScene() {
         overlayFade.gameObject.SetActive(true);
-        yield return StartCoroutine(Fade(1)); // Fade Out
+        yield return Fade(1); // Fade Out
+        SceneManager.LoadSceneAsync("LaunchScene");
     }
 }

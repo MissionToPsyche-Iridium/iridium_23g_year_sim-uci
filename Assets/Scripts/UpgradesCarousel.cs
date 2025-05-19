@@ -6,6 +6,8 @@ using TMPro;
 using System.Linq;
 
 public class UpgradesCarousel : MonoBehaviour {
+    public Missions missions;
+
     private int index = 0; // Tracks which page the user was on
     public GameObject leftArrow;
     public GameObject rightArrow;
@@ -147,8 +149,13 @@ public class UpgradesCarousel : MonoBehaviour {
         mat3.text = "Nickel: " + matAmountsList["Nickel"].ToString();
     }
 
+    void Update() {
+        descriptionSetUp();
+    }
+
     public void Prev() {
-        if (index != 0) {
+        if (index != 0)
+        {
             index -= 1;
         }
         displayPageInformation();
@@ -198,37 +205,46 @@ public class UpgradesCarousel : MonoBehaviour {
     public void descriptionSetUp() { // Sets up & displays to, from, and material required descriptions
         switch (index) {
             case 1:
-                from.text = currentMiningSpeed.ToString() + " seconds";
-                to.text = miningSpeedUpgrades[currentMiningSpeed].next.ToString() + " seconds";
-                materialRequiredSetUp(miningSpeedUpgrades[currentMiningSpeed].requirements);
+                if (currentMiningSpeed != 2) {
+                    from.text = currentMiningSpeed.ToString() + " seconds";
+                    to.text = miningSpeedUpgrades[currentMiningSpeed].next.ToString() + " seconds";
+                    materialRequiredSetUp(miningSpeedUpgrades[currentMiningSpeed].requirements);
+                }
                 break;
             case 2:
-                from.text = currentResourceMultiplier.ToString() + "x";
-                to.text = resourceMultiplierUpgrades[currentResourceMultiplier].next.ToString() + "x";
-                materialRequiredSetUp(resourceMultiplierUpgrades[currentResourceMultiplier].requirements);;
+                if (currentResourceMultiplier != 10) {
+                    from.text = currentResourceMultiplier.ToString() + "x";
+                    to.text = resourceMultiplierUpgrades[currentResourceMultiplier].next.ToString() + "x";
+                    materialRequiredSetUp(resourceMultiplierUpgrades[currentResourceMultiplier].requirements); ;
+                }
                 break;
             case 3:
-                from.text = "Level " + currentLightStrength.ToString();
-                to.text = "Level " + lightStrengthUpgrades[currentLightStrength].next.ToString();
-                materialRequiredSetUp(lightStrengthUpgrades[currentLightStrength].requirements);
+                if (currentLightStrength != 3) {
+                    from.text = "Level " + currentLightStrength.ToString();
+                    to.text = "Level " + lightStrengthUpgrades[currentLightStrength].next.ToString();
+                    materialRequiredSetUp(lightStrengthUpgrades[currentLightStrength].requirements);
+                }
                 break;
             default:
-                from.text = currentDrill;
-                to.text = drillUpgrades[currentDrill].next;
-                materialRequiredSetUp(drillUpgrades[currentDrill].requirements);
+                if (currentDrill != "Nickel") {
+                    from.text = currentDrill;
+                    to.text = drillUpgrades[currentDrill].next;
+                    materialRequiredSetUp(drillUpgrades[currentDrill].requirements);
+                }
                 break;
         }
     }
 
     public void materialRequiredSetUp(Dictionary<string, int> requirements) { // Displays all materials required
         List<string> keys = requirements.Keys.ToList();
+        SyncDictFromMats(); // Sync dictionary 
 
         for (int i = 0; i < keys.Count; i++) {
             matsList[i].gameObject.SetActive(true);
             matsList[i].text = keys[i];
             reqsList[i].gameObject.SetActive(true);
             reqsList[i].text =  matAmountsList[keys[i]] +  "/" + requirements[keys[i]].ToString();
-        };
+        }
     }
 
     public bool checkIfMaxUpgradeReached() {
@@ -264,18 +280,22 @@ public class UpgradesCarousel : MonoBehaviour {
         if (index == 0 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(drillUpgrades[currentDrill].requirements)) {
             deductMineralAmount(drillUpgrades[currentDrill].requirements);
             currentDrill = drillUpgrades[currentDrill].next;
+            missions.task2Transitioned = false;
         }
         else if (index == 1 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(miningSpeedUpgrades[currentMiningSpeed].requirements)) {
             deductMineralAmount(miningSpeedUpgrades[currentMiningSpeed].requirements);
             currentMiningSpeed = miningSpeedUpgrades[currentMiningSpeed].next;
+            missions.task3Transitioned = false;
         }
         else if (index == 2 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(resourceMultiplierUpgrades[currentResourceMultiplier].requirements)) {
             deductMineralAmount(resourceMultiplierUpgrades[currentResourceMultiplier].requirements);
             currentResourceMultiplier = resourceMultiplierUpgrades[currentResourceMultiplier].next;
+            missions.task4Transitioned = false;
         }
         else if (index == 3 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(lightStrengthUpgrades[currentLightStrength].requirements)) {
             deductMineralAmount(lightStrengthUpgrades[currentLightStrength].requirements);
             currentLightStrength = lightStrengthUpgrades[currentLightStrength].next;
+            missions.task5Transitioned = false;
         }
         else if (!checkIfMaxUpgradeReached()) {
             StartCoroutine(ErrorPopUpTextFade()); // Error text appears when not enough resources
@@ -299,6 +319,12 @@ public class UpgradesCarousel : MonoBehaviour {
         magnesiumAmount = matAmountsList["Magnesium"];
         ironAmount = matAmountsList["Iron"];
         nickelAmount = matAmountsList["Nickel"];
+    }
+
+    public void SyncDictFromMats() { // matAmountsList only stores copies so need to manually update the dictionary from the variables
+        matAmountsList["Magnesium"] = magnesiumAmount;
+        ironAmount = matAmountsList["Iron"] = ironAmount;
+        matAmountsList["Nickel"] = nickelAmount;
     }
 
     IEnumerator ErrorPopUpTextFade() {

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 [ExecuteInEditMode]
 public class CurvedText : Text
 {
+	public GameObject size; // Consider using this for font changing
 	public float radius = 0.5f;
 	public float wrapAngle = 360.0f;
 	public float scaleFactor = 100.0f;
