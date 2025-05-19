@@ -9,6 +9,7 @@ public class Mineable : MonoBehaviour
     [SerializeField] private int resource = 0;
     [SerializeField] private int minResources = 1;
     [SerializeField] private int resourceAmount = 1;
+    private bool beingMined = false;
     private int resourcesRemaining = 0;
     private float countdown = 0f;
     public float MiningProgress => countdown / upgradesCarousel.currentMiningSpeed;
@@ -23,6 +24,15 @@ public class Mineable : MonoBehaviour
       if (!upgradesCarousel) {
         Debug.LogError("UpgradesCarousel not found in the scene.");
       }
+    }
+
+    // Reduce mining progress bar when not mining
+    private void Update() {
+      if (!beingMined && countdown > 0) {
+        countdown -= Time.deltaTime;
+      }
+
+      beingMined = false;
     }
 
     // Rover enters the vicinity of a mineable resource
@@ -40,6 +50,8 @@ public class Mineable : MonoBehaviour
       if (resourcesRemaining == 0) { // No resources left to mine
         return;
       }
+
+      beingMined = true;
 
       countdown += Time.deltaTime * 1.0f; // Increase countdown based on time passed
 

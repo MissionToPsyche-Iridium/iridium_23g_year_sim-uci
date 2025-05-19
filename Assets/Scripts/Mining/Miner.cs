@@ -49,10 +49,30 @@ public class Miner : MonoBehaviour
       onExitMine?.Invoke();
     }
 
+    // Mine only where cursor is
+    // Add Layer "Ignore Raycast" to Player
+    // SolarCamera -> "Untagged" Tag
+    // Psyche > PsycheCenter > Player > CameraRig > Camera -> "MainCamera" Tag
+    private bool CursorOverCurrentMine() {
+      Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+      RaycastHit hit;
+
+      if (Physics.SphereCast(ray, .5f, out hit, 100f)) {
+        print(hit.collider.name);
+
+        Mineable m;
+        if (hit.collider.TryGetComponent(out m)) {
+          return m == currentMine;
+        }
+      }
+
+      return false;
+    }
+
     // Called when rover mines the resource
     #region Public Methods
     public void MineCurrent() {
-      if (currentMine) {
+      if (currentMine && CursorOverCurrentMine()) {
         currentMine.MineResource();
       }
     }
