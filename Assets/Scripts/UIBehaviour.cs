@@ -60,15 +60,15 @@ public class UIBehaviour : MonoBehaviour
 		overlayFade.color = fadeColor;
 		overlayFade.gameObject.SetActive(false);
 
-		UI = new GameObject[] { missionsDropdown, dupeCompletionBar, daysCounter, solarSystemButton, upgradesButton, researchButton, settingsButton };
-		tutorialTitle = new string[] { "MISSIONS", "COMPLETION BAR", "DAYS COUNTDOWN", "SOLAR SYSTEM VIEW", "UPGRADES", "RESEARCH", "SETTINGS", "CURSOR", "END TUTORIAL" };
-		tutorialText = new string[] { "Mini-missions will help guide you to completing your main mission: Gather as much data from Psyche as you can in a year. Complete them all to complete the game.",
-									"This will display how much you've completed your mission. This includes gathering all research papers, maxing all upgrades, and completing mini missions.",
-									"Psyche has 1828 days in a year. For the sake of gameplay, each day is a second in real life. Complete your mission before time is up. Time stops when Upgrades, Research, or Settings is open.",
-									"This is where you can view where Psyche is in the Solar System and keep track of its orbit in the year anytime during your gameplay.",
-									"Gather minerals and use them to upgrade your Rover throughout the game! Max out upgrades before the game ends to complete your mission.",
-									"Generate all research papers that you will get from discovering something new about Psyche.",
-									"Clicking the gear or tapping ESC will bring up the Settings menu. You can control volumne, text sizes, or end game.",
+        UI = new GameObject[] { missionsDropdown, dupeCompletionBar, daysCounter, solarSystemButton, upgradesButton, researchButton, settingsButton };
+        tutorialTitle = new string[] { "MISSIONS", "PROGRESS BAR", "DAYS COUNTDOWN", "SOLAR SYSTEM VIEW", "UPGRADES", "RESEARCH", "SETTINGS", "CURSOR", "END TUTORIAL" };
+        tutorialText = new string[] { "Missions will help guide you to completing your main mission: Gather as much data from Psyche as you can in a year. Complete them all to finish the game.",
+                                    "This bar shows how much progress you have made to completing your Psyche mission. Completing missions, maxing upgrades, and generating research papers will increase your progress.",
+                                    "Psyche has 1828 days in a year. For the sake of gameplay, each day is a second in real time. Complete your mission before time is up. Time stops when Upgrades, Research, or Settings screens are open.",
+                                    "This is where you can view where Psyche is in the Solar System and keep track of its orbit in the year anytime during your gameplay.",
+                                    "Gather minerals and use them to upgrade your Rover throughout the game! Max out upgrades before the game ends to complete your mission.",
+                                    "Any research paper you generate can be found in here. Check in here anytime to read up any interesting facts you have found from exploring Psyche!",
+									"Clicking the gear or tapping ESC will bring up the Settings menu. You can control volumne, text sizes, find hints about how to generate all research papers, and end game.",
 									"Holding the Alt key (or Option key) will show the cursor to interact with the on-screen buttons.",
 									"That is all. Goodluck and have fun!"
 									};
