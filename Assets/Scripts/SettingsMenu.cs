@@ -54,9 +54,10 @@ public class SettingsMenu : MonoBehaviour {
         ResetButtonVisual(warningCancelButton);
 	}
 
-	public void WarningPopUpClose() {
+	public void WarningPopUpClose()
+	{
 		ResetButtonVisual(warningCancelButton);
-        warningPopUp.SetActive(false);
+		warningPopUp.SetActive(false);
 	}
 
 	public void HelpMenuOpen() {
@@ -68,7 +69,7 @@ public class SettingsMenu : MonoBehaviour {
 
 	public void HelpMenuClose() {
 		helpMenu.resetButtonStates();
-        helpMenuObject.SetActive(false);
+		helpMenuObject.SetActive(false);
 	}
 
 	public void GoToMainMenu() {
