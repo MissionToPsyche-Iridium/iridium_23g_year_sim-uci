@@ -135,9 +135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5bb593f42443844b1c41a3a5a9c4b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resourceType: 0
+  upgradesCarousel: {fileID: 0}
   resource: 0
   minResources: 1
-  maxResources: 5
+  resourceAmount: 1
 --- !u!54 &8233427839749101342
 Rigidbody:
   m_ObjectHideFlags: 0
