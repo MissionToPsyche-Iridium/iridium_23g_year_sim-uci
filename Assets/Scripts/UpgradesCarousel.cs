@@ -38,7 +38,7 @@ public class UpgradesCarousel : MonoBehaviour {
 
     [SerializeField] public string currentDrill = "Magnesium";
     [SerializeField] public int currentMiningSpeed = 10;
-    [SerializeField] public int currentResourceMultiplier = 1;
+    [SerializeField] public int currentResourceMultiplier = 10;
     [SerializeField] public int currentLightStrength = 1;
     [SerializeField] public int magnesiumAmount = 0;
     [SerializeField] public int ironAmount = 0;
@@ -97,15 +97,15 @@ public class UpgradesCarousel : MonoBehaviour {
         };
 
         resourceMultiplierUpgrades = new Dictionary<int, (int next, Dictionary<string, int>)> {
-            { 1, (2, new Dictionary<string, int> { // 1x -> 2x
+            { 10, (20, new Dictionary<string, int> { // 1x -> 2x
                     { "Magnesium", 20 }
                 }) 
             },
-            { 2, (5, new Dictionary<string, int> { // 2x -> 5x
+            { 20, (50, new Dictionary<string, int> { // 2x -> 5x
                     { "Iron", 20 }
                 }) 
             },
-            { 5, (10, new Dictionary<string, int> { // 5x -> 10x
+            { 50, (100, new Dictionary<string, int> { // 5x -> 10x
                     { "Nickel", 20 }
                 }) 
             }
@@ -133,6 +133,20 @@ public class UpgradesCarousel : MonoBehaviour {
         requirementsGroup = descriptionGroup.transform.GetChild(3);
 
         displayPageInformation();
+    }
+
+    // Raymond - Added this function to test the upgrade system
+    public void AddMaterial(string type, int amount) {
+        matAmountsList[type] += amount;
+        SyncMatsFromDict();
+        UpdateResourceUI();
+        displayPageInformation();
+    }
+
+    public void UpdateResourceUI() {
+        mat1.text = "Magnesium: " + matAmountsList["Magnesium"].ToString();
+        mat2.text = "Iron: " + matAmountsList["Iron"].ToString();
+        mat3.text = "Nickel: " + matAmountsList["Nickel"].ToString();
     }
 
     void Update() {
@@ -240,7 +254,7 @@ public class UpgradesCarousel : MonoBehaviour {
         else if (index == 1 && currentMiningSpeed == 2) { // Checks if mining speed upgrade max
             return true;
         }
-        else if (index == 2 && currentResourceMultiplier == 10) { // Checks if resource multiplier upgrade max
+        else if (index == 2 && currentResourceMultiplier == 100) { // Checks if resource multiplier upgrade max
             return true;
         }
         else if (index == 3 && currentLightStrength == 3) { // Checks if flashlight strength upgrade max
@@ -335,4 +349,5 @@ public class UpgradesCarousel : MonoBehaviour {
         currentColor.a = targetAlpha;
         error.color = currentColor;
     }
+    
 }
