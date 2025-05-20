@@ -23,7 +23,7 @@ public abstract class Movement : MonoBehaviour {
 	[SerializeField]
 	Transform cameraTransform; // Reference to camera
 	[SerializeField]
-	GameObject model;
+	public GameObject model;
 
 	RayData groundData;
 	#endregion
