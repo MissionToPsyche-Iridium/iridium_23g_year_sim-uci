@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Research8
   m_EditorClassIdentifier: 
   dialogues:
-  - Speaker: Placeholder
-    Line: Research 8
+  - Speaker: Mission Control
+    Line: "You\u2019ve entered a new phase\u2014Nickel is far deeper and denser.
+      This will unlock the next level of upgrades."

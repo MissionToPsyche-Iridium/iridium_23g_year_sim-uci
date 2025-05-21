@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Research5
   m_EditorClassIdentifier: 
   dialogues:
-  - Speaker: Placeholder
-    Line: Research 5
+  - Speaker: Mission Control
+    Line: "We\u2019ve analyzed the crater data. Take a look as soon as you can."

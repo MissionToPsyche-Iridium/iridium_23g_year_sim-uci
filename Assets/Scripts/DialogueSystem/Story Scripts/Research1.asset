@@ -13,5 +13,15 @@ MonoBehaviour:
   m_Name: Research1
   m_EditorClassIdentifier: 
   dialogues:
-  - Speaker: Placeholder
-    Line: Research 1
+  - Speaker: Mission Control
+    Line: "Excellent work\u2014mining and storage systems are functioning properly.
+      You\u2019ll need a lot more than this though.\\nStart by mining more Magnesium
+      and checking the Upgrades menu."
+  - Speaker: Mission Control
+    Line: Your first Research Paper is ready! Open the Research Menu and read it.
+      It\u2019s vital that everyone on the team stays aligned with what we uncover
+      out here.
+  - Speaker: Mission Control
+    Line: There are 9 remaining Research Papers we need to generate. Generate all
+      10 to complete your mission! There are hints in the Help section in Settings
+      on how to generate each paper.

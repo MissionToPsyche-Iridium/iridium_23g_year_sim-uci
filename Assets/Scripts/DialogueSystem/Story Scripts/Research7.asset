@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Research7
   m_EditorClassIdentifier: 
   dialogues:
-  - Speaker: Placeholder
-    Line: Research 7
+  - Speaker: Mission Control
+    Line: "Four hundred days since landing. And you haven\u2019t missed a beat."
+  - Speaker: Mission Control
+    Line: "You\u2019re setting new benchmarks for all future rover-class androids."

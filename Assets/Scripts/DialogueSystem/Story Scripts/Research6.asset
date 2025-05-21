@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: Research6
   m_EditorClassIdentifier: 
   dialogues:
-  - Speaker: Placeholder
-    Line: Research 6
+  - Speaker: Mission Control
+    Line: "Day 1200. That\u2019s over three Earth years. Your endurance protocols
+      are holding strong, EROS."
+  - Speaker: Mission Control
+    Line: Long-term exposure studies are critical. We're rewriting what we thought
+      possible for autonomous exploration.

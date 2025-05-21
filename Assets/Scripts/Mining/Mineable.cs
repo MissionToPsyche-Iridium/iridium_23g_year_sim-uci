@@ -40,16 +40,27 @@ public class Mineable : MonoBehaviour
       }
 
       beingMined = false;
+
+      // Show tooltip only if the player is looking at this mineral
+      if (currentMiner != null) {
+          if (currentMiner.MineUnderCursor() == this) {
+              TooltipManager._instance.SetAndShowToolTip(resourceType.ToString(), transform);
+          } else {
+              TooltipManager._instance.HideToolTip();
+          }
+      }
     }
 
     // Rover enters the vicinity of a mineable resource
     public void EnterMine(Miner m) {
       currentMiner = m;
+      // TooltipManager._instance.SetAndShowToolTip(resourceType.ToString(), transform);
     }
 
     // Rover exits the vicinity of a mineable resource
     public void ExitMine() {
       currentMiner = null;
+      TooltipManager._instance.HideToolTip();
     }
 
     // Rover mines the resource
@@ -76,6 +87,7 @@ public class Mineable : MonoBehaviour
       if (resourcesRemaining == 0) {  // All resources have been mined -> delete the mineral
         gameObject.SetActive(false);
         onEmpty?.Invoke();
+        TooltipManager._instance.HideToolTip();
         AddResource(upgradesCarousel.currentResourceMultiplier);
       }
     }
