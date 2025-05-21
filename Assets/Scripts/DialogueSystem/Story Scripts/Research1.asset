@@ -17,8 +17,6 @@ MonoBehaviour:
     Line: "Excellent work\u2014mining and storage systems are functioning properly.
       You\u2019ll need a lot more than this though.\\nStart by mining more Magnesium
       and checking the Upgrades menu."
-  - Speaker: EROS
-    Line: 'Paper #1 is being generated...\n\nPaper #1 complete! '
   - Speaker: Mission Control
     Line: Your first Research Paper is ready! Open the Research Menu and read it.
       It\u2019s vital that everyone on the team stays aligned with what we uncover

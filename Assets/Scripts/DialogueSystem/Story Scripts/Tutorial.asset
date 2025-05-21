@@ -16,8 +16,8 @@ MonoBehaviour:
   - Speaker: Mission Control
     Line: EROS, are you online? Do a system health check.
   - Speaker: EROS
-    Line: 'Hello, Mission Control. Executing system health check........ 105/105
-      tests executed. Health status: 100%'
+    Line: 'Executing system health check........ 105/105 tests executed. Health status:
+      100%'
   - Speaker: Mission Control
     Line: Great. Since Mission Control tells me you're fresh off the assembly line,
       let's quickly run you through HUD navigation.\nGo ahead and test out your movement
