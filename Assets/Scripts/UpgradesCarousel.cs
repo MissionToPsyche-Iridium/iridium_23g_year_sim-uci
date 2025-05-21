@@ -289,12 +289,15 @@ public class UpgradesCarousel : MonoBehaviour {
         displayPageInformation(); // Updates page after upgrade
     }
 
-    public void deductMineralAmount(Dictionary<string, int> requirements) {  // Player's mineral amount - required mineral amount for upgrade = new Player's mineral amount
-       List<string> keys = requirements.Keys.ToList();
+    public void deductMineralAmount(Dictionary<string, int> requirements)
+    {  // Player's mineral amount - required mineral amount for upgrade = new Player's mineral amount
+        List<string> keys = requirements.Keys.ToList();
 
-        for (int i = 0; i < keys.Count; i++) {
+        for (int i = 0; i < keys.Count; i++)
+        {
             matAmountsList[keys[i]] -= requirements[keys[i]];
-            if (matAmountsList[keys[i]] < 0) {
+            if (matAmountsList[keys[i]] < 0)
+            {
                 matAmountsList[keys[i]] = 0;
             }
         }

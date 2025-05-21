@@ -15,6 +15,8 @@ public class ResearchButtons : MonoBehaviour
     public Button multispectralButton;
     public Button gammaRayButton;
 
+    public Button magButton;
+
     [SerializeField] private TMP_Text topicTitle;
     [SerializeField] private TMP_Text topicViewContent;
 
@@ -33,10 +35,17 @@ public class ResearchButtons : MonoBehaviour
     public Sprite topicGammaRayImage;
 
     public ResearchPaperLock paperLock;
+    public PopUpManager popUpManager;
 
 
     private void OnEnable()
     {
+        magButton.onClick.AddListener(() =>
+        {
+            paperLock.UnlockPaper("Core");
+            popUpManager.CreatePopUp("Research Paper #1 Unlocked"); 
+        });
+        
         coreButton.onClick.AddListener(() => HandleClick("Core", topicCoreImage, GetCoreText()));
         metalButton.onClick.AddListener(() => HandleClick("Metals", topicMetalImage, GetMetalText()));
         orbitButton.onClick.AddListener(() => HandleClick("Orbit & Rotation", topicOrbitImage, GetOrbitText()));

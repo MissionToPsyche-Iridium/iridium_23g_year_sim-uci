@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 
-public Missions missions;
+
 
 public class ResearchPaperLock : MonoBehaviour
 {

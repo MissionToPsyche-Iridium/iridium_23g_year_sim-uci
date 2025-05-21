@@ -6,7 +6,10 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class Missions : MonoBehaviour {
+
+public class Missions : MonoBehaviour
+{
+    public ResearchPaperLock paperLock;
     public UnityEvent MagnesiumEvent;
     public UnityEvent IronEvent;
     public UnityEvent UpgradeNickelEvent;
@@ -74,24 +77,29 @@ public class Missions : MonoBehaviour {
                                     miningSpeed8Flag, miningSpeed5Flag, miningSpeed2Flag, multiplier2Flag, multiplier5Flag, multiplier10Flag,
                                     flashlight2Flag, flashlight3Flag, missionComplete };
 
-    void Start() {
+    void Start()
+    {
     }
 
-    void Update() {
+    void Update()
+    {
         checkStates();
-        
-        if (expandButton.activeSelf) {
+
+        if (expandButton.activeSelf)
+        {
             displayMissions();
             hideMissions();
         }
-        else if (collapseButton.activeSelf) {
+        else if (collapseButton.activeSelf)
+        {
             displayMissions();
         }
         finalMission();
         setProgress();
     }
 
-    public void displayMissions() {
+    public void displayMissions()
+    {
         mineralMissions();
         drillMissions();
         miningSpeedMissions();
@@ -99,28 +107,35 @@ public class Missions : MonoBehaviour {
         flashlightMissions();
     }
 
-    public void hideMissions() {
+    public void hideMissions()
+    {
         Transform topMission = GetFirstActiveChild();
-    
-        if (topMission == null) {
+
+        if (topMission == null)
+        {
             return;
         }
         int index = topMission.transform.GetSiblingIndex() + 1;
-        for (; index < missionsBody.transform.childCount; index++) {
+        for (; index < missionsBody.transform.childCount; index++)
+        {
             missionsBody.transform.GetChild(index).gameObject.SetActive(false);
         }
     }
 
-    Transform GetFirstActiveChild() {
-        for (int i = 1; i < missionsBody.transform.childCount; i++) {
-            if (missionsBody.transform.GetChild(i).gameObject.activeSelf) {
+    Transform GetFirstActiveChild()
+    {
+        for (int i = 1; i < missionsBody.transform.childCount; i++)
+        {
+            if (missionsBody.transform.GetChild(i).gameObject.activeSelf)
+            {
                 return missionsBody.transform.GetChild(i);
             }
         }
         return null;
     }
 
-    public void checkStates() {
+    public void checkStates()
+    {
         checkMineralState();
         checkDrillState();
         checkMiningSpeedState();
@@ -128,212 +143,274 @@ public class Missions : MonoBehaviour {
         checkFlashlightState();
     }
 
-    public void checkMineralState() {
-        if (!magnesiumFlag && upgrades.magnesiumAmount > 0) {
+    public void checkMineralState()
+    {
+        if (!magnesiumFlag && upgrades.magnesiumAmount > 0)
+        {
             magnesiumFlag = true;
             MagnesiumEvent.Invoke();
             StartCoroutine(FinishTaskTransition(task1, task1image, task1text, task1CanvasGroup));
-        } 
-        else if (!ironFlag && upgrades.ironAmount > 0) {
+        }
+        else if (!ironFlag && upgrades.ironAmount > 0)
+        {
             ironFlag = true;
             IronEvent.Invoke();
             StartCoroutine(FinishTaskTransition(task1, task1image, task1text, task1CanvasGroup));
 
-        } 
-        else if (!nickelFlag && upgrades.nickelAmount > 0) {
+        }
+        else if (!nickelFlag && upgrades.nickelAmount > 0)
+        {
             nickelFlag = true;
             StartCoroutine(FinishTaskTransition(task1, task1image, task1text, task1CanvasGroup));
-        } 
+        }
     }
 
-    public void mineralMissions() {
-        if (!magnesiumFlag) {
+    public void mineralMissions()
+    {
+        if (!magnesiumFlag)
+        {
             task1text.text = "Mine Magnesium";
         }
-        else if (!ironFlag && drillReinforcedMagFlag) {
+        else if (!ironFlag && drillReinforcedMagFlag)
+        {
             task1.gameObject.SetActive(true);
             StartCoroutine(FadeTaskIn("Mine Iron"));
         }
-        else if (!nickelFlag && drillIronFlag ) {
+        else if (!nickelFlag && drillIronFlag)
+        {
             task1.gameObject.SetActive(true);
             StartCoroutine(FadeTaskIn("Mine Nickel"));
         }
     }
 
-    IEnumerator FadeTaskIn(string newText) {
+    IEnumerator FadeTaskIn(string newText)
+    {
         task1text.text = newText;
         yield return FadeCanvasGroup(task1CanvasGroup, 0f, 1f, 0.5f);
     }
 
-    public void checkDrillState() {
-        if (upgrades.currentDrill == "Reinforced Magnesium") {
+    public void checkDrillState()
+    {
+        if (upgrades.currentDrill == "Reinforced Magnesium")
+        {
             drillReinforcedMagFlag = true;
 
-        } 
-        else if (upgrades.currentDrill == "Iron") {
+        }
+        else if (upgrades.currentDrill == "Iron")
+        {
             drillIronFlag = true;
         }
-        else if (upgrades.currentDrill == "Nickel") {
-            if (!drillNickelFlag) {
+        else if (upgrades.currentDrill == "Nickel")
+        {
+            if (!drillNickelFlag)
+            {
                 drillNickelFlag = true;
                 UpgradeNickelEvent.Invoke();
             }
         }
     }
 
-    public void drillMissions() {
-        if (magnesiumFlag && !drillReinforcedMagFlag) {
+    public void drillMissions()
+    {
+        if (magnesiumFlag && !drillReinforcedMagFlag)
+        {
             task2.gameObject.SetActive(true);
-            if (!task2Transitioned) {
+            if (!task2Transitioned)
+            {
                 StartCoroutine(FadeCanvasGroup(task2CanvasGroup, 0f, 1f, 0.5f));
                 task2Transitioned = true;
             }
         }
-        else if (drillReinforcedMagFlag && !drillIronFlag) {
+        else if (drillReinforcedMagFlag && !drillIronFlag)
+        {
             task2.gameObject.SetActive(true);
-            if (!task2Transitioned) {
+            if (!task2Transitioned)
+            {
                 StartCoroutine(TransitionTask(task2image, task2text, task2CanvasGroup, "Upgrade Drill to Iron"));
                 task2Transitioned = true;
             }
         }
-        else if (drillIronFlag && !drillNickelFlag) {
+        else if (drillIronFlag && !drillNickelFlag)
+        {
             task2.gameObject.SetActive(true);
-            if (!task2Transitioned) {
+            if (!task2Transitioned)
+            {
                 StartCoroutine(TransitionTask(task2image, task2text, task2CanvasGroup, "Upgrade Drill to Nickel"));
                 task2Transitioned = true;
             }
         }
-        else {
-            if (drillNickelFlag && !task2Transitioned) {
+        else
+        {
+            if (drillNickelFlag && !task2Transitioned)
+            {
                 StartCoroutine(FinishTaskTransition(task2, task2image, task2text, task2CanvasGroup));
                 task2Transitioned = true;
             }
         }
     }
 
-    public void checkMiningSpeedState() {
-        if (upgrades.currentMiningSpeed == 8) {
+    public void checkMiningSpeedState()
+    {
+        if (upgrades.currentMiningSpeed == 8)
+        {
             miningSpeed8Flag = true;
-        } 
-        else if (upgrades.currentMiningSpeed == 5) {
+        }
+        else if (upgrades.currentMiningSpeed == 5)
+        {
             miningSpeed5Flag = true;
         }
-        else if (upgrades.currentMiningSpeed == 2) {
-            if (!miningSpeed2Flag) {
+        else if (upgrades.currentMiningSpeed == 2)
+        {
+            if (!miningSpeed2Flag)
+            {
                 miningSpeed2Flag = true;
                 MiningSpeed2Event.Invoke();
             }
         }
     }
 
-    public void miningSpeedMissions() {
-        if (magnesiumFlag && !miningSpeed8Flag) {
+    public void miningSpeedMissions()
+    {
+        if (magnesiumFlag && !miningSpeed8Flag)
+        {
             task3.gameObject.SetActive(true);
-            if (!task3Transitioned) {
+            if (!task3Transitioned)
+            {
                 StartCoroutine(FadeCanvasGroup(task3CanvasGroup, 0f, 1f, 0.5f));
                 task3Transitioned = true;
             }
         }
-        else if (miningSpeed8Flag && !miningSpeed5Flag) {
+        else if (miningSpeed8Flag && !miningSpeed5Flag)
+        {
             task3.gameObject.SetActive(true);
-            if (!task3Transitioned) {
+            if (!task3Transitioned)
+            {
                 StartCoroutine(TransitionTask(task3image, task3text, task3CanvasGroup, "Upgrade Mining Speed to 5 seconds"));
                 task3Transitioned = true;
             }
         }
-        else if (miningSpeed5Flag && !miningSpeed2Flag) {
+        else if (miningSpeed5Flag && !miningSpeed2Flag)
+        {
             task3.gameObject.SetActive(true);
-            if (!task3Transitioned) {
+            if (!task3Transitioned)
+            {
                 StartCoroutine(TransitionTask(task3image, task3text, task3CanvasGroup, "Upgrade Mining Speed to 2 seconds"));
                 task3Transitioned = true;
             }
         }
-        else {
-            if (miningSpeed2Flag) {
+        else
+        {
+            if (miningSpeed2Flag)
+            {
                 StartCoroutine(FinishTaskTransition(task3, task3image, task3text, task3CanvasGroup));
                 task3Transitioned = false;
             }
         }
     }
 
-    public void checkMultiplierState() {
-        if (upgrades.currentResourceMultiplier == 2) {
+    public void checkMultiplierState()
+    {
+        if (upgrades.currentResourceMultiplier == 2)
+        {
             multiplier2Flag = true;
-        } 
-        else if (upgrades.currentResourceMultiplier == 5) {
+        }
+        else if (upgrades.currentResourceMultiplier == 5)
+        {
             multiplier5Flag = true;
         }
-        else if (upgrades.currentResourceMultiplier == 10) {
+        else if (upgrades.currentResourceMultiplier == 10)
+        {
             multiplier10Flag = true;
         }
     }
 
-    public void multiplierMissions() {
-        if (magnesiumFlag && !multiplier2Flag) {
+    public void multiplierMissions()
+    {
+        if (magnesiumFlag && !multiplier2Flag)
+        {
             task4.gameObject.SetActive(true);
-            if (!task4Transitioned) {
+            if (!task4Transitioned)
+            {
                 StartCoroutine(FadeCanvasGroup(task4CanvasGroup, 0f, 1f, 0.5f));
                 task4Transitioned = true;
             }
         }
-        else if (multiplier2Flag && !multiplier5Flag) {
+        else if (multiplier2Flag && !multiplier5Flag)
+        {
             task4.gameObject.SetActive(true);
-            if (!task4Transitioned) {
+            if (!task4Transitioned)
+            {
                 StartCoroutine(TransitionTask(task4image, task4text, task4CanvasGroup, "Upgrade Resource Multiplier to x5"));
                 task4Transitioned = true;
             }
         }
-        else if (multiplier5Flag && !multiplier10Flag) {
+        else if (multiplier5Flag && !multiplier10Flag)
+        {
             task4.gameObject.SetActive(true);
-            if (!task4Transitioned) {
+            if (!task4Transitioned)
+            {
                 StartCoroutine(TransitionTask(task4image, task4text, task4CanvasGroup, "Upgrade Resource Multiplier to x10"));
                 task4Transitioned = true;
             }
         }
-        else {
-            if (multiplier10Flag) {
+        else
+        {
+            if (multiplier10Flag)
+            {
                 StartCoroutine(FinishTaskTransition(task4, task4image, task4text, task4CanvasGroup));
                 task4Transitioned = false;
             }
         }
     }
 
-    public void checkFlashlightState() {
-        if (upgrades.currentLightStrength == 2) {
+    public void checkFlashlightState()
+    {
+        if (upgrades.currentLightStrength == 2)
+        {
             flashlight2Flag = true;
-        } 
-        else if (upgrades.currentLightStrength == 3) {
-            if (!flashlight3Flag) {
+        }
+        else if (upgrades.currentLightStrength == 3)
+        {
+            if (!flashlight3Flag)
+            {
                 flashlight3Flag = true;
                 Flashlight3Event.Invoke();
             }
         }
     }
 
-    public void flashlightMissions() {
-        if (ironFlag && !flashlight2Flag) {
+    public void flashlightMissions()
+    {
+        if (ironFlag && !flashlight2Flag)
+        {
             task5.gameObject.SetActive(true);
-            if (!task5Transitioned) {
+            if (!task5Transitioned)
+            {
                 StartCoroutine(FadeCanvasGroup(task5CanvasGroup, 0f, 1f, 0.5f));
                 task5Transitioned = true;
             }
         }
-        else if (flashlight2Flag && !flashlight3Flag) {
+        else if (flashlight2Flag && !flashlight3Flag)
+        {
             task5.gameObject.SetActive(true);
-            if (!task5Transitioned) {
+            if (!task5Transitioned)
+            {
                 StartCoroutine(TransitionTask(task5image, task5text, task5CanvasGroup, "Upgrade Flashlight to Level 3"));
                 task5Transitioned = true;
             }
         }
-        else {
-            if (flashlight3Flag) {
+        else
+        {
+            if (flashlight3Flag)
+            {
                 StartCoroutine(FinishTaskTransition(task5, task5image, task5text, task5CanvasGroup));
                 task5Transitioned = false;
             }
         }
     }
 
-    public bool checkIfAllMissionsComplete() {
+    public bool checkIfAllMissionsComplete()
+    {
         return nickelFlag &&
             drillNickelFlag &&
             miningSpeed2Flag &&
@@ -341,18 +418,23 @@ public class Missions : MonoBehaviour {
             flashlight3Flag;
     }
 
-    public void finalMission() {
+    public void finalMission()
+    {
         bool allCompleted = checkIfAllMissionsComplete();
-        if (allCompleted && !missionComplete) {
+        if (allCompleted && !missionComplete)
+        {
             task1.gameObject.SetActive(true);
             StartCoroutine(FadeTaskIn("Report to Mission Control on Mission Completion"));
         }
     }
 
-    public void setProgress() {
+    public void setProgress()
+    {
         float trueCount = 0f;
-        for (int i = 0; i < allFlags.Length; i++) {
-            if (allFlags[i]) {
+        for (int i = 0; i < allFlags.Length; i++)
+        {
+            if (allFlags[i])
+            {
                 trueCount += 1;
             }
         }
@@ -360,10 +442,11 @@ public class Missions : MonoBehaviour {
         percentage.text = (completionBarImage.fillAmount * 100).ToString() + "%";
     }
 
-    IEnumerator FinishTaskTransition(GameObject task, Image checkboxImage, TMP_Text taskText, CanvasGroup canvasGroup) {
+    IEnumerator FinishTaskTransition(GameObject task, Image checkboxImage, TMP_Text taskText, CanvasGroup canvasGroup)
+    {
         // 1. Fade out old content
         yield return FadeCanvasGroup(canvasGroup, 1f, 0f, 0.5f);
-        
+
         // 2. Show checked sprite and fade in
         checkboxImage.sprite = crossedCheckbox;
         yield return FadeCanvasGroup(canvasGroup, 0f, 1f, 0.5f);
@@ -379,10 +462,11 @@ public class Missions : MonoBehaviour {
         task.gameObject.SetActive(false);
     }
 
-    IEnumerator TransitionTask(Image checkboxImage, TMP_Text taskText, CanvasGroup canvasGroup, string newText) {
+    IEnumerator TransitionTask(Image checkboxImage, TMP_Text taskText, CanvasGroup canvasGroup, string newText)
+    {
         // 1. Fade out old content
         yield return FadeCanvasGroup(canvasGroup, 1f, 0f, 0.5f);
-        
+
         // 2. Show checked sprite and fade in
         checkboxImage.sprite = crossedCheckbox;
         yield return FadeCanvasGroup(canvasGroup, 0f, 1f, 0.5f);
@@ -401,7 +485,8 @@ public class Missions : MonoBehaviour {
         yield return FadeCanvasGroup(canvasGroup, 0f, 1f, 0.5f);
     }
 
-    IEnumerator FadeCanvasGroup(CanvasGroup group, float from, float to, float duration) {
+    IEnumerator FadeCanvasGroup(CanvasGroup group, float from, float to, float duration)
+    {
         float time = 0f;
         while (time < duration)
         {
