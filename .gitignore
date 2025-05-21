@@ -75,6 +75,3 @@ crashlytics-build.properties
 # DS_Store
 .DS_Store
 .fake
-
-# Fix font caching issue
-/[Aa]ssets/[Tt]ext[Mm]esh [Pp]ro/[Rr]esources/[Ff]onts & [Mm]aterials/[Ll]iberation[Ss]ans [Ss][Dd][Ff] - [Ff]allback.asset
