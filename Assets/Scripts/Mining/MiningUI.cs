@@ -24,6 +24,13 @@ public class MiningUI : MonoBehaviour
         return;
       }
 
+      Mineable closest = miner.ClosestMineInRange();
+      if (closest == null) {
+          ExitMine();
+          return;
+      }
+      mine = closest;
+      
       // Update the mining progress
       UpdateUI(mine.MiningProgress);
     }
