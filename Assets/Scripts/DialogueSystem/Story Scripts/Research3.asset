@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Research3
   m_EditorClassIdentifier: 
   dialogues:
-  - Speaker: Placeholder
-    Line: Research 3
+  - Speaker: Mission Control
+    Line: "Gorgeous planet when you can see it, isn\u2019t it?"
+  - Speaker: Mission Control
+    Line: "You\u2019ve unlocked more intel on Psyche\u2019s orbit and rotation. Every
+      detail helps."

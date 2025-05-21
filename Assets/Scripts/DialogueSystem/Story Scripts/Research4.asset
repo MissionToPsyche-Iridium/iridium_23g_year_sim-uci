@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Research4
   m_EditorClassIdentifier: 
   dialogues:
-  - Speaker: Placeholder
-    Line: Research 4
+  - Speaker: Mission Control
+    Line: "Those impact craters are enormous\u2026 and oddly symmetrical."
+  - Speaker: EROS
+    Line: Paper #4 generated!
