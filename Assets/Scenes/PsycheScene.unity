@@ -882,7 +882,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.44500002, y: 0.15461063}
   m_AnchorMax: {x: 0.5151943, y: 0.2937532}
-  m_AnchoredPosition: {x: 28.660004, y: -0.5001221}
+  m_AnchoredPosition: {x: 28.660034, y: -0.5}
   m_SizeDelta: {x: -2, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &79718954
@@ -15322,7 +15322,6 @@ GameObject:
   - component: {fileID: 488122531}
   - component: {fileID: 488122534}
   - component: {fileID: 488122532}
-  - component: {fileID: 488122533}
   m_Layer: 0
   m_Name: PsycheGameManager
   m_TagString: Untagged
@@ -15756,24 +15755,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &488122533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488122525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b2e82747ed37e5f18dab1155e5b5f8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundList:
-  - {fileID: 8300000, guid: baeb7b4002a6b8d3cb013da276bee184, type: 3}
-  - {fileID: 8300000, guid: 9aa45f6944570be52a1394b56d852705, type: 3}
-  - {fileID: 8300000, guid: ea215cf70514c6a1397bfcac8f495c67, type: 3}
-  - {fileID: 8300000, guid: ce8a2c1254b0cd9528a5e1eed617624b, type: 3}
-  - {fileID: 8300000, guid: 9f23d7362b490123cbaf122140ba2f72, type: 3}
 --- !u!114 &488122534
 MonoBehaviour:
   m_ObjectHideFlags: 0
