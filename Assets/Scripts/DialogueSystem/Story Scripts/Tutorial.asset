@@ -19,7 +19,11 @@ MonoBehaviour:
     Line: 'Hello, Mission Control. Executing system health check........ 105/105
       tests executed. Health status: 100%'
   - Speaker: Mission Control
-    Line: Great. Go ahead and test out your movement system by using your WASD keys.
+    Line: Great. Since Mission Control tells me you\u2019re fresh off the assembly
+      line, let\u2019s quickly run you through HUD navigation.  Go ahead and test
+      out your movement system using your WASD keys.
   - Speaker: Mission Control
-    Line: "Fantastic - let\u2019s get this show on the road. Let\u2019s quickly brief
-      you one how to navigate through your HUD."
+    Line: "Fantastic\u2014looks like everything is up and running. Let\u2019s get
+      this show on the road.  I\u2019ve uploaded your first task. You\u2019ll be
+      solo on this mission, but I\u2019ll be in your ear the whole way. Godspeed,
+      Eros. "

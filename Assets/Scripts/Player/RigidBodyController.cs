@@ -4,8 +4,8 @@ using UnityEngine;
 public class RigidbodyController : Movement
 {
     float maxSpeed = 10f;
-    public float amplitude = 2;
-    public float speed = 1.5f;
+    public float amplitude = 0.5f;
+    public float speed = 1f;
     Rigidbody rig;
 
     void OnEnable()
