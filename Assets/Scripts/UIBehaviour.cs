@@ -40,7 +40,12 @@ public class UIBehaviour : MonoBehaviour
 	public bool? tutorialOn = true;
 	public string dialogueStatus = "landed";
 	private GameObject[] UI;
-	private int solarSystemSecondsViewed = 0;
+	private float solarSystemTimeViewed = 0f;
+	private bool hasTriggeredSolarReaction = false;
+	public ResearchPaperLock paperLock;
+    public PopUpManager popUpManager;
+	private bool triggered1400 = false;
+	private bool triggered400 = false;
 
 	void Start()
 	{
@@ -95,6 +100,7 @@ public class UIBehaviour : MonoBehaviour
 		{
 			days -= Time.deltaTime;
 			UpdateDaysCounter();
+			CheckDayMilestones();
 		}
 		else if (days <= 0)
 		{
@@ -235,7 +241,53 @@ public class UIBehaviour : MonoBehaviour
 
 		yield return StartCoroutine(Fade(0)); // Fade screen in
 		overlayFade.gameObject.SetActive(false);
+		StartCoroutine(TrackSolarSystemViewTime());
 	}
+
+	IEnumerator TrackSolarSystemViewTime()
+	{
+		while (viewSolarSystem)
+		{
+			solarSystemTimeViewed += Time.deltaTime;
+
+			if (!hasTriggeredSolarReaction && solarSystemTimeViewed >= 10f)
+			{
+				hasTriggeredSolarReaction = true;
+				OnSolarSystemViewedLongEnough();
+			}
+
+			yield return null;
+		}
+	}
+
+	private void OnSolarSystemViewedLongEnough()
+	{
+		Debug.Log("You've spent over 10 seconds in the Solar System view!");
+		paperLock.UnlockPaper("Orbit & Rotation");
+        popUpManager.CreatePopUp("Research Paper #3 Orbit & Rotation is Unlocked"); 
+
+	}
+
+	private void CheckDayMilestones()
+	{
+		if (!triggered1400 && days <= 1400)
+		{
+			triggered1400 = true;
+			Debug.Log("Day 1400 milestone reached!");
+			paperLock.UnlockPaper("Psyche History");
+			popUpManager.CreatePopUp("Research Paper #6 is Unlocked");
+
+
+			if (!triggered400 && days <= 400)
+			{
+				triggered400 = true;
+				Debug.Log("Day 400 milestone reached!");
+				paperLock.UnlockPaper("Psyche Mission Timeline");
+				popUpManager.CreatePopUp("Research Paper #7 is Unlocked");
+
+			}
+		}
+}
 
 	IEnumerator switchToPsycheWorld()
 	{

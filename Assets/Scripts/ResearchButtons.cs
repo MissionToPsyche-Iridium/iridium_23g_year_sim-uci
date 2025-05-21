@@ -40,11 +40,6 @@ public class ResearchButtons : MonoBehaviour
 
     private void OnEnable()
     {
-        magButton.onClick.AddListener(() =>
-        {
-            paperLock.UnlockPaper("Core");
-            popUpManager.CreatePopUp("Research Paper #1 Unlocked"); 
-        });
         
         coreButton.onClick.AddListener(() => HandleClick("Core", topicCoreImage, GetCoreText()));
         metalButton.onClick.AddListener(() => HandleClick("Metals", topicMetalImage, GetMetalText()));

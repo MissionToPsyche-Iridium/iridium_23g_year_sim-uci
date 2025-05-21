@@ -22,8 +22,8 @@ public class PopUpManager : MonoBehaviour
         float canvasWidth = canvasRect.rect.width;
 
         // These Y values place it near top-right
-        float targetY = canvasRect.rect.height / 2 - 75f;  // adjust as needed
-        float targetX = canvasWidth / 2 - 250f;            // adjust for half width of popup
+        float targetY = -canvasRect.rect.height / 2 + 300;  // adjust as needed
+        float targetX = canvasWidth / 2 - 225f;            // adjust for half width of popup
 
         Vector2 offscreenRight = new Vector2(canvasWidth, targetY);
         Vector2 onScreen = new Vector2(targetX, targetY);
