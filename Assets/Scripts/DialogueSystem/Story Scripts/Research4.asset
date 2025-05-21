@@ -15,5 +15,6 @@ MonoBehaviour:
   dialogues:
   - Speaker: Mission Control
     Line: "Those impact craters are enormous\u2026 and oddly symmetrical."
-  - Speaker: EROS
-    Line: Paper #4 generated!
+  - Speaker: Mission Control
+    Line: "Uploading geological data now. Keep going, Eros\u2014we're running out
+      of time."

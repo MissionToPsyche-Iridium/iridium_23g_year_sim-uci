@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Research9
   m_EditorClassIdentifier: 
   dialogues:
-  - Speaker: Placeholder
-    Line: Research 9
+  - Speaker: Mission Control
+    Line: I may have a PhD, but even I'm getting impatient.
+  - Speaker: Mission Control
+    Line: 'You''re reaching the threshold of what''s physically possible. Impressive
+      work, EROS. '
