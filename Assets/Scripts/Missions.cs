@@ -9,7 +9,6 @@ using UnityEngine.Events;
 
 public class Missions : MonoBehaviour
 {
-    public ResearchPaperLock paperLock;
     public UnityEvent MagnesiumEvent;
     public UnityEvent IronEvent;
     public UnityEvent UpgradeNickelEvent;
@@ -72,6 +71,8 @@ public class Missions : MonoBehaviour
     public bool flashlight2Flag = false;
     public bool flashlight3Flag = false;
     public bool missionComplete = false;
+    public ResearchPaperLock paperLock;
+    public PopUpManager popUpManager;
 
     public bool[] allFlags => new bool[] { magnesiumFlag, ironFlag, nickelFlag, drillReinforcedMagFlag, drillIronFlag, drillNickelFlag,
                                     miningSpeed8Flag, miningSpeed5Flag, miningSpeed2Flag, multiplier2Flag, multiplier5Flag, multiplier10Flag,
@@ -149,12 +150,16 @@ public class Missions : MonoBehaviour
         if (!magnesiumFlag && upgrades.magnesiumAmount > 0)
         {
             magnesiumFlag = true;
+            paperLock.UnlockPaper("Core");
+            popUpManager.CreatePopUp("Research Paper #1 is Unlocked");
             MagnesiumEvent.Invoke();
             StartCoroutine(FinishTaskTransition(task1, task1image, task1text, task1CanvasGroup));
         }
         else if (!ironFlag && upgrades.ironAmount > 0)
         {
             ironFlag = true;
+            paperLock.UnlockPaper("Metals");
+            popUpManager.CreatePopUp("Research Paper #2 is Unlocked");
             IronEvent.Invoke();
             StartCoroutine(FinishTaskTransition(task1, task1image, task1text, task1CanvasGroup));
 

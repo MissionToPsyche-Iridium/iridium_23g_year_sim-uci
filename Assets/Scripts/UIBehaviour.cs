@@ -44,11 +44,15 @@ public class UIBehaviour : MonoBehaviour
 	public string dialogueStatus = "landed";
 	private GameObject[] UI;
 	private float solarSystemTimeViewed = 0f;
+	private float solarSystemSecondsViewed = 0f;
 	private bool hasTriggeredSolarReaction = false;
 	public ResearchPaperLock paperLock;
 	public PopUpManager popUpManager;
 	private bool triggered1400 = false;
 	private bool triggered400 = false;
+	private bool Day1200Flag = false;
+	private bool Day400Flag = false;
+	private bool SolarFlag = false;
 
 
 	void Start()
@@ -270,7 +274,7 @@ public class UIBehaviour : MonoBehaviour
 	{
 		Debug.Log("You've spent over 10 seconds in the Solar System view!");
 		paperLock.UnlockPaper("Orbit & Rotation");
-		popUpManager.CreatePopUp("Research Paper #3 Orbit & Rotation is Unlocked");
+		popUpManager.CreatePopUp("Research Paper #3 is Unlocked");
 
 	}
 
@@ -314,7 +318,7 @@ public class UIBehaviour : MonoBehaviour
 			yield return StartCoroutine(Fade(0)); // Fade In
 			overlayFade.gameObject.SetActive(false);
 		}
-
+	}
 	public void showSolarSystemView()
 	{
 		StartCoroutine(switchToSolarSystemView());
@@ -371,5 +375,4 @@ public class UIBehaviour : MonoBehaviour
 			solarSystemSecondsViewed = 0f;
 		}
 	}
-}
 }
