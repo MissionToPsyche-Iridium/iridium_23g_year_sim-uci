@@ -12,6 +12,9 @@ public class UIBehaviour : MonoBehaviour
 	[SerializeField] private Camera playerCamera;
 	[SerializeField] private Camera solarSystemCamera;
 	[SerializeField] private UnityEvent tutorialDialogue;
+	[SerializeField] private UnityEvent Day1200Dialogue;
+	[SerializeField] private UnityEvent Day400Dialogue;
+	[SerializeField] private UnityEvent SolarDialogue;
 	public GameObject messages;
 	public GameObject canvas;
 	public GameObject missionsDropdown;
@@ -43,9 +46,10 @@ public class UIBehaviour : MonoBehaviour
 	private float solarSystemTimeViewed = 0f;
 	private bool hasTriggeredSolarReaction = false;
 	public ResearchPaperLock paperLock;
-    public PopUpManager popUpManager;
+	public PopUpManager popUpManager;
 	private bool triggered1400 = false;
 	private bool triggered400 = false;
+
 
 	void Start()
 	{
@@ -60,14 +64,14 @@ public class UIBehaviour : MonoBehaviour
 		overlayFade.gameObject.SetActive(false);
 
 		UI = new GameObject[] { missionsDropdown, dupeCompletionBar, daysCounter, solarSystemButton, upgradesButton, researchButton, settingsButton };
-		tutorialTitle = new string[] { "MISSIONS", "COMPLETION BAR", "DAYS COUNTDOWN", "SOLAR SYSTEM VIEW", "UPGRADES", "RESEARCH", "SETTINGS", "CURSOR", "END TUTORIAL" };
-		tutorialText = new string[] { "Mini-missions will help guide you to completing your main mission: Gather as much data from Psyche as you can in a year. Complete them all to complete the game.",
-									"This will display how much you've completed your mission. This includes gathering all research papers, maxing all upgrades, and completing mini missions.",
-									"Psyche has 1828 days in a year. For the sake of gameplay, each day is a second in real life. Complete your mission before time is up. Time stops when Upgrades, Research, or Settings is open.",
+		tutorialTitle = new string[] { "MISSIONS", "PROGRESS BAR", "DAYS COUNTDOWN", "SOLAR SYSTEM VIEW", "UPGRADES", "RESEARCH", "SETTINGS", "CURSOR", "END TUTORIAL" };
+		tutorialText = new string[] { "Missions will help guide you to completing your main mission: Gather as much data from Psyche as you can in a year. Complete them all to finish the game.",
+									"This bar shows how much progress you have made to completing your Psyche mission. Completing missions, maxing upgrades, and generating research papers will increase your progress.",
+									"Psyche has 1828 days in a year. For the sake of gameplay, each day is a second in real time. Complete your mission before time is up. Time stops when Upgrades, Research, or Settings screens are open.",
 									"This is where you can view where Psyche is in the Solar System and keep track of its orbit in the year anytime during your gameplay.",
 									"Gather minerals and use them to upgrade your Rover throughout the game! Max out upgrades before the game ends to complete your mission.",
-									"Generate all research papers that you will get from discovering something new about Psyche.",
-									"Clicking the gear or tapping ESC will bring up the Settings menu. You can control volumne, text sizes, or end game.",
+									"Any research paper you generate can be found in here. Check in here anytime to read up any interesting facts you have found from exploring Psyche!",
+									"Clicking the gear or tapping ESC will bring up the Settings menu. You can control volumne, text sizes, find hints about how to generate all research papers, and end game.",
 									"Holding the Alt key (or Option key) will show the cursor to interact with the on-screen buttons.",
 									"That is all. Goodluck and have fun!"
 									};
@@ -101,6 +105,8 @@ public class UIBehaviour : MonoBehaviour
 			days -= Time.deltaTime;
 			UpdateDaysCounter();
 			CheckDayMilestones();
+			checkSolarDialogue();
+			checkDayDialogue();
 		}
 		else if (days <= 0)
 		{
@@ -264,7 +270,7 @@ public class UIBehaviour : MonoBehaviour
 	{
 		Debug.Log("You've spent over 10 seconds in the Solar System view!");
 		paperLock.UnlockPaper("Orbit & Rotation");
-        popUpManager.CreatePopUp("Research Paper #3 Orbit & Rotation is Unlocked"); 
+		popUpManager.CreatePopUp("Research Paper #3 Orbit & Rotation is Unlocked");
 
 	}
 
@@ -287,22 +293,27 @@ public class UIBehaviour : MonoBehaviour
 
 			}
 		}
-}
+	}
 
 	IEnumerator switchToPsycheWorld()
 	{
 		overlayFade.gameObject.SetActive(true);
 		yield return StartCoroutine(Fade(1)); // Fade Out
 
-		viewSolarSystem = false;
-		solarSystemCamera.enabled = false;
-		playerCamera.enabled = true;
+		IEnumerator switchToPsycheWorld()
+		{
+			overlayFade.gameObject.SetActive(true);
+			yield return StartCoroutine(Fade(1)); // Fade Out
 
-		setCanvas();
+			viewSolarSystem = false;
+			solarSystemCamera.enabled = false;
+			playerCamera.enabled = true;
 
-		yield return StartCoroutine(Fade(0)); // Fade In
-		overlayFade.gameObject.SetActive(false);
-	}
+			setCanvas();
+
+			yield return StartCoroutine(Fade(0)); // Fade In
+			overlayFade.gameObject.SetActive(false);
+		}
 
 	public void showSolarSystemView()
 	{
@@ -329,4 +340,36 @@ public class UIBehaviour : MonoBehaviour
 		currentColor.a = targetAlpha;
 		overlayFade.color = currentColor;
 	}
+
+	void checkDayDialogue()
+	{
+		if (Mathf.FloorToInt(days) == 1200 && !Day1200Flag)
+		{
+			Day1200Dialogue.Invoke();
+			Day1200Flag = true;
+		}
+		if (Mathf.FloorToInt(days) == 400 && !Day400Flag)
+		{
+			Day400Dialogue.Invoke();
+			Day400Flag = true;
+		}
+	}
+
+	void checkSolarDialogue()
+	{
+		if (viewSolarSystem)
+		{
+			solarSystemSecondsViewed += Time.deltaTime;
+			if (Mathf.FloorToInt(solarSystemSecondsViewed) >= 10 && !SolarFlag)
+			{
+				SolarFlag = true;
+				SolarDialogue.Invoke();
+			}
+		}
+		else
+		{
+			solarSystemSecondsViewed = 0f;
+		}
+	}
+}
 }

@@ -10,10 +10,10 @@ public class InputManager : MonoBehaviour {
 	//[SerializeField] private PointAndClickMover playerController = null;
 	[SerializeField] private Miner miner = null;
 
-	[Header("Inputs interpretted")]
-	//[SerializeField] KeyCode inventoryKey = KeyCode.Tab;
-	//[SerializeField] KeyCode moveKey = KeyCode.Mouse1;
-	[SerializeField] KeyCode miningKey = KeyCode.Mouse0;
+    [Header("Inputs interpretted")]
+    [SerializeField] KeyCode inventoryKey = KeyCode.Tab;
+    [SerializeField] KeyCode moveKey = KeyCode.Mouse0;
+    [SerializeField] KeyCode miningKey = KeyCode.Mouse0;
 
 	private void Start() {}
 

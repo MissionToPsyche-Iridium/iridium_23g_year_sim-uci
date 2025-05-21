@@ -29,6 +29,7 @@ public class TitleScreen : MonoBehaviour
         psyche.SetActive(true);
         psycheLogo.gameObject.SetActive(true);
         yearOnPsycheLogo.gameObject.SetActive(true);
+        SoundManager.LoopSound(SoundType.MENU_THEME);
     }
 
     public void NewMission() {

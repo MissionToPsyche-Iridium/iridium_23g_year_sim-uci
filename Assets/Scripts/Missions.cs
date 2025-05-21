@@ -77,8 +77,9 @@ public class Missions : MonoBehaviour
                                     miningSpeed8Flag, miningSpeed5Flag, miningSpeed2Flag, multiplier2Flag, multiplier5Flag, multiplier10Flag,
                                     flashlight2Flag, flashlight3Flag, missionComplete };
 
-    void Start()
-    {
+    void Start() {
+		SoundManager.StopSound(SoundType.MENU_THEME); // Stop menu music
+		SoundManager.LoopSound(SoundType.GAME_AMBIENCE); // Begin game ambience upon Mission start
     }
 
     void Update()
