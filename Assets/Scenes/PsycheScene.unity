@@ -3649,30 +3649,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1777441208}
     m_Modifications:
-    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: miningTime
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: currentResource
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127547087465276517, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7170993162352187000, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: -3482897971593640056, guid: 914b17a0353115f43991dc5af3f44be3, type: 3}
-    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_Constraints
-      value: 14
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c594f973c6db0542af4035dddcbf63e, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -3748,6 +3724,30 @@ PrefabInstance:
     - target: {fileID: 8164078558771037576, guid: 0c594f973c6db0542af4035dddcbf63e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: miningTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: currentResource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127547087465276517, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170993162352187000, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -3482897971593640056, guid: 914b17a0353115f43991dc5af3f44be3, type: 3}
+    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_Constraints
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5127547087465276517, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
@@ -6364,8 +6364,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: -219.99997}
-  m_SizeDelta: {x: 770, y: 112}
+  m_AnchoredPosition: {x: -5, y: -219.99997}
+  m_SizeDelta: {x: 770, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &327814632
 MonoBehaviour:
@@ -9286,9 +9286,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5217978706621872809, guid: 9e041a977b43ed34da274691a0cc95d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.696
+      objectReference: {fileID: 0}
+    - target: {fileID: -5217978706621872809, guid: 9e041a977b43ed34da274691a0cc95d2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.663
+      objectReference: {fileID: 0}
+    - target: {fileID: -5217978706621872809, guid: 9e041a977b43ed34da274691a0cc95d2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.293
+      objectReference: {fileID: 0}
+    - target: {fileID: -1538112130698044685, guid: 9e041a977b43ed34da274691a0cc95d2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.663
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9e041a977b43ed34da274691a0cc95d2, type: 3}
       propertyPath: m_Name
       value: rover2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3441818840068035881, guid: 9e041a977b43ed34da274691a0cc95d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 3441818840068035881, guid: 9e041a977b43ed34da274691a0cc95d2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.646
+      objectReference: {fileID: 0}
+    - target: {fileID: 3441818840068035881, guid: 9e041a977b43ed34da274691a0cc95d2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.303
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9978,7 +10006,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -219.99997}
-  m_SizeDelta: {x: 811, y: 200}
+  m_SizeDelta: {x: 811, y: 164}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &462803223
 MonoBehaviour:
@@ -15598,58 +15626,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MagnesiumEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1510923196}
-        m_TargetAssemblyTypeName: MessageManager, Assembly-CSharp
-        m_MethodName: SetLines
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 629a82d815d51ca46b67dca2cbd48182, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1510923194}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   IronEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1510923196}
-        m_TargetAssemblyTypeName: MessageManager, Assembly-CSharp
-        m_MethodName: SetLines
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 629a82d815d51ca46b67dca2cbd48182, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1510923194}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   UpgradeNickelEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -17214,30 +17194,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1777441208}
     m_Modifications:
-    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: miningTime
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: currentResource
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127547087465276517, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7170993162352187000, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: -3482897971593640056, guid: 914b17a0353115f43991dc5af3f44be3, type: 3}
-    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_Constraints
-      value: 14
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c594f973c6db0542af4035dddcbf63e, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -17301,6 +17257,30 @@ PrefabInstance:
     - target: {fileID: 8164078558771037576, guid: 0c594f973c6db0542af4035dddcbf63e, type: 3}
       propertyPath: m_TagString
       value: Mine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: miningTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: currentResource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127547087465276517, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170993162352187000, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -3482897971593640056, guid: 914b17a0353115f43991dc5af3f44be3, type: 3}
+    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_Constraints
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5127547087465276517, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
@@ -32386,7 +32366,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -279, y: -136}
+  m_AnchoredPosition: {x: -270, y: -150}
   m_SizeDelta: {x: 240, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1167205516
