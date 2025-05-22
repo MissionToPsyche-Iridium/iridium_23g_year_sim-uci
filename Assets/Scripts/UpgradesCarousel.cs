@@ -50,6 +50,9 @@ public class UpgradesCarousel : MonoBehaviour {
     private Dictionary<int, (int next, Dictionary<string, int> requirements)> resourceMultiplierUpgrades;
     private Dictionary<int, (int next, Dictionary<string, int> requirements)> lightStrengthUpgrades;
 
+    public ResearchPaperLock paperLock;
+	public PopUpManager popUpManager;
+
     void Start() {
         matsList = new List<TMP_Text> { mat1, mat2, mat3 };
         reqsList = new List<TMP_Text> { req1, req2, req3 };
@@ -277,38 +280,51 @@ public class UpgradesCarousel : MonoBehaviour {
     }
 
     public void upgradeSelectedUpgrade() { // Upgrades the selected upgrade
-        if (index == 0 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(drillUpgrades[currentDrill].requirements)) {
+        if (index == 0 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(drillUpgrades[currentDrill].requirements))
+        {
             deductMineralAmount(drillUpgrades[currentDrill].requirements);
             currentDrill = drillUpgrades[currentDrill].next;
             missions.task2Transitioned = false;
+            paperLock.UnlockPaper("Magnetometer");
+            popUpManager.CreatePopUp("Research Paper #8 is Unlocked");
+
         }
-        else if (index == 1 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(miningSpeedUpgrades[currentMiningSpeed].requirements)) {
+        else if (index == 1 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(miningSpeedUpgrades[currentMiningSpeed].requirements))
+        {
             deductMineralAmount(miningSpeedUpgrades[currentMiningSpeed].requirements);
             currentMiningSpeed = miningSpeedUpgrades[currentMiningSpeed].next;
             missions.task3Transitioned = false;
+            paperLock.UnlockPaper("Multispectral Imager");
+            popUpManager.CreatePopUp("Research Paper #9 is Unlocked");
         }
-        else if (index == 2 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(resourceMultiplierUpgrades[currentResourceMultiplier].requirements)) {
+        else if (index == 2 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(resourceMultiplierUpgrades[currentResourceMultiplier].requirements))
+        {
             deductMineralAmount(resourceMultiplierUpgrades[currentResourceMultiplier].requirements);
             currentResourceMultiplier = resourceMultiplierUpgrades[currentResourceMultiplier].next;
             missions.task4Transitioned = false;
         }
-        else if (index == 3 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(lightStrengthUpgrades[currentLightStrength].requirements)) {
+        else if (index == 3 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(lightStrengthUpgrades[currentLightStrength].requirements))
+        {
             deductMineralAmount(lightStrengthUpgrades[currentLightStrength].requirements);
             currentLightStrength = lightStrengthUpgrades[currentLightStrength].next;
             missions.task5Transitioned = false;
         }
-        else if (!checkIfMaxUpgradeReached()) {
+        else if (!checkIfMaxUpgradeReached())
+        {
             StartCoroutine(ErrorPopUpTextFade()); // Error text appears when not enough resources
         }
         displayPageInformation(); // Updates page after upgrade
     }
 
-    public void deductMineralAmount(Dictionary<string, int> requirements) {  // Player's mineral amount - required mineral amount for upgrade = new Player's mineral amount
-       List<string> keys = requirements.Keys.ToList();
+    public void deductMineralAmount(Dictionary<string, int> requirements)
+    {  // Player's mineral amount - required mineral amount for upgrade = new Player's mineral amount
+        List<string> keys = requirements.Keys.ToList();
 
-        for (int i = 0; i < keys.Count; i++) {
+        for (int i = 0; i < keys.Count; i++)
+        {
             matAmountsList[keys[i]] -= requirements[keys[i]];
-            if (matAmountsList[keys[i]] < 0) {
+            if (matAmountsList[keys[i]] < 0)
+            {
                 matAmountsList[keys[i]] = 0;
             }
         }
