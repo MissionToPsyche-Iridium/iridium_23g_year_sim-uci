@@ -302,6 +302,8 @@ public class UpgradesCarousel : MonoBehaviour {
             deductMineralAmount(resourceMultiplierUpgrades[currentResourceMultiplier].requirements);
             currentResourceMultiplier = resourceMultiplierUpgrades[currentResourceMultiplier].next;
             missions.task4Transitioned = false;
+            paperLock.UnlockPaper("Gamma-Ray and Neutron Spectrometer");
+            popUpManager.CreatePopUp("Research Paper #10 is Unlocked");
         }
         else if (index == 3 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(lightStrengthUpgrades[currentLightStrength].requirements))
         {
