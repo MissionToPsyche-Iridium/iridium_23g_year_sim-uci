@@ -3649,30 +3649,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1777441208}
     m_Modifications:
-    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: miningTime
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: currentResource
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127547087465276517, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7170993162352187000, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: -3482897971593640056, guid: 914b17a0353115f43991dc5af3f44be3, type: 3}
-    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_Constraints
-      value: 14
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c594f973c6db0542af4035dddcbf63e, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -3748,6 +3724,30 @@ PrefabInstance:
     - target: {fileID: 8164078558771037576, guid: 0c594f973c6db0542af4035dddcbf63e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: miningTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: currentResource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127547087465276517, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170993162352187000, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -3482897971593640056, guid: 914b17a0353115f43991dc5af3f44be3, type: 3}
+    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_Constraints
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5127547087465276517, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
@@ -15575,8 +15575,8 @@ MonoBehaviour:
   resourceMultiplierImage: {fileID: 21300000, guid: 625720e3663134b759909760918a5deb, type: 3}
   flashlightImage: {fileID: 21300000, guid: 582dbb6b61af54dcaa9e21b101401567, type: 3}
   currentDrill: Magnesium
-  currentMiningSpeed: 5
-  currentResourceMultiplier: 10
+  currentMiningSpeed: 10
+  currentResourceMultiplier: 1
   currentLightStrength: 1
   magnesiumAmount: 0
   ironAmount: 0
@@ -17226,30 +17226,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1777441208}
     m_Modifications:
-    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: miningTime
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: currentResource
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127547087465276517, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7170993162352187000, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: -3482897971593640056, guid: 914b17a0353115f43991dc5af3f44be3, type: 3}
-    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_Constraints
-      value: 14
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c594f973c6db0542af4035dddcbf63e, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -17313,6 +17289,30 @@ PrefabInstance:
     - target: {fileID: 8164078558771037576, guid: 0c594f973c6db0542af4035dddcbf63e, type: 3}
       propertyPath: m_TagString
       value: Mine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: miningTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: currentResource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127547087465276517, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170993162352187000, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -3482897971593640056, guid: 914b17a0353115f43991dc5af3f44be3, type: 3}
+    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_Constraints
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5127547087465276517, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
@@ -36916,30 +36916,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1777441208}
     m_Modifications:
-    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: miningTime
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: currentResource
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5127547087465276517, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7170993162352187000, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: -3482897971593640056, guid: 914b17a0353115f43991dc5af3f44be3, type: 3}
-    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
-      propertyPath: m_Constraints
-      value: 14
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c594f973c6db0542af4035dddcbf63e, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -37003,6 +36979,30 @@ PrefabInstance:
     - target: {fileID: 8164078558771037576, guid: 0c594f973c6db0542af4035dddcbf63e, type: 3}
       propertyPath: m_TagString
       value: Mine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: miningTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3830229809717209066, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: currentResource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127547087465276517, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170993162352187000, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -3482897971593640056, guid: 914b17a0353115f43991dc5af3f44be3, type: 3}
+    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8233427839749101342, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}
+      propertyPath: m_Constraints
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5127547087465276517, guid: 6e32d8cebfac9e44aa49607d87f3046a, type: 3}

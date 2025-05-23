@@ -35,7 +35,7 @@ public class ResearchPaperLock : MonoBehaviour
             {
                 entry.isUnlocked = true;
                 UpdateButtonState(entry);
-                Debug.Log($"Unlocked paper: {key}");
+                // Debug.Log($"Unlocked paper: {key}");
                 break;
             }
         }
