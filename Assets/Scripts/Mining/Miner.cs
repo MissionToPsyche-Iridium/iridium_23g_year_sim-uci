@@ -24,7 +24,7 @@ public class Miner : MonoBehaviour
             if (other.TryGetComponent(out m)) {
                 if (!nearbyMines.Contains(m)) {
                     nearbyMines.Add(m);
-                    Debug.Log("Added: " + m.name + " | Count: " + nearbyMines.Count);
+                    // Debug.Log("Added: " + m.name + " | Count: " + nearbyMines.Count);
                     m.EnterMine(this);
                     onEnterMine?.Invoke(m);
                 }
@@ -39,7 +39,7 @@ public class Miner : MonoBehaviour
                 if (nearbyMines.Contains(m)) {
                     m.ExitMine();
                     nearbyMines.Remove(m);
-                    Debug.Log("Removed: " + m.name + " | Count: " + nearbyMines.Count);
+                    // Debug.Log("Removed: " + m.name + " | Count: " + nearbyMines.Count);
                     onExitMine?.Invoke();
                 }
 

@@ -50,9 +50,9 @@ public class Missions : MonoBehaviour
     public CanvasGroup task4CanvasGroup;
     public CanvasGroup task5CanvasGroup;
 
-    public bool task1Transitioned = false;
-    public bool task2Transitioned = false;
-    public bool task3Transitioned = false;
+    public bool task1Transitioned = false; // Prevents Update from rapidly switching between unchecked and checked checkbox images 
+    public bool task2Transitioned = false; // and glitching mission animtion. If false, it begins the mission animation and transitions
+    public bool task3Transitioned = false; // to true. Else, it prevents the animation from playing.
     public bool task4Transitioned = false;
     public bool task5Transitioned = false;
 
@@ -76,7 +76,12 @@ public class Missions : MonoBehaviour
 
     public bool[] allFlags => new bool[] { magnesiumFlag, ironFlag, nickelFlag, drillReinforcedMagFlag, drillIronFlag, drillNickelFlag,
                                     miningSpeed8Flag, miningSpeed5Flag, miningSpeed2Flag, multiplier2Flag, multiplier5Flag, multiplier10Flag,
-                                    flashlight2Flag, flashlight3Flag, missionComplete };
+                                    flashlight2Flag, flashlight3Flag,
+                                    paperLock.IsUnlocked("Core"), paperLock.IsUnlocked("Metals"), paperLock.IsUnlocked("Orbit & Rotation"),
+                                    paperLock.IsUnlocked("Psyche Shape"), paperLock.IsUnlocked("Temperature and Weather"), paperLock.IsUnlocked("Psyche History"),
+                                    paperLock.IsUnlocked("Psyche Mission Timeline"), paperLock.IsUnlocked("Magnetometer"), paperLock.IsUnlocked("Multispectral Imager"),
+                                    paperLock.IsUnlocked("Gamma-Ray and Neutron Spectrometer"),
+                                    missionComplete };
 
     void Start() {
 		SoundManager.StopSound(SoundType.MENU_THEME); // Stop menu music
@@ -100,7 +105,7 @@ public class Missions : MonoBehaviour
         setProgress();
     }
 
-    public void displayMissions()
+    public void displayMissions() // How a mission will be displayed if active or not
     {
         mineralMissions();
         drillMissions();
@@ -109,7 +114,7 @@ public class Missions : MonoBehaviour
         flashlightMissions();
     }
 
-    public void hideMissions()
+    public void hideMissions() // Hids any everything but one mission for display when in collapse mode
     {
         Transform topMission = GetFirstActiveChild();
 
@@ -124,7 +129,7 @@ public class Missions : MonoBehaviour
         }
     }
 
-    Transform GetFirstActiveChild()
+    Transform GetFirstActiveChild() // Gets the first active mission
     {
         for (int i = 1; i < missionsBody.transform.childCount; i++)
         {
@@ -136,7 +141,7 @@ public class Missions : MonoBehaviour
         return null;
     }
 
-    public void checkStates()
+    public void checkStates() // Checks the states of all mission types
     {
         checkMineralState();
         checkDrillState();
@@ -145,7 +150,7 @@ public class Missions : MonoBehaviour
         checkFlashlightState();
     }
 
-    public void checkMineralState()
+    public void checkMineralState() // Checks if a mineral has been mined, updates the flag to true for that mineral
     {
         if (!magnesiumFlag && upgrades.magnesiumAmount > 0)
         {
@@ -171,7 +176,7 @@ public class Missions : MonoBehaviour
         }
     }
 
-    public void mineralMissions()
+    public void mineralMissions() // How mineral missions will be displayed
     {
         if (!magnesiumFlag)
         {
@@ -189,13 +194,13 @@ public class Missions : MonoBehaviour
         }
     }
 
-    IEnumerator FadeTaskIn(string newText)
+    IEnumerator FadeTaskIn(string newText) // Solely for mineral missions & final mission to fade in
     {
         task1text.text = newText;
         yield return FadeCanvasGroup(task1CanvasGroup, 0f, 1f, 0.5f);
     }
 
-    public void checkDrillState()
+    public void checkDrillState() // Checks for drill state from Upgrades, updates respective drill flag to true
     {
         if (upgrades.currentDrill == "Reinforced Magnesium")
         {
@@ -216,15 +221,15 @@ public class Missions : MonoBehaviour
         }
     }
 
-    public void drillMissions()
+    public void drillMissions() // Checks flags and displays the appropriate task for drill missions. Starts task animation.
     {
-        if (magnesiumFlag && !drillReinforcedMagFlag)
+        if (magnesiumFlag && !drillReinforcedMagFlag) // Checks flag
         {
             task2.gameObject.SetActive(true);
-            if (!task2Transitioned)
+            if (!task2Transitioned) // Checks if task has been animated yet
             {
-                StartCoroutine(FadeCanvasGroup(task2CanvasGroup, 0f, 1f, 0.5f));
-                task2Transitioned = true;
+                StartCoroutine(FadeCanvasGroup(task2CanvasGroup, 0f, 1f, 0.5f)); // Task fades in
+                task2Transitioned = true; // Task has completed its animation
             }
         }
         else if (drillReinforcedMagFlag && !drillIronFlag)
@@ -247,7 +252,7 @@ public class Missions : MonoBehaviour
         }
         else
         {
-            if (drillNickelFlag && !task2Transitioned)
+            if (drillNickelFlag && !task2Transitioned) // Removes drill task object and begins finished task animation
             {
                 StartCoroutine(FinishTaskTransition(task2, task2image, task2text, task2CanvasGroup));
                 task2Transitioned = true;
@@ -255,7 +260,7 @@ public class Missions : MonoBehaviour
         }
     }
 
-    public void checkMiningSpeedState()
+    public void checkMiningSpeedState() // Checks for mining speed state from Upgrades, updates respective mining speed flag to true
     {
         if (upgrades.currentMiningSpeed == 8)
         {
@@ -275,7 +280,7 @@ public class Missions : MonoBehaviour
         }
     }
 
-    public void miningSpeedMissions()
+    public void miningSpeedMissions() // Checks flags and displays the appropriate task for mining speed missions. Starts task animation.
     {
         if (magnesiumFlag && !miningSpeed8Flag)
         {
@@ -314,7 +319,7 @@ public class Missions : MonoBehaviour
         }
     }
 
-    public void checkMultiplierState()
+    public void checkMultiplierState() // Checks for multiplier state from Upgrades, updates respective multiplier flag to true
     {
         if (upgrades.currentResourceMultiplier == 2)
         {
@@ -330,7 +335,7 @@ public class Missions : MonoBehaviour
         }
     }
 
-    public void multiplierMissions()
+    public void multiplierMissions() // Checks flags and displays the appropriate task for multiplier missions. Starts task animation.
     {
         if (magnesiumFlag && !multiplier2Flag)
         {
@@ -415,16 +420,23 @@ public class Missions : MonoBehaviour
         }
     }
 
-    public bool checkIfAllMissionsComplete()
+    public bool checkIfAllMissionsComplete() // Checks if all upgrades are mxed out
     {
         return nickelFlag &&
             drillNickelFlag &&
             miningSpeed2Flag &&
             multiplier10Flag &&
-            flashlight3Flag;
+            flashlight3Flag &&
+            paperLock.IsUnlocked("Orbit & Rotation") &&
+            paperLock.IsUnlocked("Temperature and Weather") &&
+            paperLock.IsUnlocked("Psyche Mission Timeline") &&
+            paperLock.IsUnlocked("Magnetometer") &&
+            paperLock.IsUnlocked("Multispectral Imager") &&
+            paperLock.IsUnlocked("Gamma-Ray and Neutron Spectrometer")
+            ;
     }
 
-    public void finalMission()
+    public void finalMission() // Initializes the final mission
     {
         bool allCompleted = checkIfAllMissionsComplete();
         if (allCompleted && !missionComplete)
@@ -434,7 +446,7 @@ public class Missions : MonoBehaviour
         }
     }
 
-    public void setProgress()
+    public void setProgress() // Sets the progress visual for the progress bar
     {
         float trueCount = 0f;
         for (int i = 0; i < allFlags.Length; i++)
@@ -444,11 +456,14 @@ public class Missions : MonoBehaviour
                 trueCount += 1;
             }
         }
-        completionBarImage.fillAmount = trueCount * 0.06666666666666667f; // Change to 0.04 once Research papers are implemented
-        percentage.text = (completionBarImage.fillAmount * 100).ToString() + "%";
+        float totalFlags = allFlags.Length;
+        float percentageValue = (trueCount / totalFlags) * 100f;
+
+        completionBarImage.fillAmount = percentageValue / 100f;
+        percentage.text = percentageValue.ToString("F2") + "%";
     }
 
-    IEnumerator FinishTaskTransition(GameObject task, Image checkboxImage, TMP_Text taskText, CanvasGroup canvasGroup)
+    IEnumerator FinishTaskTransition(GameObject task, Image checkboxImage, TMP_Text taskText, CanvasGroup canvasGroup) // Final task animation
     {
         // 1. Fade out old content
         yield return FadeCanvasGroup(canvasGroup, 1f, 0f, 0.5f);
@@ -468,7 +483,7 @@ public class Missions : MonoBehaviour
         task.gameObject.SetActive(false);
     }
 
-    IEnumerator TransitionTask(Image checkboxImage, TMP_Text taskText, CanvasGroup canvasGroup, string newText)
+    IEnumerator TransitionTask(Image checkboxImage, TMP_Text taskText, CanvasGroup canvasGroup, string newText) // Transition to next task animation
     {
         // 1. Fade out old content
         yield return FadeCanvasGroup(canvasGroup, 1f, 0f, 0.5f);
@@ -491,7 +506,7 @@ public class Missions : MonoBehaviour
         yield return FadeCanvasGroup(canvasGroup, 0f, 1f, 0.5f);
     }
 
-    IEnumerator FadeCanvasGroup(CanvasGroup group, float from, float to, float duration)
+    IEnumerator FadeCanvasGroup(CanvasGroup group, float from, float to, float duration) // Fades the canvas group to target alpha
     {
         float time = 0f;
         while (time < duration)

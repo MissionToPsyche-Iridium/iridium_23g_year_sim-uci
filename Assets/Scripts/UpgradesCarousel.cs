@@ -38,7 +38,7 @@ public class UpgradesCarousel : MonoBehaviour {
 
     [SerializeField] public string currentDrill = "Magnesium";
     [SerializeField] public int currentMiningSpeed = 10;
-    [SerializeField] public int currentResourceMultiplier = 10;
+    [SerializeField] public int currentResourceMultiplier = 1;
     [SerializeField] public int currentLightStrength = 1;
     [SerializeField] public int magnesiumAmount = 0;
     [SerializeField] public int ironAmount = 0;
@@ -100,15 +100,15 @@ public class UpgradesCarousel : MonoBehaviour {
         };
 
         resourceMultiplierUpgrades = new Dictionary<int, (int next, Dictionary<string, int>)> {
-            { 10, (20, new Dictionary<string, int> { // 1x -> 2x
+            { 1, (2, new Dictionary<string, int> { // 1x -> 2x
                     { "Magnesium", 20 }
                 }) 
             },
-            { 20, (50, new Dictionary<string, int> { // 2x -> 5x
+            { 2, (5, new Dictionary<string, int> { // 2x -> 5x
                     { "Iron", 20 }
                 }) 
             },
-            { 50, (100, new Dictionary<string, int> { // 5x -> 10x
+            { 5, (10, new Dictionary<string, int> { // 5x -> 10x
                     { "Nickel", 20 }
                 }) 
             }
