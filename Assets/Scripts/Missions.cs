@@ -76,7 +76,12 @@ public class Missions : MonoBehaviour
 
     public bool[] allFlags => new bool[] { magnesiumFlag, ironFlag, nickelFlag, drillReinforcedMagFlag, drillIronFlag, drillNickelFlag,
                                     miningSpeed8Flag, miningSpeed5Flag, miningSpeed2Flag, multiplier2Flag, multiplier5Flag, multiplier10Flag,
-                                    flashlight2Flag, flashlight3Flag, missionComplete };
+                                    flashlight2Flag, flashlight3Flag,
+                                    paperLock.IsUnlocked("Core"), paperLock.IsUnlocked("Metals"), paperLock.IsUnlocked("Orbit & Rotation"),
+                                    paperLock.IsUnlocked("Psyche Shape"), paperLock.IsUnlocked("Temperature and Weather"), paperLock.IsUnlocked("Psyche History"),
+                                    paperLock.IsUnlocked("Psyche Mission Timeline"), paperLock.IsUnlocked("Magnetometer"), paperLock.IsUnlocked("Multispectral Imager"),
+                                    paperLock.IsUnlocked("Gamma-Ray and Neutron Spectrometer"),
+                                    missionComplete };
 
     void Start() {
 		SoundManager.StopSound(SoundType.MENU_THEME); // Stop menu music
@@ -421,7 +426,14 @@ public class Missions : MonoBehaviour
             drillNickelFlag &&
             miningSpeed2Flag &&
             multiplier10Flag &&
-            flashlight3Flag;
+            flashlight3Flag &&
+            paperLock.IsUnlocked("Orbit & Rotation") &&
+            paperLock.IsUnlocked("Temperature and Weather") &&
+            paperLock.IsUnlocked("Psyche Mission Timeline") &&
+            paperLock.IsUnlocked("Magnetometer") &&
+            paperLock.IsUnlocked("Multispectral Imager") &&
+            paperLock.IsUnlocked("Gamma-Ray and Neutron Spectrometer")
+            ;
     }
 
     public void finalMission() // Initializes the final mission
