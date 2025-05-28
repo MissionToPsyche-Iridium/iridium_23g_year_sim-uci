@@ -15573,11 +15573,9 @@ MonoBehaviour:
   drillImage: {fileID: 21300000, guid: d0b9fbf84ddb44db8980c298ed8517a3, type: 3}
   miningSpeedImage: {fileID: 21300000, guid: 142810b0780dc40aaa4b8beed1c0baec, type: 3}
   resourceMultiplierImage: {fileID: 21300000, guid: 625720e3663134b759909760918a5deb, type: 3}
-  flashlightImage: {fileID: 21300000, guid: 582dbb6b61af54dcaa9e21b101401567, type: 3}
   currentDrill: Magnesium
   currentMiningSpeed: 10
   currentResourceMultiplier: 1
-  currentLightStrength: 1
   magnesiumAmount: 0
   ironAmount: 0
   nickelAmount: 0
@@ -15659,29 +15657,24 @@ MonoBehaviour:
   task2: {fileID: 449942369}
   task3: {fileID: 1239143383}
   task4: {fileID: 1701434677}
-  task5: {fileID: 529387909}
   task1text: {fileID: 700188771}
   task2text: {fileID: 1647343526}
   task3text: {fileID: 345580006}
   task4text: {fileID: 1352180759}
-  task5text: {fileID: 1561639197}
   task1image: {fileID: 1018209710}
   task2image: {fileID: 1073478665}
   task3image: {fileID: 28608368}
   task4image: {fileID: 675025790}
-  task5image: {fileID: 1854174103}
   emptyCheckbox: {fileID: 21300000, guid: 4aeb5c45421984f6fb7c3799a6b3dcda, type: 3}
   crossedCheckbox: {fileID: 21300000, guid: a07f4bd7ec00f498db8582fedbd7feba, type: 3}
   task1CanvasGroup: {fileID: 443026400}
   task2CanvasGroup: {fileID: 449942372}
   task3CanvasGroup: {fileID: 1239143386}
   task4CanvasGroup: {fileID: 1701434680}
-  task5CanvasGroup: {fileID: 529387912}
   task1Transitioned: 0
   task2Transitioned: 0
   task3Transitioned: 0
   task4Transitioned: 0
-  task5Transitioned: 0
   magnesiumFlag: 0
   ironFlag: 0
   nickelFlag: 0
@@ -15694,8 +15687,6 @@ MonoBehaviour:
   multiplier2Flag: 0
   multiplier5Flag: 0
   multiplier10Flag: 0
-  flashlight2Flag: 0
-  flashlight3Flag: 0
   missionComplete: 0
   paperLock: {fileID: 494835210}
   popUpManager: {fileID: 494835207}
@@ -16388,7 +16379,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 720, y: 405}
-  m_SizeDelta: {x: 100, y: 25}
+  m_SizeDelta: {x: 150, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &525976267
 MonoBehaviour:
@@ -16424,7 +16415,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cebee972d8fff4fbeb2c1ebc02c1b200, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4aeb5c45421984f6fb7c3799a6b3dcda, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -38456,8 +38447,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: stuff
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 36318f4958ae24787a245964fcb3be58, type: 2}
+  m_sharedMaterial: {fileID: 1104012020608945117, guid: 36318f4958ae24787a245964fcb3be58, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -38481,7 +38472,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.35
+  m_fontSize: 20.25
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -28,19 +28,16 @@ public class Missions : MonoBehaviour
     public GameObject task2;
     public GameObject task3;
     public GameObject task4;
-    public GameObject task5;
 
     public TMP_Text task1text;
     public TMP_Text task2text;
     public TMP_Text task3text;
     public TMP_Text task4text;
-    public TMP_Text task5text;
 
     public Image task1image;
     public Image task2image;
     public Image task3image;
     public Image task4image;
-    public Image task5image;
     public Sprite emptyCheckbox;
     public Sprite crossedCheckbox;
 
@@ -48,13 +45,11 @@ public class Missions : MonoBehaviour
     public CanvasGroup task2CanvasGroup;
     public CanvasGroup task3CanvasGroup;
     public CanvasGroup task4CanvasGroup;
-    public CanvasGroup task5CanvasGroup;
 
     public bool task1Transitioned = false; // Prevents Update from rapidly switching between unchecked and checked checkbox images 
     public bool task2Transitioned = false; // and glitching mission animtion. If false, it begins the mission animation and transitions
     public bool task3Transitioned = false; // to true. Else, it prevents the animation from playing.
     public bool task4Transitioned = false;
-    public bool task5Transitioned = false;
 
     public bool magnesiumFlag = false;
     public bool ironFlag = false;
@@ -68,15 +63,12 @@ public class Missions : MonoBehaviour
     public bool multiplier2Flag = false;
     public bool multiplier5Flag = false;
     public bool multiplier10Flag = false;
-    public bool flashlight2Flag = false;
-    public bool flashlight3Flag = false;
     public bool missionComplete = false;
     public ResearchPaperLock paperLock;
     public PopUpManager popUpManager;
 
     public bool[] allFlags => new bool[] { magnesiumFlag, ironFlag, nickelFlag, drillReinforcedMagFlag, drillIronFlag, drillNickelFlag,
                                     miningSpeed8Flag, miningSpeed5Flag, miningSpeed2Flag, multiplier2Flag, multiplier5Flag, multiplier10Flag,
-                                    flashlight2Flag, flashlight3Flag,
                                     paperLock.IsUnlocked("Core"), paperLock.IsUnlocked("Metals"), paperLock.IsUnlocked("Orbit & Rotation"),
                                     paperLock.IsUnlocked("Psyche Shape"), paperLock.IsUnlocked("Temperature and Weather"), paperLock.IsUnlocked("Psyche History"),
                                     paperLock.IsUnlocked("Psyche Mission Timeline"), paperLock.IsUnlocked("Magnetometer"), paperLock.IsUnlocked("Multispectral Imager"),
@@ -111,7 +103,6 @@ public class Missions : MonoBehaviour
         drillMissions();
         miningSpeedMissions();
         multiplierMissions();
-        flashlightMissions();
     }
 
     public void hideMissions() // Hids any everything but one mission for display when in collapse mode
@@ -147,7 +138,6 @@ public class Missions : MonoBehaviour
         checkDrillState();
         checkMiningSpeedState();
         checkMultiplierState();
-        checkFlashlightState();
     }
 
     public void checkMineralState() // Checks if a mineral has been mined, updates the flag to true for that mineral
@@ -374,59 +364,12 @@ public class Missions : MonoBehaviour
         }
     }
 
-    public void checkFlashlightState()
-    {
-        if (upgrades.currentLightStrength == 2)
-        {
-            flashlight2Flag = true;
-        }
-        else if (upgrades.currentLightStrength == 3)
-        {
-            if (!flashlight3Flag)
-            {
-                flashlight3Flag = true;
-                Flashlight3Event.Invoke();
-            }
-        }
-    }
-
-    public void flashlightMissions()
-    {
-        if (ironFlag && !flashlight2Flag)
-        {
-            task5.gameObject.SetActive(true);
-            if (!task5Transitioned)
-            {
-                StartCoroutine(FadeCanvasGroup(task5CanvasGroup, 0f, 1f, 0.5f));
-                task5Transitioned = true;
-            }
-        }
-        else if (flashlight2Flag && !flashlight3Flag)
-        {
-            task5.gameObject.SetActive(true);
-            if (!task5Transitioned)
-            {
-                StartCoroutine(TransitionTask(task5image, task5text, task5CanvasGroup, "Upgrade Flashlight to Level 3"));
-                task5Transitioned = true;
-            }
-        }
-        else
-        {
-            if (flashlight3Flag)
-            {
-                StartCoroutine(FinishTaskTransition(task5, task5image, task5text, task5CanvasGroup));
-                task5Transitioned = false;
-            }
-        }
-    }
-
     public bool checkIfAllMissionsComplete() // Checks if all upgrades are mxed out
     {
         return nickelFlag &&
             drillNickelFlag &&
             miningSpeed2Flag &&
             multiplier10Flag &&
-            flashlight3Flag &&
             paperLock.IsUnlocked("Orbit & Rotation") &&
             paperLock.IsUnlocked("Temperature and Weather") &&
             paperLock.IsUnlocked("Psyche Mission Timeline") &&

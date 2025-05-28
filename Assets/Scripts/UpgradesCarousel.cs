@@ -34,12 +34,10 @@ public class UpgradesCarousel : MonoBehaviour {
     [SerializeField] public Sprite drillImage;
     [SerializeField] public Sprite miningSpeedImage;
     [SerializeField] public Sprite resourceMultiplierImage;
-    [SerializeField] public Sprite flashlightImage;
 
     [SerializeField] public string currentDrill = "Magnesium";
     [SerializeField] public int currentMiningSpeed = 10;
     [SerializeField] public int currentResourceMultiplier = 1;
-    [SerializeField] public int currentLightStrength = 1;
     [SerializeField] public int magnesiumAmount = 0;
     [SerializeField] public int ironAmount = 0;
     [SerializeField] public int nickelAmount = 0;
@@ -48,7 +46,6 @@ public class UpgradesCarousel : MonoBehaviour {
     private Dictionary<string, (string next, Dictionary<string, int> requirements)> drillUpgrades;
     private Dictionary<int, (int next, Dictionary<string, int> requirements)> miningSpeedUpgrades;
     private Dictionary<int, (int next, Dictionary<string, int> requirements)> resourceMultiplierUpgrades;
-    private Dictionary<int, (int next, Dictionary<string, int> requirements)> lightStrengthUpgrades;
 
     public ResearchPaperLock paperLock;
 	public PopUpManager popUpManager;
@@ -60,8 +57,7 @@ public class UpgradesCarousel : MonoBehaviour {
         upgradeTypes = new Dictionary<int, (string, Sprite, bool)> {
             { 0, ("Drill", drillImage, false) },
             { 1, ("Mining Speed", miningSpeedImage, false) },
-            { 2, ("Resource Multiplier", resourceMultiplierImage, false) },
-            { 3, ("Flashlight Strength", flashlightImage, false) }
+            { 2, ("Resource Multiplier", resourceMultiplierImage, false) }
         };
 
         drillUpgrades = new Dictionary<string, (string, Dictionary<string, int>)> {
@@ -114,17 +110,6 @@ public class UpgradesCarousel : MonoBehaviour {
             }
         };
 
-        lightStrengthUpgrades = new Dictionary<int, (int next, Dictionary<string, int>)> {
-            { 1, (2, new Dictionary<string, int> { // Level 1 -> Level 2
-                    { "Iron", 10 }
-                }) 
-            },
-            { 2, (3, new Dictionary<string, int> { // Level 2 -> Level 3
-                    { "Nickel", 10 }
-                }) 
-            }
-        };
-
         matAmountsList = new Dictionary<string, int> { 
             { "Magnesium", magnesiumAmount},
             { "Iron", ironAmount},
@@ -164,8 +149,10 @@ public class UpgradesCarousel : MonoBehaviour {
         displayPageInformation();
     }
 
-    public void Next() {
-        if (index != 3) {
+    public void Next()
+    {
+        if (index != 2)
+        {
             index += 1;
         }
         displayPageInformation();
@@ -221,13 +208,6 @@ public class UpgradesCarousel : MonoBehaviour {
                     materialRequiredSetUp(resourceMultiplierUpgrades[currentResourceMultiplier].requirements); ;
                 }
                 break;
-            case 3:
-                if (currentLightStrength != 3) {
-                    from.text = "Level " + currentLightStrength.ToString();
-                    to.text = "Level " + lightStrengthUpgrades[currentLightStrength].next.ToString();
-                    materialRequiredSetUp(lightStrengthUpgrades[currentLightStrength].requirements);
-                }
-                break;
             default:
                 if (currentDrill != "Nickel") {
                     from.text = currentDrill;
@@ -257,10 +237,7 @@ public class UpgradesCarousel : MonoBehaviour {
         else if (index == 1 && currentMiningSpeed == 2) { // Checks if mining speed upgrade max
             return true;
         }
-        else if (index == 2 && currentResourceMultiplier == 100) { // Checks if resource multiplier upgrade max
-            return true;
-        }
-        else if (index == 3 && currentLightStrength == 3) { // Checks if flashlight strength upgrade max
+        else if (index == 2 && currentResourceMultiplier == 10) { // Checks if resource multiplier upgrade max
             return true;
         }
         else {
@@ -304,12 +281,6 @@ public class UpgradesCarousel : MonoBehaviour {
             missions.task4Transitioned = false;
             paperLock.UnlockPaper("Gamma-Ray and Neutron Spectrometer");
             popUpManager.CreatePopUp("Research Paper #10 is Unlocked");
-        }
-        else if (index == 3 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(lightStrengthUpgrades[currentLightStrength].requirements))
-        {
-            deductMineralAmount(lightStrengthUpgrades[currentLightStrength].requirements);
-            currentLightStrength = lightStrengthUpgrades[currentLightStrength].next;
-            missions.task5Transitioned = false;
         }
         else if (!checkIfMaxUpgradeReached())
         {
