@@ -24,6 +24,7 @@ MonoBehaviour:
       system using your WASD keys.
   - Speaker: Mission Control
     Line: "Fantastic\u2014looks like everything is up and running. Let\u2019s get
-      this show on the road.\\nI\u2019ve uploaded your first task. You\u2019ll be
-      solo on this mission, but I\u2019ll be in your ear the whole way. Godspeed,
-      EROS. "
+      this show on the road."
+  - Speaker: Mission Control
+    Line: "I\u2019ve uploaded your first task. You\u2019ll be solo on this mission,
+      but I\u2019ll be in your ear the whole way. Godspeed, EROS. "
