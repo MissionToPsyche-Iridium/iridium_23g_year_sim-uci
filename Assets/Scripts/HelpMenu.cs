@@ -26,6 +26,7 @@ public class HelpMenu : MonoBehaviour {
     public Sprite hintTimeImage;
     public Sprite hintDrillImage;
     public Sprite hintMiningSpeedImage;
+    public Sprite hintResourceMultiplierImage;
 
 
     void Start() {
@@ -83,12 +84,14 @@ public class HelpMenu : MonoBehaviour {
         infoContent.gameObject.SetActive(true);
         helpTitle.text = "Missions";
         helpText.text = "Missions will help guide you to completing your main mission: Gather as much data from Psyche as you can in a year. Complete them all to finish the game.";
+        helpImage.sprite = missionsImage;
     }
 
     public void ProgressBarButton() {
         infoContent.gameObject.SetActive(true);
         helpTitle.text = "Progress Bar";
         helpText.text = "This bar shows how much progress you have made to completing your Psyche mission. Completing missions, maxing upgrades, and generating research papers will increase your progress.";
+        helpImage.sprite = progressImage;
     }
 
     public void DaysCountdownButton() {
@@ -145,10 +148,12 @@ public class HelpMenu : MonoBehaviour {
         helpImage.sprite = hint4Image;
     }
 
-    public void ResearchPaper5Hint() {
+    public void ResearchPaper5Hint()
+    {
         infoContent.gameObject.SetActive(true);
         helpTitle.text = "Research Paper #5 Hint";
         helpText.text = "Explore around the Southern Hemisphere of Psyche...Watch where you are hovering!";
+        helpImage.sprite = hint5Image;
     }
 
     public void ResearchPaper6Hint() {
@@ -182,6 +187,7 @@ public class HelpMenu : MonoBehaviour {
     public void ResearchPaper10Hint() {
         infoContent.gameObject.SetActive(true);
         helpTitle.text = "Research Paper #10 Hint";
-        helpText.text = "Keep upgrading your flashlight...";
+        helpText.text = "Keep upgrading resource multiplier...";
+        helpImage.sprite = hintResourceMultiplierImage;
     }
  }
