@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: b343ceec10ee44737abc0a89640b22bf
+  m_OcclusionCullingData: {fileID: 36300000, guid: ccc07d66a2e02444780199c1542e4281, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -29051,6 +29051,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Magnesium.2
       objectReference: {fileID: 0}
+    - target: {fileID: -577646678304235469, guid: 1a8ea006c684c1845a5c4ab832d64003, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1a8ea006c684c1845a5c4ab832d64003, type: 3}
       propertyPath: m_Name
       value: Magnesium
@@ -29059,9 +29063,21 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Mine
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1a8ea006c684c1845a5c4ab832d64003, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378358387506287701, guid: 1a8ea006c684c1845a5c4ab832d64003, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8039765736737727803, guid: 1a8ea006c684c1845a5c4ab832d64003, type: 3}
       propertyPath: m_Name
       value: Magnesium.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039765736737727803, guid: 1a8ea006c684c1845a5c4ab832d64003, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -60958,7 +60974,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!23 &5223984279624449923
 MeshRenderer:
