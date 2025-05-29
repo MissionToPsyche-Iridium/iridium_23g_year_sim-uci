@@ -45,7 +45,7 @@ public class MessageManager : MonoBehaviour {
 	IEnumerator TypeLine() {
 		foreach (char c in line.ToCharArray()) {
 			textbox.text += c;
-			SoundManager.PlaySound(SoundType.DIALOGUE_CHARACTER_BEEP);
+			SoundManager.PlaySound(SoundType.DIALOGUE_CHARACTER_BEEP, 0.24f); // Reduced to 24% volume
 			yield return new WaitForSecondsRealtime(textSpeed);
 		}
 	}
