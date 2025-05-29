@@ -191,8 +191,8 @@ public class UIBehaviour : MonoBehaviour
 		daysCounterTime.text = days.ToString("0000");
 	}
 
-	public void EndGame()
-	{
+	public void EndGame() {
+		SoundManager.StopSound(SoundType.GAME_AMBIENCE);
 		SceneManager.LoadScene("TitleScreen");
 		cursorManager.ToggleMenuCursor(true);
 	}

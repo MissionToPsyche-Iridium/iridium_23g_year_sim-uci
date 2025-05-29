@@ -7,7 +7,7 @@ public class SettingsMenu : MonoBehaviour {
 	public GameObject settingsMenu;
 	public GameObject warningPopUp;
 	public GameObject helpMenuObject; // HelpMenu GameObject for set active true and false
-	public HelpMenu helpMenu;	// Help Menu script to control button animation state resetting
+	public HelpMenu helpMenu; // Help Menu script to control button animation state resetting
 	public CursorManager cursorManager;
 	public Scene currentScene;
 	public bool isPaused;
@@ -49,9 +49,7 @@ public class SettingsMenu : MonoBehaviour {
 	public void WarningPopUpOpen() {
 		warningPopUp.SetActive(true);
 		cursorManager.ToggleMenuCursor(true);
-
-        // Force Button to reset visually and logically
-        ResetButtonVisual(warningCancelButton);
+		ResetButtonVisual(warningCancelButton); // Force Button to reset visually and logically
 	}
 
 	public void WarningPopUpClose()
@@ -74,6 +72,7 @@ public class SettingsMenu : MonoBehaviour {
 
 	public void GoToMainMenu() {
 		Time.timeScale = 1f;
+		SoundManager.StopSound(SoundType.GAME_AMBIENCE);
 		SceneManager.LoadScene("TitleScreen");
 		cursorManager.ToggleMenuCursor(true);
 	}
