@@ -15943,7 +15943,7 @@ MonoBehaviour:
   cursorImage: {fileID: 21300000, guid: be9399d730d5c4b72a26ef29f4dccf17, type: 3}
   miningImage: {fileID: 0}
   missionsImage: {fileID: 21300000, guid: 5693537d89752476cb5ab409db7d6983, type: 3}
-  progressImage: {fileID: 0}
+  progressImage: {fileID: 21300000, guid: 64682987c50aa4f609d0e623be3f2cf1, type: 3}
   dayscoundownImage: {fileID: 21300000, guid: aa6502108ab7545b6b4ded78606e9dad, type: 3}
   solarsystemviewImage: {fileID: 21300000, guid: 09000b85e038f4b1689149b0107d7c86, type: 3}
   upgradesImage: {fileID: 21300000, guid: c4bd80ab1abb048a5b746dd5651b74ed, type: 3}
@@ -25243,7 +25243,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0%
+  m_text: 0.00%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 36318f4958ae24787a245964fcb3be58, type: 2}
   m_sharedMaterial: {fileID: 1104012020608945117, guid: 36318f4958ae24787a245964fcb3be58, type: 2}
