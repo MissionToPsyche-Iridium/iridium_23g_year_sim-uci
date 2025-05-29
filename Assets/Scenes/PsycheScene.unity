@@ -15785,7 +15785,7 @@ MonoBehaviour:
         m_MethodName: SetLines
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: ad29ba17330c99c42be692667a9c2793, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 629a82d815d51ca46b67dca2cbd48182, type: 2}
           m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -15812,7 +15812,7 @@ MonoBehaviour:
         m_MethodName: SetLines
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 629a82d815d51ca46b67dca2cbd48182, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 8c352be265e43a547a2f29c22efbc35d, type: 2}
           m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
