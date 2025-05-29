@@ -77,7 +77,8 @@ public class HelpMenu : MonoBehaviour {
     public void MiningButton() {
         infoContent.gameObject.SetActive(true);
         helpTitle.text = "Mining";
-        helpText.text = "Mine ore deposits to gather ores by hovering your cursor over the ore and holding right click.";
+        helpText.text = "Mine ore deposits to gather ores by moving close to the ore and HOLD left click or hover your cursor and HOLD left click. You can view how much you have of the ore by opening the Upgrades tab.";
+        helpImage.sprite = miningImage;
     }
 
     public void MissionsButton() {
@@ -126,12 +127,14 @@ public class HelpMenu : MonoBehaviour {
         infoContent.gameObject.SetActive(true);
         helpTitle.text = "Research Paper #1 Hint";
         helpText.text = "Mine a certain ore for the first time...";
+        helpImage.sprite = hint1Image;
     }
 
     public void ResearchPaper2Hint() {
         infoContent.gameObject.SetActive(true);
         helpTitle.text = "Research Paper #2 Hint";
         helpText.text = "Mine a certain ore for the first time...";
+        helpImage.sprite = hint2Image;
     }
 
     public void ResearchPaper3Hint() {

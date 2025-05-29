@@ -28,3 +28,6 @@ MonoBehaviour:
   - Speaker: Mission Control
     Line: "I\u2019ve uploaded your first task. You\u2019ll be solo on this mission,
       but I\u2019ll be in your ear the whole way. Godspeed, EROS. "
+  - Speaker: Mission Control
+    Line: Find a Magnesium ore deposit and hold left click near it until the progress
+      bar is filled.
