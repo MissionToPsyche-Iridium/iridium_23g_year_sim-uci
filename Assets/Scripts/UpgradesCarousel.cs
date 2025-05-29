@@ -62,50 +62,50 @@ public class UpgradesCarousel : MonoBehaviour {
 
         drillUpgrades = new Dictionary<string, (string, Dictionary<string, int>)> {
             { "Magnesium", ("Reinforced Magnesium", new Dictionary<string, int> { // Magnesium -> Reinforced Magnesium
-                    { "Magnesium", 10 } 
+                    { "Magnesium", 1 } 
                 }) 
             },
             { "Reinforced Magnesium", ("Iron", new Dictionary<string, int> { // Reinforced Magnesium -> Iron
-                    { "Magnesium", 20 }, 
-                    { "Iron", 10 }
+                    { "Magnesium", 3 }, 
+                    { "Iron", 1 }
                 })
             },
             { "Iron", ("Nickel", new Dictionary<string, int> { // Iron -> Nickel
-                    { "Magnesium", 50 }, 
-                    { "Iron", 30 }, 
-                    { "Nickel", 10 } 
+                    { "Magnesium", 5 }, 
+                    { "Iron", 3 }, 
+                    { "Nickel", 1 } 
                 })
             }
         };
 
         miningSpeedUpgrades = new Dictionary<int, (int next, Dictionary<string, int>)> {
             { 10, (8, new Dictionary<string, int> { // 10 seconds -> 8 seconds
-                    { "Magnesium", 10 }
+                    { "Magnesium", 1 }
                 }) 
             },
             { 8, (5, new Dictionary<string, int> { // 8 seconds -> 5 seconds
-                    { "Magnesium", 25 },
-                    { "Iron", 10 }
+                    { "Magnesium", 3 },
+                    { "Iron", 1 }
                 }) 
             },
             { 5, (2, new Dictionary<string, int> { // 5 seconds -> 2 seconds
-                    { "Iron", 30 },
-                    { "Nickel", 15 }
+                    { "Iron", 3 },
+                    { "Nickel", 1 }
                 }) 
             }
         };
 
         resourceMultiplierUpgrades = new Dictionary<int, (int next, Dictionary<string, int>)> {
             { 1, (2, new Dictionary<string, int> { // 1x -> 2x
-                    { "Magnesium", 20 }
+                    { "Magnesium", 1 }
                 }) 
             },
             { 2, (5, new Dictionary<string, int> { // 2x -> 5x
-                    { "Iron", 20 }
+                    { "Iron", 1 }
                 }) 
             },
             { 5, (10, new Dictionary<string, int> { // 5x -> 10x
-                    { "Nickel", 20 }
+                    { "Nickel", 1 }
                 }) 
             }
         };
