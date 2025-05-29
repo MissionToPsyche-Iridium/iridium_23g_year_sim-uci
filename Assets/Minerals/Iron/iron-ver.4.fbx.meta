@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4370fdbb8111e534f90ef655bd766b98
+guid: e987ba2ec791e374baa4a679771d0270
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -8,17 +8,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Procedural Iron 1
-    second: {fileID: 2100000, guid: 6fbb52dd083616d42a4371dd76f1b674, type: 2}
+    second: {fileID: 2100000, guid: 96af89d4b5a00f84d8f6b393a7fca025, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Procedural Iron 2
-    second: {fileID: 2100000, guid: 40a512dc1d0e564409d39ee299f4be77, type: 2}
+    second: {fileID: 2100000, guid: 03fc2ec9713f79242b7bd541a7ba89e7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Procedural Iron 3
-    second: {fileID: 2100000, guid: f1e82e3e09b926f4ba6ede66ed3ccf0d, type: 2}
+    second: {fileID: 2100000, guid: 984d63cd0be02854397fd60d12707978, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
