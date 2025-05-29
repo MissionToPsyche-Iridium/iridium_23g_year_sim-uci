@@ -299,26 +299,20 @@ public class UIBehaviour : MonoBehaviour
 		}
 	}
 
-	IEnumerator switchToPsycheWorld()
-	{
+	IEnumerator switchToPsycheWorld() {
 		overlayFade.gameObject.SetActive(true);
 		yield return StartCoroutine(Fade(1)); // Fade Out
 
-		IEnumerator switchToPsycheWorld()
-		{
-			overlayFade.gameObject.SetActive(true);
-			yield return StartCoroutine(Fade(1)); // Fade Out
+		viewSolarSystem = false;
+		solarSystemCamera.enabled = false;
+		playerCamera.enabled = true;
 
-			viewSolarSystem = false;
-			solarSystemCamera.enabled = false;
-			playerCamera.enabled = true;
+		setCanvas();
 
-			setCanvas();
-
-			yield return StartCoroutine(Fade(0)); // Fade In
-			overlayFade.gameObject.SetActive(false);
-		}
+		yield return StartCoroutine(Fade(0)); // Fade In
+		overlayFade.gameObject.SetActive(false);
 	}
+
 	public void showSolarSystemView()
 	{
 		StartCoroutine(switchToSolarSystemView());
