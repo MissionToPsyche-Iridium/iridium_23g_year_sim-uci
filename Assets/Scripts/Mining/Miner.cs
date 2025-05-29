@@ -57,6 +57,10 @@ public class Miner : MonoBehaviour
     // SolarCamera -> "Untagged" Tag
     // Psyche > PsycheCenter > Player > CameraRig > Camera -> "MainCamera" Tag
     public Mineable MineUnderCursor() {
+        if (Camera.main == null) {
+            return null;
+        }
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -89,7 +93,7 @@ public class Miner : MonoBehaviour
     // Called when rover mines the resource
     #region Public Methods
     public void MineCurrent() {
-        Mineable m = ClosestMineInRange();
+        Mineable m = MineUnderCursor();
         if (m != null) {
             m.MineResource();
         }
