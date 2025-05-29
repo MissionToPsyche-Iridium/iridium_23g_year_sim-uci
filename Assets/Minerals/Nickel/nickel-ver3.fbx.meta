@@ -8,17 +8,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Procedural Ore 1
-    second: {fileID: 2100000, guid: 78122751df6681b49a8d48f530ea94e2, type: 2}
+    second: {fileID: 2100000, guid: c4ac739aef5b724458635687dc25e80a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Procedural Ore 2
-    second: {fileID: 2100000, guid: b43c697bfe0990b4e8a65763ae83d016, type: 2}
+    second: {fileID: 2100000, guid: 9b75ad25d65ead249a37050eb62ea577, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Procedural Ore 3
-    second: {fileID: 2100000, guid: a5e342b798ff6974493462ec7f558cd9, type: 2}
+    second: {fileID: 2100000, guid: 990cf74052f56834fba308ec075bd680, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
