@@ -39,4 +39,3 @@ Assets/Minerals/Nickel/nickelEmit.001.png filter=lfs diff=lfs merge=lfs -text
 Assets/Minerals/Nickel/nickelEmit.002.png filter=lfs diff=lfs merge=lfs -text
 Assets/Minerals/Nickel/nickelNormal3.png filter=lfs diff=lfs merge=lfs -text
 Assets/Minerals/Nickel/nickel-ver2.fbx filter=lfs diff=lfs merge=lfs -text
-Assets/Scenes/PsycheScene/OcclusionCullingData.asset filter=lfs diff=lfs merge=lfs -text
