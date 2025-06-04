@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "/home/dane/documents/git/iridium_23g_year_sim-uci",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
