@@ -29,7 +29,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/LaunchScene3.unity
     guid: ce2ac3dd80f86fb43b93a38a701cc028
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PsycheMovement.unity
     guid: 7bbd7a9478bfc4549a432f1c31bc278a
   m_configObjects:
