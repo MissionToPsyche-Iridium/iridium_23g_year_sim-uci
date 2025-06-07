@@ -8,5 +8,10 @@ git clone https://github.com/MissionToPsyche-Iridium/iridium_23g_year_sim-uci.gi
    - "Projects" > "Add" > "Add project from disk"
    - Select newly cloned `iridium_23g_year_sim-uci` folder
    - Open project
+3. Run (locally):
+```
+python3 -m http.server 8000
+```
 ## Notes for future maintainers:
 - Psyche is *rotating*. Take this into account when implementing anything to with physical interactions such as gravity.
+
