@@ -47,8 +47,6 @@ public class UpgradesCarousel : MonoBehaviour {
     private Dictionary<int, (int next, Dictionary<string, int> requirements)> miningSpeedUpgrades;
     private Dictionary<int, (int next, Dictionary<string, int> requirements)> resourceMultiplierUpgrades;
 
-    public ResearchPaperLock paperLock;
-	public PopUpManager popUpManager;
 
     void Start() {
         matsList = new List<TMP_Text> { mat1, mat2, mat3 };
@@ -262,8 +260,6 @@ public class UpgradesCarousel : MonoBehaviour {
             deductMineralAmount(drillUpgrades[currentDrill].requirements);
             currentDrill = drillUpgrades[currentDrill].next;
             missions.task2Transitioned = false;
-            paperLock.UnlockPaper("Magnetometer");
-            popUpManager.CreatePopUp("Research Paper #8 is Unlocked");
 
         }
         else if (index == 1 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(miningSpeedUpgrades[currentMiningSpeed].requirements))
@@ -271,16 +267,12 @@ public class UpgradesCarousel : MonoBehaviour {
             deductMineralAmount(miningSpeedUpgrades[currentMiningSpeed].requirements);
             currentMiningSpeed = miningSpeedUpgrades[currentMiningSpeed].next;
             missions.task3Transitioned = false;
-            paperLock.UnlockPaper("Multispectral Imager");
-            popUpManager.CreatePopUp("Research Paper #9 is Unlocked");
         }
         else if (index == 2 && !checkIfMaxUpgradeReached() && checkIfCanUpgrade(resourceMultiplierUpgrades[currentResourceMultiplier].requirements))
         {
             deductMineralAmount(resourceMultiplierUpgrades[currentResourceMultiplier].requirements);
             currentResourceMultiplier = resourceMultiplierUpgrades[currentResourceMultiplier].next;
             missions.task4Transitioned = false;
-            paperLock.UnlockPaper("Gamma-Ray and Neutron Spectrometer");
-            popUpManager.CreatePopUp("Research Paper #10 is Unlocked");
         }
         else if (!checkIfMaxUpgradeReached())
         {

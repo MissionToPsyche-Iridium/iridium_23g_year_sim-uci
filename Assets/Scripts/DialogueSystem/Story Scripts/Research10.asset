@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogues:
   - Speaker: Mission Control
-    Line: BBRRRRRRRRRRRAAAAAAAAAAAAAAAAAPPPPPPPPPPPPPPPPPP
+    Line: "You\u2019ve maxed out efficiency! Keep collecting\u2014every ore gets
+      us closer to full rover optimization. Let\u2019s push the limits! "
