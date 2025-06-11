@@ -13,16 +13,20 @@ public class Missions : MonoBehaviour
     public UnityEvent IronEvent;
     public UnityEvent UpgradeNickelEvent;
     public UnityEvent MiningSpeed2Event;
-    public UnityEvent Flashlight3Event;
-    [SerializeField]
-    private Image completionBarImage;
+    public UnityEvent ResourceMultiplier10Event;
+    public UnityEvent finalEvent;
+
+    public Image overlayFade;
+    public Image completionBarImage;
     public TMP_Text percentage;
 
     public GameObject missionsBody;
     public GameObject expandButton;
     public GameObject collapseButton;
+    public GameObject finalMissionButton;
 
     public UpgradesCarousel upgrades;
+    public UIBehaviour uiBehaviour;
 
     public GameObject task1;
     public GameObject task2;
@@ -75,9 +79,11 @@ public class Missions : MonoBehaviour
                                     paperLock.IsUnlocked("Gamma-Ray and Neutron Spectrometer"),
                                     missionComplete };
 
-    void Start() {
-		SoundManager.StopSound(SoundType.MENU_THEME); // Stop menu music
-		SoundManager.LoopSound(SoundType.GAME_AMBIENCE); // Begin game ambience upon Mission start
+    void Start()
+    {
+        SoundManager.StopSound(SoundType.MENU_THEME); // Stop menu music
+        SoundManager.LoopSound(SoundType.GAME_AMBIENCE); // Begin game ambience upon Mission start
+        finalMissionButton.SetActive(false);
     }
 
     void Update()
@@ -93,7 +99,7 @@ public class Missions : MonoBehaviour
         {
             displayMissions();
         }
-        finalMission();
+        initializeFinalMission();
         setProgress();
     }
 
@@ -321,7 +327,11 @@ public class Missions : MonoBehaviour
         }
         else if (upgrades.currentResourceMultiplier == 10)
         {
-            multiplier10Flag = true;
+            if (!multiplier10Flag)
+            {
+                multiplier10Flag = true;
+                ResourceMultiplier10Event.Invoke();
+            }
         }
     }
 
@@ -379,14 +389,30 @@ public class Missions : MonoBehaviour
             ;
     }
 
-    public void finalMission() // Initializes the final mission
+    public void initializeFinalMission() // Initializes the final mission
     {
         bool allCompleted = checkIfAllMissionsComplete();
         if (allCompleted && !missionComplete)
         {
             task1.gameObject.SetActive(true);
+            finalMissionButton.SetActive(true);
             StartCoroutine(FadeTaskIn("Report to Mission Control on Mission Completion"));
         }
+    }
+
+    public void finalMission()
+    {
+        missionComplete = true;
+        setProgress();
+        finalEvent.Invoke();
+        StartCoroutine(gameEndTransition());
+    }
+
+    IEnumerator gameEndTransition()
+    {
+        yield return new WaitForSeconds(5f);
+        yield return Fade(1);
+        uiBehaviour.EndGame();
     }
 
     public void setProgress() // Sets the progress visual for the progress bar
@@ -460,4 +486,20 @@ public class Missions : MonoBehaviour
         }
         group.alpha = to;
     }
+
+    IEnumerator Fade(float targetAlpha)
+	{
+		float startAlpha = overlayFade.color.a;
+		float elapsedTime = 0f;
+		Color currentColor = overlayFade.color;
+		while (elapsedTime < 1)
+		{
+			currentColor.a = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / 1);
+			overlayFade.color = currentColor;
+			elapsedTime += Time.deltaTime;
+			yield return null;
+		}
+		currentColor.a = targetAlpha;
+		overlayFade.color = currentColor;
+	}
 }

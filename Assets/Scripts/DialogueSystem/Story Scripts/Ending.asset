@@ -10,9 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47b6983d5b390504c94e7da686df8bc4, type: 3}
-  m_Name: Research10
+  m_Name: Ending
   m_EditorClassIdentifier: 
   dialogues:
+  - Speaker: EROS
+    Line: 'Reporting in Mission Control, Mission: Year on Psyche is 100% complete. '
   - Speaker: Mission Control
-    Line: "You\u2019ve maxed out efficiency! Keep collecting\u2014every ore gets
-      us closer to full rover optimization. Let\u2019s push the limits! "
+    Line: "Amazing work, EROS! Looking through all this data and the progress you
+      made on yourself, you\u2019ve done a phenomenal job."
+  - Speaker: Mission Control
+    Line: "Return back to your ship, EROS. Let\u2019s get you back home. "
