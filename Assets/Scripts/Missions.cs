@@ -101,6 +101,7 @@ public class Missions : MonoBehaviour
             displayMissions();
         }
 
+        initializeResearchPaperTask();
         initializeFinalMission();
         setProgress();
 
@@ -201,7 +202,7 @@ public class Missions : MonoBehaviour
         }
     }
 
-    IEnumerator FadeTaskIn(string newText) // Solely for mineral missions & final mission to fade in
+    IEnumerator FadeTaskIn(string newText) // Solely for mineral missions & research mission to fade in
     {
         task1text.text = newText;
         yield return FadeCanvasGroup(task1CanvasGroup, 0f, 1f, 0.5f);
@@ -391,40 +392,59 @@ public class Missions : MonoBehaviour
         }
     }
 
-    public bool checkIfAllMissionsComplete() // Checks if all upgrades are mxed out
+    public void initializeResearchPaperTask() // If all upgrade tasks are completed, have research task appear to clear confusion
+    {
+        if (!task1Transitioned && !allPapersCollected() && allUpgradesCompelete())
+        {
+            task1Transitioned = true;
+            task1.gameObject.SetActive(true);
+            Debug.Log("init research");
+            StartCoroutine(FadeTaskIn("Collect Remaining Research Papers"));
+        }
+    }
+
+    public bool allUpgradesCompelete() // Checks if all upgrades are maxed out
     {
         return nickelFlag &&
             drillNickelFlag &&
             miningSpeed2Flag &&
-            multiplier10Flag &&
-            paperLock.IsUnlocked("Orbit & Rotation") &&
+            multiplier10Flag;
+    }
+
+    public bool allPapersCollected() // Checks if all research papers are all collected
+    {
+        return paperLock.IsUnlocked("Orbit & Rotation") &&
             paperLock.IsUnlocked("Temperature and Weather") &&
             paperLock.IsUnlocked("Psyche Mission Timeline") &&
             paperLock.IsUnlocked("Magnetometer") &&
             paperLock.IsUnlocked("Multispectral Imager") &&
-            paperLock.IsUnlocked("Gamma-Ray and Neutron Spectrometer")
-            ;
+            paperLock.IsUnlocked("Gamma-Ray and Neutron Spectrometer");
     }
 
-    public void initializeFinalMission() // Initializes the final mission
+    public bool allMissionsComplete() // Checks if all missions are complete
     {
-        bool allCompleted = checkIfAllMissionsComplete();
-        if (allCompleted && !missionComplete)
+        return allUpgradesCompelete() && allPapersCollected();
+    }
+
+    public void initializeFinalMission() // Initializes the final mission task
+    {
+        if (!missionComplete && task1Transitioned && allMissionsComplete())
         {
-            task1.gameObject.SetActive(true);
+            task1Transitioned = false;
             finalMissionButton.SetActive(true);
-            StartCoroutine(FadeTaskIn("Report to Mission Control on Mission Completion"));
+            StartCoroutine(TransitionTask(task1image, task1text, task1CanvasGroup, "Report to Mission Control on Mission Completion"));
         }
     }
 
-    public void finalMission()
+    public void finalMission() // Final mission complete 
     {
         missionComplete = true;
         setProgress();
+        StartCoroutine(FinishTaskTransition(task1, task1image, task1text, task1CanvasGroup));
         finalEvent.Invoke();
     }
 
-    IEnumerator gameEndTransition()
+    IEnumerator gameEndTransition() // Transistions game to title screen
     {
         overlayFade.gameObject.SetActive(true);
         yield return new WaitForSeconds(5f);
