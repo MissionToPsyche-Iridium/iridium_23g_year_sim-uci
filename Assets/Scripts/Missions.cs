@@ -212,6 +212,8 @@ public class Missions : MonoBehaviour
             if (!drillNickelFlag)
             {
                 drillNickelFlag = true;
+                paperLock.UnlockPaper("Magnetometer");
+                popUpManager.CreatePopUp("Research Paper #8 is Unlocked");
                 UpgradeNickelEvent.Invoke();
             }
         }
@@ -271,6 +273,8 @@ public class Missions : MonoBehaviour
             if (!miningSpeed2Flag)
             {
                 miningSpeed2Flag = true;
+                paperLock.UnlockPaper("Multispectral Imager");
+                popUpManager.CreatePopUp("Research Paper #9 is Unlocked");
                 MiningSpeed2Event.Invoke();
             }
         }
@@ -330,6 +334,8 @@ public class Missions : MonoBehaviour
             if (!multiplier10Flag)
             {
                 multiplier10Flag = true;
+                paperLock.UnlockPaper("Gamma-Ray and Neutron Spectrometer");
+                popUpManager.CreatePopUp("Research Paper #10 is Unlocked");
                 ResourceMultiplier10Event.Invoke();
             }
         }
