@@ -13,16 +13,21 @@ public class Missions : MonoBehaviour
     public UnityEvent IronEvent;
     public UnityEvent UpgradeNickelEvent;
     public UnityEvent MiningSpeed2Event;
-    public UnityEvent Flashlight3Event;
-    [SerializeField]
-    private Image completionBarImage;
+    public UnityEvent ResourceMultiplier10Event;
+    public UnityEvent goodEndingEvent;
+    public UnityEvent badEndingEvent;
+
+    public Image overlayFade;
+    public Image completionBarImage;
     public TMP_Text percentage;
 
     public GameObject missionsBody;
     public GameObject expandButton;
     public GameObject collapseButton;
+    public GameObject finalMissionButton;
 
     public UpgradesCarousel upgrades;
+    public UIBehaviour uiBehaviour;
 
     public GameObject task1;
     public GameObject task2;
@@ -66,6 +71,7 @@ public class Missions : MonoBehaviour
     public bool missionComplete = false;
     public ResearchPaperLock paperLock;
     public PopUpManager popUpManager;
+    public int clickCount = 0;
 
     public bool[] allFlags => new bool[] { magnesiumFlag, ironFlag, nickelFlag, drillReinforcedMagFlag, drillIronFlag, drillNickelFlag,
                                     miningSpeed8Flag, miningSpeed5Flag, miningSpeed2Flag, multiplier2Flag, multiplier5Flag, multiplier10Flag,
@@ -75,9 +81,11 @@ public class Missions : MonoBehaviour
                                     paperLock.IsUnlocked("Gamma-Ray and Neutron Spectrometer"),
                                     missionComplete };
 
-    void Start() {
-		SoundManager.StopSound(SoundType.MENU_THEME); // Stop menu music
-		SoundManager.LoopSound(SoundType.GAME_AMBIENCE); // Begin game ambience upon Mission start
+    void Start()
+    {
+        SoundManager.StopSound(SoundType.MENU_THEME); // Stop menu music
+        SoundManager.LoopSound(SoundType.GAME_AMBIENCE); // Begin game ambience upon Mission start
+        finalMissionButton.SetActive(false);
     }
 
     void Update()
@@ -93,8 +101,19 @@ public class Missions : MonoBehaviour
         {
             displayMissions();
         }
-        finalMission();
+
+        initializeResearchPaperTask();
+        initializeFinalMission();
         setProgress();
+
+        if (missionComplete && clickCount < 4 && Input.GetMouseButtonDown(0))
+        {
+            clickCount += 1;
+            if (clickCount >= 3)
+            {
+                StartCoroutine(gameEndTransition());
+            }
+        }
     }
 
     public void displayMissions() // How a mission will be displayed if active or not
@@ -184,7 +203,7 @@ public class Missions : MonoBehaviour
         }
     }
 
-    IEnumerator FadeTaskIn(string newText) // Solely for mineral missions & final mission to fade in
+    IEnumerator FadeTaskIn(string newText) // Solely for mineral missions & research mission to fade in
     {
         task1text.text = newText;
         yield return FadeCanvasGroup(task1CanvasGroup, 0f, 1f, 0.5f);
@@ -206,6 +225,8 @@ public class Missions : MonoBehaviour
             if (!drillNickelFlag)
             {
                 drillNickelFlag = true;
+                paperLock.UnlockPaper("Magnetometer");
+                popUpManager.CreatePopUp("Research Paper #8 is Unlocked");
                 UpgradeNickelEvent.Invoke();
             }
         }
@@ -265,6 +286,8 @@ public class Missions : MonoBehaviour
             if (!miningSpeed2Flag)
             {
                 miningSpeed2Flag = true;
+                paperLock.UnlockPaper("Multispectral Imager");
+                popUpManager.CreatePopUp("Research Paper #9 is Unlocked");
                 MiningSpeed2Event.Invoke();
             }
         }
@@ -321,7 +344,13 @@ public class Missions : MonoBehaviour
         }
         else if (upgrades.currentResourceMultiplier == 10)
         {
-            multiplier10Flag = true;
+            if (!multiplier10Flag)
+            {
+                multiplier10Flag = true;
+                paperLock.UnlockPaper("Gamma-Ray and Neutron Spectrometer");
+                popUpManager.CreatePopUp("Research Paper #10 is Unlocked");
+                ResourceMultiplier10Event.Invoke();
+            }
         }
     }
 
@@ -364,29 +393,76 @@ public class Missions : MonoBehaviour
         }
     }
 
-    public bool checkIfAllMissionsComplete() // Checks if all upgrades are mxed out
+    public void initializeResearchPaperTask() // If all upgrade tasks are completed, have research task appear to clear confusion
+    {
+        if (!task1Transitioned && !allPapersCollected() && allUpgradesCompelete())
+        {
+            task1Transitioned = true;
+            task1.gameObject.SetActive(true);
+            StartCoroutine(FadeTaskIn("Collect Remaining Research Papers"));
+        }
+    }
+
+    public bool allUpgradesCompelete() // Checks if all upgrades are maxed out
     {
         return nickelFlag &&
             drillNickelFlag &&
             miningSpeed2Flag &&
-            multiplier10Flag &&
-            paperLock.IsUnlocked("Orbit & Rotation") &&
+            multiplier10Flag;
+    }
+
+    public bool allPapersCollected() // Checks if all research papers are all collected
+    {
+        return paperLock.IsUnlocked("Orbit & Rotation") &&
             paperLock.IsUnlocked("Temperature and Weather") &&
             paperLock.IsUnlocked("Psyche Mission Timeline") &&
             paperLock.IsUnlocked("Magnetometer") &&
             paperLock.IsUnlocked("Multispectral Imager") &&
-            paperLock.IsUnlocked("Gamma-Ray and Neutron Spectrometer")
-            ;
+            paperLock.IsUnlocked("Gamma-Ray and Neutron Spectrometer");
     }
 
-    public void finalMission() // Initializes the final mission
+    public bool allMissionsComplete() // Checks if all missions are complete
     {
-        bool allCompleted = checkIfAllMissionsComplete();
-        if (allCompleted && !missionComplete)
+        return allUpgradesCompelete() && allPapersCollected();
+    }
+
+    public void initializeFinalMission() // Initializes the final mission task
+    {
+        if (!missionComplete && task1Transitioned && allMissionsComplete())
         {
-            task1.gameObject.SetActive(true);
-            StartCoroutine(FadeTaskIn("Report to Mission Control on Mission Completion"));
+            task1Transitioned = false;
+            finalMissionButton.SetActive(true);
+            StartCoroutine(TransitionTask(task1image, task1text, task1CanvasGroup, "Report to Mission Control on Mission Completion"));
         }
+    }
+
+    public void reportFinalMission() // Final mission complete 
+    {
+        missionComplete = true;
+        setProgress();
+        StartCoroutine(FinishTaskTransition(task1, task1image, task1text, task1CanvasGroup));
+        endingSelection();
+    }
+
+    public void endingSelection() // Decides if players receives good or bad ending
+    {
+        if (missionComplete)
+        {
+            goodEndingEvent.Invoke();
+        }
+        else
+        {
+            badEndingEvent.Invoke();
+        }
+    }
+
+    public IEnumerator gameEndTransition() // Transistions game to title screen
+    {
+        overlayFade.gameObject.SetActive(true);
+        yield return new WaitForSeconds(30f);
+        yield return StartCoroutine(Fade(1));
+        yield return new WaitForSeconds(10f);
+        uiBehaviour.EndGame();
     }
 
     public void setProgress() // Sets the progress visual for the progress bar
@@ -460,4 +536,20 @@ public class Missions : MonoBehaviour
         }
         group.alpha = to;
     }
+
+    IEnumerator Fade(float targetAlpha)
+	{
+		float startAlpha = overlayFade.color.a;
+		float elapsedTime = 0f;
+		Color currentColor = overlayFade.color;
+		while (elapsedTime < 1)
+		{
+			currentColor.a = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / 1);
+			overlayFade.color = currentColor;
+			elapsedTime += Time.deltaTime;
+			yield return null;
+		}
+		currentColor.a = targetAlpha;
+		overlayFade.color = currentColor;
+	}
 }

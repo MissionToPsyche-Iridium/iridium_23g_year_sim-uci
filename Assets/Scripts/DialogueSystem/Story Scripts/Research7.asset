@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogues:
   - Speaker: Mission Control
-    Line: "Four hundred days since landing. And you haven\u2019t missed a beat."
+    Line: "1428 days since landing. And you haven\u2019t missed a beat."
   - Speaker: Mission Control
     Line: "You\u2019re setting new benchmarks for all future rover-class androids."

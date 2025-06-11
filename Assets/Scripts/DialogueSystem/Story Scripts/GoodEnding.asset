@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47b6983d5b390504c94e7da686df8bc4, type: 3}
+  m_Name: GoodEnding
+  m_EditorClassIdentifier: 
+  dialogues:
+  - Speaker: EROS
+    Line: 'Reporting in Mission Control, Mission: Year on Psyche is 100% complete. '
+  - Speaker: Mission Control
+    Line: "Amazing work, EROS! Looking through all this data and the progress you
+      made on yourself, you\u2019ve done a phenomenal job. I hope during your adventures
+      you\u2019ve learned a lot and had a wonderful time rediscovering the wonders
+      of the Psyche asteroid."
+  - Speaker: Mission Control
+    Line: "Return back to your ship, EROS. Let\u2019s get you back home. "

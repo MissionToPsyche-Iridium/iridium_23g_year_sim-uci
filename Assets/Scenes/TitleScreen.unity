@@ -1735,7 +1735,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 776661223}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.4731245}
+  m_AnchorMin: {x: 0, y: 0.9112932}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -4966,7 +4966,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 767754493}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5268755
+  m_Size: 0.088706784
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5050,7 +5050,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 391.52}
+  m_SizeDelta: {x: 0, y: 4479.07}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2076718368
 MonoBehaviour:
@@ -5072,18 +5072,58 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1. This work was created in partial fulfillment of University of California,
-    Irvine Capstone Course IN4MATX 191A/B. The work is a result of the Psyche Student
-    Collaborations component of NASA\u2019s Psyche Mission (https://psyche.asu.edu/).
-    \u201CPsyche: A Journey to a Metal World\u201D [Contract number NNM16AA09C] is
-    part of the NASA Discovery Program mission to solar system targets. Trade names
-    and trademarks of ASU and NASA are used in this work for identification only.
-    Their usage does not constitute an official endorsement, either expressed or
-    implied, by Arizona State University or National Aeronautics and Space Administration.
-    The content is solely the responsibility of the authors and does not necessarily
-    represent the official views of ASU or NASA.\n\n2. 'Discovery' by Scott Buckley
-    - released under CC-BY 4.0. www.scottbuckley.com.au\n\n3. 'Aurora' by Scott Buckley
-    - released under CC-BY 4.0. www.scottbuckley.com.au\n.\n.\n."
+  m_text: "Developed By: Raymond Chou, Dane Hobrecht, Queensley Lim, Celia Chamu
+    Maturana, Jocelyn Katherine Phan, and Ivan Yen-Kit Quon\n\nThis work was created
+    in partial fulfillment of University of California, Irvine Capstone Course IN4MATX
+    191A/B. The work is a result of the Psyche Student Collaborations component of
+    NASA\u2019s Psyche Mission (https://psyche.asu.edu/). \u201CPsyche: A Journey
+    to a Metal World\u201D [Contract number NNM16AA09C] is part of the NASA Discovery
+    Program mission to solar system targets. Trade names and trademarks of ASU and
+    NASA are used in this work for identification only. Their usage does not constitute
+    an official endorsement, either expressed or implied, by Arizona State University
+    or National Aeronautics and Space Administration. The content is solely the responsibility
+    of the authors and does not necessarily represent the official views of ASU or
+    NASA.\n\nMUSIC:\n1. Buckley, Scott. Aurora. 2020, released under Creative Commons
+    Attribution 4.0 International (CC BY 4.0). www.scottbuckley.com.au.\n\n2. Buckley,
+    Scott. Discovery. 2020, released under Creative Commons Attribution 4.0 International
+    (CC BY 4.0). www.scottbuckley.com.au.\n\nSOUND EFFECTS:\L1. Pixabay. \u201CAudio
+    subject.\u201D Pixabay, licensed under Creative Commons Zero (CC0). No attribution
+    required. https://pixabay.com.\n\n3D MODELS:\n1. \u201CEarth Photorealistic 2K.\u201D
+    Free3D, https://free3d.com/3d-model/earth-photorealistic-2k-927613.html.\n\L2.
+    \u201CMars Photorealistic 2K.\u201D Free3D, https://free3d.com/3d-model/mars-photorealistic-2k-671043.html.\n\L3.
+    \u201CMercury Photorealistic 1K.\u201D Free3D, https://free3d.com/3d-model/mercury-photorealistic-1k-260439.html.\n\L4.
+    \u201CConcept model of asteroid Psyche.\u201D Thingiverse, https://www.thingiverse.com/thing:2373526.\n\n5.
+    Real Stars Skybox Lite. Unity Asset Store, https://assetstore.unity.com/packages/3d/environments/sci-fi/real-stars-skybox-lite-116333.\n\n6.
+    \u201CSun.\u201D Free3D, https://free3d.com/3d-model/sun-43982.html.\n\L7. \u201CToy
+    Rocket.\u201D Sketchfab, https://sketchfab.com/3d-models/toy-rocket-48a2138808574d39bd671ff75dd4d4d5.\n\L8.
+    \u201CVenus Photorealistic 1K.\u201D Free3D, https://free3d.com/3d-model/venus-photorealistic-1k-273057.html.\n\nTUTORIALS
+    & CODE REFERENCES:\n1. \u201C5 Minute DIALOGUE SYSTEM in UNITY Tutorial\u201D
+    YouTube, uploaded by BMo, https://www.youtube.com/watch?v=8oTYabhj248.\L\L2.
+    \u201CBreakfast With Unity \"Show and Tell\": Curved Text\u201D YouTube, uploaded
+    by PushyPixels, https://www.youtube.com/watch?v=NPylGGZdGPc.\L\L3. \u201CExploring
+    space, planets and faux gravity gravity In Unity3d! | orbital movement | faux
+    gravity\u201D YouTube, uploaded by ForlornU, https://www.youtube.com/watch?v=gpjqd0OPrJc.\L\L4.
+    \u201CHow to Mine in Unity\u201D YouTube, uploaded by Feed My Kids, https://www.youtube.com/watch?v=OHRmJeQMmaE.\L\L5.
+    \u201COrbit Paths in Unity: Understanding Ellipses\u201D YouTube, uploaded by
+    Board to Bits Games, https://www.youtube.com/watch?v=mQKGRoV_jBc.\L\L6. \u201COrbital
+    Paths in Unity, Part 3: Making a Planet Orbit\u201D YouTube, uploaded by Board
+    to Bits Games, https://www.youtube.com/watch?v=lKfqi52PqHk.\L\n7. \u201CTrail
+    behind player in Unity | Bite-Sized Tutorials\u201D YouTube, uploaded by chonk,
+    https://www.youtube.com/watch?v=9PqPZDqSDWA.\n\nPSYCHE MISSION REFERENCES:\n1.
+    \u201CInstruments & Science Investigations.\u201D Psyche Mission, https://psyche.ssl.berkeley.edu/mission/instruments-science-investigations.\L\L2.
+    \u201CMission.\u201D Psyche: Mission to a Metal World, Arizona State University
+    and NASA/JPL-Caltech, https://psyche.ssl.berkeley.edu/mission.\L\L3. \u201CScience.\u201D
+    Psyche Mission, https://psyche.ssl.berkeley.edu/science.\L\L4. \u201CThe Asteroid.\u201D
+    Psyche Mission, https://psyche.ssl.berkeley.edu/mission/the-asteroid.\L\n5. \u201CThe
+    Timeline.\u201D Psyche Mission, https://psyche.ssl.berkeley.edu/timeline.\n\nImages
+    (Photo Credit: NASA/JPL-Caltech/ASU/MSSS):\n1. \u201CLarge Regions of Rock and
+    Metal: Psyche Asteroid Illustration.\u201D Psyche Gallery, https://psyche.ssl.berkeley.edu/gallery/large-regions-of-rock-and-metal-psyche-asteroid-illustration.\L\L2.
+    \u201COrbiting Asteroid Psyche (Illustration).\u201D Psyche Gallery, https://psyche.ssl.berkeley.edu/gallery/orbiting-asteroid-psyche-illustration.\L\L3.
+    \u201CPsyche Close-Up.\u201D Psyche Gallery, https://psyche.ssl.berkeley.edu/gallery/psyche-close-up.\L\L4.
+    \u201CPsyche Gamma-Ray Spectrometer.\u201D Psyche Gallery, https://psyche.ssl.berkeley.edu/gallery/psyche-gamma-ray-spectrometer.\L\L5.
+    \u201CPsyche Neutron Spectrometer.\u201D Psyche Gallery, https://psyche.ssl.berkeley.edu/gallery/psyche-neutron-spectrometer.\L\L6.
+    \u201CRegions of Iron-Nickel Metal and Olivine: Psyche Asteroid Illustration.\u201D
+    Psyche Gallery, https://psyche.ssl.berkeley.edu/gallery/regions-of-iron-nickel-metal-and-olivine-psyche-asteroid-illustration.\n\n.\n.\n.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f2f0a279ba4a4488a953728b7b68c63, type: 2}
   m_sharedMaterial: {fileID: 5659635374452186767, guid: 9f2f0a279ba4a4488a953728b7b68c63, type: 2}
