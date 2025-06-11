@@ -31,6 +31,7 @@ public class UIBehaviour : MonoBehaviour
 	public GameObject backButton;
 	public GameObject infoPanel;
 	public CursorManager cursorManager;
+	public Missions missions;
 
 	public Image overlayFade;
 	public TMP_Text infoTitle;
@@ -114,7 +115,19 @@ public class UIBehaviour : MonoBehaviour
 		}
 		else if (days <= 0)
 		{
-			EndGame();
+			if (missions.clickCount == 0)
+			{
+				missions.clickCount += 1;
+				missions.endingSelection();
+			}
+			else if (missions.clickCount < 4 && Input.GetMouseButtonDown(0))
+			{
+				missions.clickCount += 1;
+				if (missions.clickCount >= 3)
+				{
+					StartCoroutine(missions.gameEndTransition());
+				}
+			}
 		}
 	}
 
@@ -272,7 +285,6 @@ public class UIBehaviour : MonoBehaviour
 
 	private void OnSolarSystemViewedLongEnough()
 	{
-		Debug.Log("You've spent over 10 seconds in the Solar System view!");
 		paperLock.UnlockPaper("Orbit & Rotation");
 		popUpManager.CreatePopUp("Research Paper #3 is Unlocked");
 
@@ -283,14 +295,12 @@ public class UIBehaviour : MonoBehaviour
 		if (!triggered1400 && days <= 1400)
 		{
 			triggered1400 = true;
-			Debug.Log("Day 1400 milestone reached!");
 			paperLock.UnlockPaper("Psyche History");
 			popUpManager.CreatePopUp("Research Paper #6 is Unlocked");
 		}
 		if (!triggered400 && days <= 400)
 		{
 			triggered400 = true;
-			Debug.Log("Day 400 milestone reached!");
 			paperLock.UnlockPaper("Psyche Mission Timeline");
 			popUpManager.CreatePopUp("Research Paper #7 is Unlocked");
 

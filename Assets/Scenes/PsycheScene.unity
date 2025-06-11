@@ -29982,6 +29982,7 @@ MonoBehaviour:
   backButton: {fileID: 1980026450}
   infoPanel: {fileID: 829104356}
   cursorManager: {fileID: 1812506398}
+  missions: {fileID: 488122531}
   overlayFade: {fileID: 111401085}
   infoTitle: {fileID: 1390853400}
   infoText: {fileID: 1375965124}
@@ -30211,7 +30212,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  finalEvent:
+  goodEndingEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1510923196}
@@ -30220,6 +30221,33 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 676c31d47106b4ebc80f8e056840d6bb, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1510923194}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  badEndingEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1510923196}
+        m_TargetAssemblyTypeName: MessageManager, Assembly-CSharp
+        m_MethodName: SetLines
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: e35041e156f544a80b1882b4a45ce87a, type: 2}
           m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -49384,7 +49412,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 488122531}
         m_TargetAssemblyTypeName: Missions, Assembly-CSharp
-        m_MethodName: finalMission
+        m_MethodName: reportFinalMission
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

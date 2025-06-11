@@ -14,7 +14,8 @@ public class Missions : MonoBehaviour
     public UnityEvent UpgradeNickelEvent;
     public UnityEvent MiningSpeed2Event;
     public UnityEvent ResourceMultiplier10Event;
-    public UnityEvent finalEvent;
+    public UnityEvent goodEndingEvent;
+    public UnityEvent badEndingEvent;
 
     public Image overlayFade;
     public Image completionBarImage;
@@ -398,7 +399,6 @@ public class Missions : MonoBehaviour
         {
             task1Transitioned = true;
             task1.gameObject.SetActive(true);
-            Debug.Log("init research");
             StartCoroutine(FadeTaskIn("Collect Remaining Research Papers"));
         }
     }
@@ -436,20 +436,32 @@ public class Missions : MonoBehaviour
         }
     }
 
-    public void finalMission() // Final mission complete 
+    public void reportFinalMission() // Final mission complete 
     {
         missionComplete = true;
         setProgress();
         StartCoroutine(FinishTaskTransition(task1, task1image, task1text, task1CanvasGroup));
-        finalEvent.Invoke();
+        endingSelection();
     }
 
-    IEnumerator gameEndTransition() // Transistions game to title screen
+    public void endingSelection() // Decides if players receives good or bad ending
+    {
+        if (missionComplete)
+        {
+            goodEndingEvent.Invoke();
+        }
+        else
+        {
+            badEndingEvent.Invoke();
+        }
+    }
+
+    public IEnumerator gameEndTransition() // Transistions game to title screen
     {
         overlayFade.gameObject.SetActive(true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(30f);
         yield return StartCoroutine(Fade(1));
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f);
         uiBehaviour.EndGame();
     }
 
