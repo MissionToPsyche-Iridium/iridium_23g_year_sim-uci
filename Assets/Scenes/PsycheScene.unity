@@ -10670,7 +10670,6 @@ RectTransform:
   - {fileID: 488066810}
   - {fileID: 829104357}
   - {fileID: 1980026451}
-  - {fileID: 111401084}
   - {fileID: 628193298}
   - {fileID: 1648747138}
   - {fileID: 1651656302}
@@ -10678,6 +10677,7 @@ RectTransform:
   - {fileID: 1842450240}
   - {fileID: 781113627}
   - {fileID: 1510923195}
+  - {fileID: 111401084}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -30025,8 +30025,6 @@ MonoBehaviour:
   magnesiumAmount: 0
   ironAmount: 0
   nickelAmount: 0
-  paperLock: {fileID: 494835210}
-  popUpManager: {fileID: 494835207}
 --- !u!114 &488122530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30286,6 +30284,7 @@ MonoBehaviour:
   missionComplete: 0
   paperLock: {fileID: 494835210}
   popUpManager: {fileID: 494835207}
+  clickCount: 0
 --- !u!82 &488122532
 AudioSource:
   m_ObjectHideFlags: 0
@@ -45069,7 +45068,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 2, y: 2.5}
-  m_SizeDelta: {x: 100, y: 25}
+  m_SizeDelta: {x: 200, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &696402258
 MonoBehaviour:

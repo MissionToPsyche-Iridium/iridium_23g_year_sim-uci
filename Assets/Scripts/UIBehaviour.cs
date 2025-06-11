@@ -287,7 +287,7 @@ public class UIBehaviour : MonoBehaviour
 			paperLock.UnlockPaper("Psyche History");
 			popUpManager.CreatePopUp("Research Paper #6 is Unlocked");
 		}
-		if (!triggered400 && days <= 1000)  // TODO: CHANGE BACK to 400
+		if (!triggered400 && days <= 400)
 		{
 			triggered400 = true;
 			Debug.Log("Day 400 milestone reached!");
@@ -344,7 +344,7 @@ public class UIBehaviour : MonoBehaviour
 			Day1200Dialogue.Invoke();
 			Day1200Flag = true;
 		}
-		if (Mathf.FloorToInt(days) == 1000 && !Day400Flag) // TODO: CHANGE BACK to 400
+		if (Mathf.FloorToInt(days) == 400 && !Day400Flag)
 		{
 			Day400Dialogue.Invoke();
 			Day400Flag = true;

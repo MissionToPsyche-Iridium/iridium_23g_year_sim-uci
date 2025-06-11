@@ -47,8 +47,6 @@ public class UpgradesCarousel : MonoBehaviour {
     private Dictionary<int, (int next, Dictionary<string, int> requirements)> miningSpeedUpgrades;
     private Dictionary<int, (int next, Dictionary<string, int> requirements)> resourceMultiplierUpgrades;
 
-    public ResearchPaperLock paperLock;
-	public PopUpManager popUpManager;
 
     void Start() {
         matsList = new List<TMP_Text> { mat1, mat2, mat3 };

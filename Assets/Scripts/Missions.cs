@@ -70,6 +70,7 @@ public class Missions : MonoBehaviour
     public bool missionComplete = false;
     public ResearchPaperLock paperLock;
     public PopUpManager popUpManager;
+    public int clickCount = 0;
 
     public bool[] allFlags => new bool[] { magnesiumFlag, ironFlag, nickelFlag, drillReinforcedMagFlag, drillIronFlag, drillNickelFlag,
                                     miningSpeed8Flag, miningSpeed5Flag, miningSpeed2Flag, multiplier2Flag, multiplier5Flag, multiplier10Flag,
@@ -99,8 +100,18 @@ public class Missions : MonoBehaviour
         {
             displayMissions();
         }
+
         initializeFinalMission();
         setProgress();
+
+        if (missionComplete && clickCount < 4 && Input.GetMouseButtonDown(0))
+        {
+            clickCount += 1;
+            if (clickCount >= 3)
+            {
+                StartCoroutine(gameEndTransition());
+            }
+        }
     }
 
     public void displayMissions() // How a mission will be displayed if active or not
@@ -411,13 +422,14 @@ public class Missions : MonoBehaviour
         missionComplete = true;
         setProgress();
         finalEvent.Invoke();
-        StartCoroutine(gameEndTransition());
     }
 
     IEnumerator gameEndTransition()
     {
+        overlayFade.gameObject.SetActive(true);
         yield return new WaitForSeconds(5f);
-        yield return Fade(1);
+        yield return StartCoroutine(Fade(1));
+        yield return new WaitForSeconds(5f);
         uiBehaviour.EndGame();
     }
 
